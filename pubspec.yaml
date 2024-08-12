@@ -1,0 +1,23 @@
+name: j1_ui
+description: A set of common UI components for use throughout the J1 ecosystem.
+version: 1.0.0
+repository: https://github.com/J1-Apps/j1_ui
+
+environment:
+  sdk: ^3.5.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  j1_lints:
+    git:
+      url: https://github.com/J1-Apps/j1_lints.git
+      ref: v1.0.0
+
+flutter:
