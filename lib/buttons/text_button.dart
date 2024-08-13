@@ -43,12 +43,23 @@ class TextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = context.textTheme();
+
     final style = type._createStyle(
       color,
       context.colorScheme(),
       foregroundColor,
       backgroundColor,
+      textStyle,
     );
+
+    final widgetTextStyle = textStyle ??
+        switch (size) {
+          TextButtonDimens.large => textTheme.titleLarge,
+          TextButtonDimens.medium => textTheme.titleMedium,
+          TextButtonDimens.small => textTheme.titleSmall,
+          _ => textTheme.titleMedium,
+        };
 
     final shape = RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(size.cornerRadius),
@@ -58,6 +69,7 @@ class TextButton extends StatelessWidget {
     );
 
     final buttonStyle = style.copyWith(
+      textStyle: widgetTextStyle?.widgetState(),
       padding: size.padding.widgetState(),
       minimumSize: Size.zero.widgetState(),
       iconSize: size.iconSize.widgetState(),
@@ -139,10 +151,11 @@ extension _TypeExtension on TextButtonType {
     ColorScheme colors,
     Color? iconColor,
     Color? backgroundColor,
+    TextStyle? textStyle,
   ) {
     return switch (this) {
-      TextButtonType.filled => _createFilledStyle(color, colors, iconColor, backgroundColor),
-      TextButtonType.flat => _createFlatStyle(color, colors, iconColor, backgroundColor),
+      TextButtonType.filled => _createFilledStyle(color, colors, iconColor, backgroundColor, textStyle),
+      TextButtonType.flat => _createFlatStyle(color, colors, iconColor, backgroundColor, textStyle),
     };
   }
 }
@@ -150,8 +163,9 @@ extension _TypeExtension on TextButtonType {
 ButtonStyle _createFilledStyle(
   WidgetColor color,
   ColorScheme colors,
-  Color? iconColor,
+  Color? foregroundColor,
   Color? backgroundColor,
+  TextStyle? textStyle,
 ) {
   final buttonColors = switch (color) {
     WidgetColor.primary => (colors.onPrimary, colors.primary),
@@ -162,9 +176,10 @@ ButtonStyle _createFilledStyle(
   };
 
   return ButtonStyle(
-    iconColor: (iconColor ?? buttonColors.$1).widgetState(),
+    iconColor: (foregroundColor ?? buttonColors.$1).widgetState(),
+    foregroundColor: (foregroundColor ?? buttonColors.$1).widgetState(),
     backgroundColor: (backgroundColor ?? buttonColors.$2).widgetState(),
-    overlayColor: (iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
+    overlayColor: (foregroundColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
     elevation: Dimens.elevation_s.widgetState(),
   );
 }
@@ -172,8 +187,9 @@ ButtonStyle _createFilledStyle(
 ButtonStyle _createFlatStyle(
   WidgetColor color,
   ColorScheme colors,
-  Color? iconColor,
+  Color? foregroundColor,
   Color? backgroundColor,
+  TextStyle? textStyle,
 ) {
   final buttonColors = switch (color) {
     WidgetColor.primary => (colors.primary, Colors.transparent),
@@ -184,9 +200,10 @@ ButtonStyle _createFlatStyle(
   };
 
   return ButtonStyle(
-    iconColor: (iconColor ?? buttonColors.$1).widgetState(),
+    iconColor: (foregroundColor ?? buttonColors.$1).widgetState(),
+    foregroundColor: (foregroundColor ?? buttonColors.$1).widgetState(),
     backgroundColor: (backgroundColor ?? buttonColors.$2).widgetState(),
-    overlayColor: (iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
+    overlayColor: (foregroundColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
     elevation: Dimens.elevation_none.widgetState(),
   );
 }

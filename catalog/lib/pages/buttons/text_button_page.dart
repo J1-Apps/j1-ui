@@ -1,9 +1,9 @@
 import "package:catalog/catalog_list_widget.dart";
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart" hide TextButton;
 import "package:j1_ui/j1_ui.dart";
 
-class IconButtonPage extends StatelessWidget {
-  const IconButtonPage({super.key});
+class TextButtonPage extends StatelessWidget {
+  const TextButtonPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +17,21 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.filled,
+              size: TextButtonDimens.large,
+              type: TextButtonType.filled,
               color: WidgetColor.primary,
+              icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.filled,
+              size: TextButtonDimens.medium,
+              type: TextButtonType.filled,
               color: WidgetColor.secondary,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.filled,
+              size: TextButtonDimens.small,
+              type: TextButtonType.filled,
               color: WidgetColor.tertiary,
+              icon: JamIcons.pencil,
             ),
           ],
         ),
@@ -41,20 +43,21 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.filled,
+              size: TextButtonDimens.large,
+              type: TextButtonType.filled,
               color: WidgetColor.primary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.filled,
+              size: TextButtonDimens.medium,
+              type: TextButtonType.filled,
               color: WidgetColor.secondary,
               outlineColor: colors.onSurface,
+              icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.filled,
+              size: TextButtonDimens.small,
+              type: TextButtonType.filled,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
@@ -68,19 +71,21 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.flat,
+              size: TextButtonDimens.large,
+              type: TextButtonType.flat,
+              color: WidgetColor.tertiary,
+              icon: JamIcons.pencil,
+            ),
+            _buildItem(
+              size: TextButtonDimens.medium,
+              type: TextButtonType.flat,
               color: WidgetColor.tertiary,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.flat,
+              size: TextButtonDimens.small,
+              type: TextButtonType.flat,
               color: WidgetColor.tertiary,
-            ),
-            _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.flat,
-              color: WidgetColor.tertiary,
+              icon: JamIcons.pencil,
             ),
           ],
         ),
@@ -92,20 +97,21 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.flat,
+              size: TextButtonDimens.large,
+              type: TextButtonType.flat,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.flat,
+              size: TextButtonDimens.medium,
+              type: TextButtonType.flat,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
+              icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.flat,
+              size: TextButtonDimens.small,
+              type: TextButtonType.flat,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
@@ -117,14 +123,16 @@ class IconButtonPage extends StatelessWidget {
     return CatalogListWidget(children);
   }
 
-  IconButton _buildItem({
-    required IconButtonType type,
-    required IconButtonDimens size,
+  TextButton _buildItem({
+    required TextButtonType type,
+    required TextButtonDimens size,
     required WidgetColor color,
+    IconData? icon,
     Color? outlineColor,
   }) {
-    return IconButton(
-      icon: JamIcons.pencil,
+    return TextButton(
+      text: "test",
+      icon: icon,
       type: type,
       size: size,
       color: color,
