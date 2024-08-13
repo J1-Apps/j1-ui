@@ -38,11 +38,16 @@ class CatalogRenderer extends StatelessWidget {
   }
 
   Widget _buildBranchRow(BuildContext context, CatalogNode node) {
-    return ListTile(
-      onTap: () => _navigateToNode(context, node),
-      title: Text(node.title, style: Theme.of(context).textTheme.bodyLarge),
-      trailing: node is CatalogBranch ? const Icon(JamIcons.chevronright) : null,
-      contentPadding: const EdgeInsets.symmetric(horizontal: Dimens.spacing_m),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Dimens.spacing_xxxs),
+      child: ListItem(
+        padding: const EdgeInsets.symmetric(horizontal: Dimens.spacing_m, vertical: Dimens.spacing_s),
+        children: [
+          Text(node.title, style: Theme.of(context).textTheme.bodyLarge),
+          if (node is CatalogBranch) const Icon(JamIcons.chevronright),
+        ],
+        onPressed: () => _navigateToNode(context, node),
+      ),
     );
   }
 
