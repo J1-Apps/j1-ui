@@ -63,7 +63,7 @@ class SvgImage extends _Image<String> {
 
   @override
   Widget build(BuildContext context) {
-    final filter = ColorFilter.mode(color ?? context.colorScheme().onSurface, BlendMode.srcIn);
+    final filter = color == null ? null : ColorFilter.mode(color ?? context.colorScheme().onSurface, BlendMode.srcIn);
 
     return SvgPicture.asset(
       source,

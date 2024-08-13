@@ -1,6 +1,7 @@
 import "package:catalog/pages/buttons/icon_button_page.dart";
 import "package:catalog/pages/buttons/text_button_page.dart";
 import "package:catalog/pages/icons_page.dart";
+import "package:catalog/pages/images_page.dart";
 import "package:flutter/material.dart";
 
 sealed class CatalogNode {
@@ -30,6 +31,7 @@ class CatalogContent {
         CatalogLeaf(title: "icon buttons", page: const IconButtonPage()),
       ]),
       CatalogLeaf(title: "icons", page: const IconsPage()),
+      CatalogLeaf(title: "images", page: const ImagesPage()),
     ],
   );
 }
