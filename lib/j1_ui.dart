@@ -1,7 +1,5 @@
 library j1_ui;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export "icons/icons.dart";
+export "layout/layout.dart";
+export "dimens.dart";

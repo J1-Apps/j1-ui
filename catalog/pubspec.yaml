@@ -13,7 +13,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  j1_ui:
+    path: ../../j1_ui
+
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
+  
   flutter_test:
     sdk: flutter
 
@@ -21,3 +26,11 @@ dev_dependencies:
     git:
       url: https://github.com/J1-Apps/j1_lints.git
       ref: v1.0.0
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: JamIcons
+      fonts:
+        - asset: packages/j1_ui/fonts/JamIcons.ttf
