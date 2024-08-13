@@ -2,33 +2,39 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-enum IconButtonType {
+enum TextButtonType {
   filled,
   flat,
 }
 
-class IconButton extends StatelessWidget {
+class TextButton extends StatelessWidget {
+  final String? text;
+  final TextStyle? textStyle;
+  final bool forceCaps;
   final IconData? icon;
   final Widget? iconWidget;
-  final IconButtonType type;
-  final IconButtonDimens size;
+  final TextButtonType type;
+  final TextButtonDimens size;
   final WidgetColor color;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
-  final Color? iconColor;
+  final Color? foregroundColor;
   final Color? backgroundColor;
   final Color? outlineColor;
   final double? outlineWidth;
 
-  const IconButton({
-    required this.icon,
+  const TextButton({
+    required this.text,
+    this.textStyle,
+    this.forceCaps = true,
+    this.icon,
     this.iconWidget,
-    this.type = IconButtonType.filled,
-    this.size = IconButtonDimens.medium,
+    this.type = TextButtonType.filled,
+    this.size = TextButtonDimens.medium,
     required this.color,
     required this.onPressed,
     this.onLongPress,
-    this.iconColor,
+    this.foregroundColor,
     this.backgroundColor,
     this.outlineColor,
     this.outlineWidth,
@@ -40,68 +46,94 @@ class IconButton extends StatelessWidget {
     final style = type._createStyle(
       color,
       context.colorScheme(),
-      iconColor,
+      foregroundColor,
       backgroundColor,
     );
 
-    final shape = CircleBorder(
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(size.cornerRadius),
       side: outlineColor != null
           ? BorderSide(color: outlineColor ?? context.colorScheme().onSurface, width: outlineWidth ?? 2)
           : BorderSide.none,
     );
 
     final buttonStyle = style.copyWith(
-      padding: EdgeInsets.zero.widgetState(),
+      padding: size.padding.widgetState(),
       minimumSize: Size.zero.widgetState(),
       iconSize: size.iconSize.widgetState(),
-      fixedSize: Size.square(size.size).widgetState(),
       shape: shape.widgetState(),
     );
 
-    return SizedBox(
-      width: size.size,
-      height: size.size,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        onLongPress: onLongPress,
-        style: buttonStyle,
-        child: iconWidget ?? Icon(icon),
-      ),
+    final displayIcon = iconWidget ?? (icon == null ? null : Icon(icon));
+
+    return ElevatedButton.icon(
+      onPressed: onPressed,
+      onLongPress: onLongPress,
+      style: buttonStyle,
+      icon: displayIcon,
+      label: Text((forceCaps ? text?.toUpperCase() : text) ?? ""),
     );
   }
 }
 
-class IconButtonDimens extends Equatable {
-  final double size;
+class TextButtonDimens extends Equatable {
+  final EdgeInsets padding;
+  final double cornerRadius;
+  final double iconSpacing;
   final double iconSize;
 
-  static const large = IconButtonDimens._(size: 48, iconSize: 28);
-  static const medium = IconButtonDimens._(size: 36, iconSize: 22);
-  static const small = IconButtonDimens._(size: 36, iconSize: 18);
+  static const large = TextButtonDimens._(
+    padding: EdgeInsets.symmetric(horizontal: Dimens.spacing_s + 2, vertical: Dimens.spacing_s),
+    cornerRadius: Dimens.radius_s,
+    iconSpacing: Dimens.spacing_xs,
+    iconSize: 28,
+  );
 
-  const IconButtonDimens._({
-    required this.size,
+  static const medium = TextButtonDimens._(
+    padding: EdgeInsets.symmetric(horizontal: Dimens.spacing_s, vertical: Dimens.spacing_s - 2),
+    cornerRadius: Dimens.radius_s,
+    iconSpacing: Dimens.spacing_xs,
+    iconSize: 24,
+  );
+
+  static const small = TextButtonDimens._(
+    padding: EdgeInsets.symmetric(horizontal: Dimens.spacing_xs + 2, vertical: Dimens.spacing_xs),
+    cornerRadius: Dimens.radius_s,
+    iconSpacing: Dimens.spacing_xs,
+    iconSize: 20,
+  );
+
+  const TextButtonDimens._({
+    required this.padding,
+    required this.cornerRadius,
+    required this.iconSpacing,
     required this.iconSize,
   });
 
-  IconButtonDimens copyWith({
-    double? size,
+  TextButtonDimens copyWith({
+    EdgeInsets? padding,
+    double? cornerRadius,
+    double? iconSpacing,
     double? iconSize,
   }) {
-    return IconButtonDimens._(
-      size: size ?? this.size,
+    return TextButtonDimens._(
+      padding: padding ?? this.padding,
+      cornerRadius: cornerRadius ?? this.cornerRadius,
+      iconSpacing: iconSpacing ?? this.iconSpacing,
       iconSize: iconSize ?? this.iconSize,
     );
   }
 
   @override
   List<Object?> get props => [
-        size,
+        padding,
+        cornerRadius,
+        iconSpacing,
         iconSize,
       ];
 }
 
-extension _TypeExtension on IconButtonType {
+extension _TypeExtension on TextButtonType {
   ButtonStyle _createStyle(
     WidgetColor color,
     ColorScheme colors,
@@ -109,8 +141,8 @@ extension _TypeExtension on IconButtonType {
     Color? backgroundColor,
   ) {
     return switch (this) {
-      IconButtonType.filled => _createFilledStyle(color, colors, iconColor, backgroundColor),
-      IconButtonType.flat => _createFlatStyle(color, colors, iconColor, backgroundColor),
+      TextButtonType.filled => _createFilledStyle(color, colors, iconColor, backgroundColor),
+      TextButtonType.flat => _createFlatStyle(color, colors, iconColor, backgroundColor),
     };
   }
 }

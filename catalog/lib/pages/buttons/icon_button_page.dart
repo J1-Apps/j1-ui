@@ -70,14 +70,17 @@ class IconButtonPage extends StatelessWidget {
             _buildItem(
               size: IconButtonDimens.large,
               type: IconButtonType.flat,
+              color: WidgetColor.tertiary,
             ),
             _buildItem(
               size: IconButtonDimens.medium,
               type: IconButtonType.flat,
+              color: WidgetColor.tertiary,
             ),
             _buildItem(
               size: IconButtonDimens.small,
               type: IconButtonType.flat,
+              color: WidgetColor.tertiary,
             ),
           ],
         ),
@@ -91,16 +94,19 @@ class IconButtonPage extends StatelessWidget {
             _buildItem(
               size: IconButtonDimens.large,
               type: IconButtonType.flat,
+              color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
               size: IconButtonDimens.medium,
               type: IconButtonType.flat,
+              color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
               size: IconButtonDimens.small,
               type: IconButtonType.flat,
+              color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
           ],
@@ -114,7 +120,7 @@ class IconButtonPage extends StatelessWidget {
   IconButton _buildItem({
     required IconButtonType type,
     required IconButtonDimens size,
-    WidgetColor? color,
+    required WidgetColor color,
     Color? outlineColor,
   }) {
     return IconButton(
