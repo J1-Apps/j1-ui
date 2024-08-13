@@ -20,37 +20,38 @@ void main() {
               IconButton(
                 key: smallKey,
                 icon: JamIcons.h1,
-                type: IconButtonType.flat,
-                size: IconButtonDimens.small,
-                color: WidgetColor.primary,
+                type: ButtonType.flat,
+                size: WidgetSize.small,
                 onPressed: onPressed.call,
               ),
               IconButton(
                 key: mediumKey,
                 icon: JamIcons.h2,
-                type: IconButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
-                outlineColor: Colors.red,
-                outlineWidth: 1,
+                overrides: const IconButtonOverrides(
+                  outlineColor: Colors.red,
+                  outlineWidth: 1,
+                ),
               ),
               IconButton(
                 key: largeKey,
                 icon: JamIcons.h3,
-                type: IconButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.tertiary,
-                size: IconButtonDimens.large,
+                size: WidgetSize.large,
                 onPressed: onPressed.call,
               ),
               IconButton(
                 icon: JamIcons.text,
-                type: IconButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.error,
                 onPressed: onPressed.call,
               ),
               IconButton(
                 icon: JamIcons.text,
-                type: IconButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.surface,
                 onPressed: onPressed.call,
               ),
@@ -91,8 +92,7 @@ void main() {
               IconButton(
                 key: smallKey,
                 icon: JamIcons.h1,
-                color: WidgetColor.primary,
-                size: IconButtonDimens.small,
+                size: WidgetSize.small,
                 onPressed: onPressed.call,
               ),
               IconButton(
@@ -100,14 +100,16 @@ void main() {
                 icon: JamIcons.h2,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
-                outlineColor: Colors.red,
-                outlineWidth: 1,
+                overrides: const IconButtonOverrides(
+                  outlineColor: Colors.red,
+                  outlineWidth: 1,
+                ),
               ),
               IconButton(
                 key: largeKey,
                 icon: JamIcons.h3,
                 color: WidgetColor.tertiary,
-                size: IconButtonDimens.large,
+                size: WidgetSize.large,
                 onPressed: onPressed.call,
               ),
               IconButton(
@@ -144,13 +146,13 @@ void main() {
       verify(onPressed.call).called(3);
     });
 
-    test("dimens is compared correctly", () {
-      const dimens0 = IconButtonDimens.medium;
-      final dimens1 = IconButtonDimens.medium.copyWith();
-      final dimens2 = IconButtonDimens.medium.copyWith(iconSize: Dimens.size_16);
+    test("overrides is compared correctly", () {
+      const overrides0 = IconButtonOverrides(iconSize: Dimens.size_16);
+      const overrides1 = IconButtonOverrides(iconSize: Dimens.size_16);
+      const overrides2 = IconButtonOverrides(iconSize: Dimens.size_12);
 
-      expect(dimens0 == dimens1, true);
-      expect(dimens0 == dimens2, false);
+      expect(overrides0 == overrides1, true);
+      expect(overrides0 == overrides2, false);
     });
   });
 }

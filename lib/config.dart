@@ -8,6 +8,12 @@ enum WidgetColor {
   surface,
 }
 
+enum WidgetSize {
+  small,
+  medium,
+  large,
+}
+
 abstract final class J1Config {
   static const double buttonOverlayOpacity = 0.1;
 

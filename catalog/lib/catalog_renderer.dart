@@ -14,7 +14,6 @@ class CatalogRenderer extends StatelessWidget {
         ? null
         : IconButton(
             icon: JamIcons.chevronleft,
-            color: WidgetColor.primary,
             onPressed: () => Navigator.of(context).maybePop(),
           );
 

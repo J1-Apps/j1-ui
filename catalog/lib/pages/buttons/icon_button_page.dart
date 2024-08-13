@@ -17,18 +17,18 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.filled,
+              size: WidgetSize.large,
+              type: ButtonType.filled,
               color: WidgetColor.primary,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.filled,
+              size: WidgetSize.medium,
+              type: ButtonType.filled,
               color: WidgetColor.secondary,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.filled,
+              size: WidgetSize.small,
+              type: ButtonType.filled,
               color: WidgetColor.tertiary,
             ),
           ],
@@ -41,20 +41,20 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.filled,
+              size: WidgetSize.large,
+              type: ButtonType.filled,
               color: WidgetColor.primary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.filled,
+              size: WidgetSize.medium,
+              type: ButtonType.filled,
               color: WidgetColor.secondary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.filled,
+              size: WidgetSize.small,
+              type: ButtonType.filled,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
@@ -68,18 +68,18 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.flat,
+              size: WidgetSize.large,
+              type: ButtonType.flat,
               color: WidgetColor.tertiary,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.flat,
+              size: WidgetSize.medium,
+              type: ButtonType.flat,
               color: WidgetColor.tertiary,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.flat,
+              size: WidgetSize.small,
+              type: ButtonType.flat,
               color: WidgetColor.tertiary,
             ),
           ],
@@ -92,20 +92,20 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: IconButtonDimens.large,
-              type: IconButtonType.flat,
+              size: WidgetSize.large,
+              type: ButtonType.flat,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: IconButtonDimens.medium,
-              type: IconButtonType.flat,
+              size: WidgetSize.medium,
+              type: ButtonType.flat,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: IconButtonDimens.small,
-              type: IconButtonType.flat,
+              size: WidgetSize.small,
+              type: ButtonType.flat,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
@@ -118,8 +118,8 @@ class IconButtonPage extends StatelessWidget {
   }
 
   IconButton _buildItem({
-    required IconButtonType type,
-    required IconButtonDimens size,
+    required ButtonType type,
+    required WidgetSize size,
     required WidgetColor color,
     Color? outlineColor,
   }) {
@@ -129,7 +129,7 @@ class IconButtonPage extends StatelessWidget {
       size: size,
       color: color,
       onPressed: () => {},
-      outlineColor: outlineColor,
+      overrides: IconButtonOverrides(outlineColor: outlineColor),
     );
   }
 }

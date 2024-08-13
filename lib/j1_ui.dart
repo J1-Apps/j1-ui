@@ -1,7 +1,7 @@
 library j1_ui;
 
-export "buttons/buttons.dart";
 export "icons/icons.dart";
+export "input/input.dart";
 export "layout/layout.dart";
 export "config.dart";
 export "dimens.dart";
