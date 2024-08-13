@@ -5,4 +5,4 @@ export "icons/icons.dart";
 export "layout/layout.dart";
 export "config.dart";
 export "dimens.dart";
-export "util.dart";
+export "extensions.dart";
