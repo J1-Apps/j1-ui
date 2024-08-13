@@ -4,7 +4,7 @@ import "package:j1_ui/j1_ui.dart";
 
 class Header extends AppBar {
   Header({
-    HeaderDimens dimens = const HeaderDimens(),
+    HeaderDimens dimens = HeaderDimens.medium,
     Widget? leadingAction,
     String? title,
     TextStyle? titleStyle,
@@ -65,13 +65,37 @@ class HeaderDimens extends Equatable {
   final double actionSpacing;
   final EdgeInsets padding;
 
-  const HeaderDimens({
-    this.height = Dimens.defaultHeaderHeight,
-    this.leadingWidth = 36,
-    this.titleSpacing = 12,
-    this.actionSpacing = 12,
-    this.padding = const EdgeInsets.only(left: Dimens.defaultContentPadding, right: Dimens.defaultContentPadding),
+  static const medium = HeaderDimens._(
+    height: 72,
+    leadingWidth: 36,
+    titleSpacing: Dimens.spacing_s,
+    actionSpacing: Dimens.spacing_s,
+    padding: EdgeInsets.only(left: Dimens.spacing_m, right: Dimens.spacing_m),
+  );
+
+  const HeaderDimens._({
+    required this.height,
+    required this.leadingWidth,
+    required this.titleSpacing,
+    required this.actionSpacing,
+    required this.padding,
   });
+
+  HeaderDimens copyWith({
+    double? height,
+    double? leadingWidth,
+    double? titleSpacing,
+    double? actionSpacing,
+    EdgeInsets? padding,
+  }) {
+    return HeaderDimens._(
+      height: height ?? this.height,
+      leadingWidth: leadingWidth ?? this.leadingWidth,
+      titleSpacing: titleSpacing ?? this.titleSpacing,
+      actionSpacing: actionSpacing ?? this.actionSpacing,
+      padding: padding ?? this.padding,
+    );
+  }
 
   @override
   List<Object?> get props => [

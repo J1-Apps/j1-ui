@@ -1,3 +1,4 @@
+import "package:catalog/pages/buttons/icon_button_page.dart";
 import "package:catalog/pages/icons_page.dart";
 import "package:flutter/material.dart";
 
@@ -23,6 +24,9 @@ class CatalogContent {
   static final CatalogNode content = CatalogBranch(
     title: "catalog",
     children: [
+      CatalogBranch(title: "buttons", children: [
+        CatalogLeaf(title: "icon buttons", page: const IconButtonPage()),
+      ]),
       CatalogLeaf(title: "icons", page: const IconsPage()),
     ],
   );
