@@ -54,6 +54,7 @@ void main() {
               TextButton(
                 text: "test",
                 type: TextButtonType.flat,
+                size: TextButtonDimens.medium.copyWith(cornerRadius: Dimens.radius_l),
                 color: WidgetColor.surface,
                 onPressed: onPressed.call,
               ),
@@ -124,6 +125,7 @@ void main() {
               TextButton(
                 text: "test",
                 color: WidgetColor.surface,
+                size: TextButtonDimens.medium.copyWith(cornerRadius: Dimens.radius_l),
                 onPressed: onPressed.call,
               ),
             ],
