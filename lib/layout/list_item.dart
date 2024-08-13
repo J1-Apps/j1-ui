@@ -19,7 +19,13 @@ class ListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
-      child: Padding(padding: padding, child: Row(children: _getItems(children, spacing))),
+      child: Padding(
+        padding: padding,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: _getItems(children, spacing),
+        ),
+      ),
     );
   }
 }
@@ -29,10 +35,9 @@ List<Widget> _getItems(List<Widget> items, double spacing) {
 
   for (var i = 0; i < items.length; i++) {
     actions.add(items[i]);
+
     if (i < items.length - 1) {
-      actions.add(const Spacer());
       actions.add(SizedBox(width: spacing));
-      actions.add(const Spacer());
     }
   }
 

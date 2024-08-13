@@ -4,7 +4,7 @@ import "package:j1_ui/j1_ui.dart";
 
 void main() {
   group("Header", () {
-    testWidgets("Header renders with all elements", (tester) async {
+    testWidgets("renders with all elements", (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -22,7 +22,7 @@ void main() {
       expect(find.text("action"), findsNWidgets(3));
     });
 
-    testWidgets("Header renders with no leading", (tester) async {
+    testWidgets("renders with no leading", (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -39,7 +39,7 @@ void main() {
       expect(find.text("action"), findsNWidgets(3));
     });
 
-    testWidgets("Header renders with no actions", (tester) async {
+    testWidgets("renders with no actions", (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -56,7 +56,7 @@ void main() {
       expect(find.text("action"), findsNothing);
     });
 
-    test("Header dimens is compared correctly", () {
+    test("dimens is compared correctly", () {
       const dimens0 = HeaderDimens.medium;
       final dimens1 = HeaderDimens.medium.copyWith();
       final dimens2 = HeaderDimens.medium.copyWith(titleSpacing: Dimens.size_16);
