@@ -64,43 +64,43 @@ extension ColorExtensions on Color {
   }
 }
 
-extension NotedThemeExtensions on ThemeData {
+extension ThemeExtensions on ThemeData {
   Color shimmerBase() => colorScheme.surface.addValue(brightness == Brightness.dark ? 0.06 : -0.06);
   Color shimmerHighlight() => colorScheme.surface.addValue(brightness == Brightness.dark ? 0.04 : -0.04);
 }
 
-extension NotedDoubleExtensions on double {
+extension DoubleExtensions on double {
   WidgetStateProperty<double> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension NotedEdgeInsetsExtensions on EdgeInsets {
+extension EdgeInsetsExtensions on EdgeInsets {
   WidgetStateProperty<EdgeInsets> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension NotedSizeExtensions on Size {
+extension SizeExtensions on Size {
   WidgetStateProperty<Size> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension NotedOutlinedBorderExtensions on OutlinedBorder {
+extension OutlinedBorderExtensions on OutlinedBorder {
   WidgetStateProperty<OutlinedBorder> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension NotedTextStyleExtensions on TextStyle {
+extension TextStyleExtensions on TextStyle {
   WidgetStateProperty<TextStyle> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
 // coverage:ignore-start
-extension NotedBuildContextExtensions on BuildContext {
+extension BuildContextExtensions on BuildContext {
   ThemeData theme() {
     return Theme.of(this);
   }

@@ -12,7 +12,7 @@ class IconButton extends StatelessWidget {
   final Widget? iconWidget;
   final IconButtonType type;
   final IconButtonDimens size;
-  final WidgetColor? color;
+  final WidgetColor color;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
   final Color? iconColor;
@@ -25,7 +25,7 @@ class IconButton extends StatelessWidget {
     this.iconWidget,
     this.type = IconButtonType.filled,
     this.size = IconButtonDimens.medium,
-    this.color,
+    required this.color,
     required this.onPressed,
     this.onLongPress,
     this.iconColor,
@@ -37,60 +37,25 @@ class IconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final builder = switch (type) {
-      IconButtonType.filled => _FilledIconButtonBuilder(this),
-      IconButtonType.flat => _FlatIconButtonBuilder(this),
-    };
-
-    final style = builder.styleOf(
+    final style = type._createStyle(
+      color,
       context.colorScheme(),
       iconColor,
       backgroundColor,
-      outlineColor,
-      outlineWidth,
     );
 
-    return _IconButtonContent(
-      size: size,
-      icon: icon,
-      iconWidget: iconWidget,
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      style: style,
-      iconColor: iconColor,
-      backgroundColor: backgroundColor,
+    final shape = CircleBorder(
+      side: outlineColor != null
+          ? BorderSide(color: outlineColor ?? context.colorScheme().onSurface, width: outlineWidth ?? 2)
+          : BorderSide.none,
     );
-  }
-}
 
-class _IconButtonContent extends StatelessWidget {
-  final IconButtonDimens size;
-  final IconData? icon;
-  final Widget? iconWidget;
-  final VoidCallback? onPressed;
-  final VoidCallback? onLongPress;
-  final ButtonStyle style;
-  final Color? iconColor;
-  final Color? backgroundColor;
-
-  const _IconButtonContent({
-    required this.size,
-    required this.icon,
-    required this.iconWidget,
-    required this.onPressed,
-    required this.onLongPress,
-    required this.style,
-    required this.iconColor,
-    required this.backgroundColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
     final buttonStyle = style.copyWith(
       padding: EdgeInsets.zero.widgetState(),
       minimumSize: Size.zero.widgetState(),
       iconSize: size.iconSize.widgetState(),
       fixedSize: Size.square(size.size).widgetState(),
+      shape: shape.widgetState(),
     );
 
     return SizedBox(
@@ -136,80 +101,60 @@ class IconButtonDimens extends Equatable {
       ];
 }
 
-abstract class _IconButtonBuilder {
-  final IconButton source;
-
-  const _IconButtonBuilder(this.source);
-
-  ButtonStyle styleOf(
+extension _TypeExtension on IconButtonType {
+  ButtonStyle _createStyle(
+    WidgetColor color,
     ColorScheme colors,
     Color? iconColor,
     Color? backgroundColor,
-    Color? outlineColor,
-    double? outlineWidth,
+  ) {
+    return switch (this) {
+      IconButtonType.filled => _createFilledStyle(color, colors, iconColor, backgroundColor),
+      IconButtonType.flat => _createFlatStyle(color, colors, iconColor, backgroundColor),
+    };
+  }
+}
+
+ButtonStyle _createFilledStyle(
+  WidgetColor color,
+  ColorScheme colors,
+  Color? iconColor,
+  Color? backgroundColor,
+) {
+  final buttonColors = switch (color) {
+    WidgetColor.primary => (colors.onPrimary, colors.primary),
+    WidgetColor.secondary => (colors.onSecondary, colors.secondary),
+    WidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
+    WidgetColor.error => (colors.onError, colors.error),
+    WidgetColor.surface => (colors.onSurface, colors.surface),
+  };
+
+  return ButtonStyle(
+    iconColor: (iconColor ?? buttonColors.$1).widgetState(),
+    backgroundColor: (backgroundColor ?? buttonColors.$2).widgetState(),
+    overlayColor: (iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
+    elevation: Dimens.elevation_s.widgetState(),
   );
 }
 
-class _FilledIconButtonBuilder extends _IconButtonBuilder {
-  const _FilledIconButtonBuilder(super.source);
+ButtonStyle _createFlatStyle(
+  WidgetColor color,
+  ColorScheme colors,
+  Color? iconColor,
+  Color? backgroundColor,
+) {
+  final buttonColors = switch (color) {
+    WidgetColor.primary => (colors.primary, Colors.transparent),
+    WidgetColor.secondary => (colors.secondary, Colors.transparent),
+    WidgetColor.tertiary => (colors.tertiary, Colors.transparent),
+    WidgetColor.error => (colors.error, Colors.transparent),
+    WidgetColor.surface => (colors.surface, Colors.transparent),
+  };
 
-  @override
-  ButtonStyle styleOf(
-    ColorScheme colors,
-    Color? iconColor,
-    Color? backgroundColor,
-    Color? outlineColor,
-    double? outlineWidth,
-  ) {
-    final buttonColors = switch (source.color) {
-      WidgetColor.primary => (colors.onPrimary, colors.primary),
-      WidgetColor.secondary => (colors.onSecondary, colors.secondary),
-      WidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
-      _ => (colors.onPrimary, colors.primary),
-    };
-
-    final shape = CircleBorder(
-      side: outlineColor != null ? BorderSide(color: outlineColor, width: outlineWidth ?? 2) : BorderSide.none,
-    );
-
-    return ButtonStyle(
-      iconColor: (iconColor ?? buttonColors.$1).widgetState(),
-      backgroundColor: (backgroundColor ?? buttonColors.$2).widgetState(),
-      overlayColor: (iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
-      elevation: Dimens.elevation_s.widgetState(),
-      shape: shape.widgetState(),
-    );
-  }
-}
-
-class _FlatIconButtonBuilder extends _IconButtonBuilder {
-  const _FlatIconButtonBuilder(super.source);
-
-  @override
-  ButtonStyle styleOf(
-    ColorScheme colors,
-    Color? iconColor,
-    Color? backgroundColor,
-    Color? outlineColor,
-    double? outlineWidth,
-  ) {
-    final buttonColors = switch (source.color) {
-      WidgetColor.primary => (colors.primary, Colors.transparent),
-      WidgetColor.secondary => (colors.secondary, Colors.transparent),
-      WidgetColor.tertiary => (colors.tertiary, Colors.transparent),
-      _ => (colors.onSurface, Colors.transparent),
-    };
-
-    final shape = CircleBorder(
-      side: outlineColor != null ? BorderSide(color: outlineColor, width: outlineWidth ?? 2) : BorderSide.none,
-    );
-
-    return ButtonStyle(
-      iconColor: (iconColor ?? buttonColors.$1).widgetState(),
-      backgroundColor: (backgroundColor ?? buttonColors.$2).widgetState(),
-      overlayColor: (iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
-      elevation: Dimens.elevation_none.widgetState(),
-      shape: shape.widgetState(),
-    );
-  }
+  return ButtonStyle(
+    iconColor: (iconColor ?? buttonColors.$1).widgetState(),
+    backgroundColor: (backgroundColor ?? buttonColors.$2).widgetState(),
+    overlayColor: (iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
+    elevation: Dimens.elevation_none.widgetState(),
+  );
 }

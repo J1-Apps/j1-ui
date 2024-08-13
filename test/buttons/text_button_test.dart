@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart" hide TextButton;
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
@@ -6,7 +6,7 @@ import "package:mocktail/mocktail.dart";
 import "../helpers/mock_callbacks.dart";
 
 void main() {
-  group("Icon Button", () {
+  group("Text Button", () {
     testWidgets("flat button functions as expected", (tester) async {
       final onPressed = MockVoidCallback();
       const smallKey = Key("small");
@@ -17,40 +17,43 @@ void main() {
         MaterialApp(
           home: Column(
             children: [
-              IconButton(
+              TextButton(
                 key: smallKey,
+                text: "test",
                 icon: JamIcons.h1,
-                type: IconButtonType.flat,
-                size: IconButtonDimens.small,
+                type: TextButtonType.flat,
+                size: TextButtonDimens.small,
                 color: WidgetColor.primary,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              TextButton(
                 key: mediumKey,
+                text: "test",
                 icon: JamIcons.h2,
-                type: IconButtonType.flat,
+                type: TextButtonType.flat,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
                 outlineColor: Colors.red,
                 outlineWidth: 1,
               ),
-              IconButton(
+              TextButton(
                 key: largeKey,
+                text: "test",
                 icon: JamIcons.h3,
-                type: IconButtonType.flat,
+                type: TextButtonType.flat,
                 color: WidgetColor.tertiary,
-                size: IconButtonDimens.large,
+                size: TextButtonDimens.large,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
-                type: IconButtonType.flat,
+              TextButton(
+                text: "test",
+                type: TextButtonType.flat,
                 color: WidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
-                type: IconButtonType.flat,
+              TextButton(
+                text: "test",
+                type: TextButtonType.flat,
                 color: WidgetColor.surface,
                 onPressed: onPressed.call,
               ),
@@ -88,35 +91,38 @@ void main() {
         MaterialApp(
           home: Column(
             children: [
-              IconButton(
+              TextButton(
                 key: smallKey,
+                text: "test",
                 icon: JamIcons.h1,
                 color: WidgetColor.primary,
-                size: IconButtonDimens.small,
+                size: TextButtonDimens.small,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              TextButton(
                 key: mediumKey,
+                text: "test",
                 icon: JamIcons.h2,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
                 outlineColor: Colors.red,
                 outlineWidth: 1,
               ),
-              IconButton(
+              TextButton(
                 key: largeKey,
+                text: "test",
                 icon: JamIcons.h3,
                 color: WidgetColor.tertiary,
-                size: IconButtonDimens.large,
+                size: TextButtonDimens.large,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
+              TextButton(
+                text: "test",
                 color: WidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
+              TextButton(
+                text: "test",
                 color: WidgetColor.surface,
                 onPressed: onPressed.call,
               ),
@@ -145,9 +151,9 @@ void main() {
     });
 
     test("dimens is compared correctly", () {
-      const dimens0 = IconButtonDimens.medium;
-      final dimens1 = IconButtonDimens.medium.copyWith();
-      final dimens2 = IconButtonDimens.medium.copyWith(iconSize: Dimens.size_16);
+      const dimens0 = TextButtonDimens.medium;
+      final dimens1 = TextButtonDimens.medium.copyWith();
+      final dimens2 = TextButtonDimens.medium.copyWith(iconSize: Dimens.size_16);
 
       expect(dimens0 == dimens1, true);
       expect(dimens0 == dimens2, false);
