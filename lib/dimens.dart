@@ -2,6 +2,7 @@ import "dart:ui";
 
 import "package:flutter/material.dart";
 
+// coverage:ignore-file
 @immutable
 class Dimens extends ThemeExtension<Dimens> {
   final EdgeInsets contentPadding;

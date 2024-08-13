@@ -74,5 +74,11 @@ class HeaderDimens extends Equatable {
   });
 
   @override
-  List<Object?> get props => [height, leadingWidth, actionSpacing, padding];
+  List<Object?> get props => [
+        height,
+        leadingWidth,
+        titleSpacing,
+        actionSpacing,
+        padding,
+      ];
 }

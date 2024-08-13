@@ -1,5 +1,6 @@
 import "package:flutter/widgets.dart";
 
+// coverage:ignore-file
 class JamIcons {
   JamIcons._();
 
