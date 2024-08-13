@@ -78,9 +78,9 @@ class IconsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
-      padding: const EdgeInsets.all(Dimens.defaultContentPadding),
-      crossAxisSpacing: 12,
-      mainAxisSpacing: 12,
+      padding: const EdgeInsets.all(Dimens.spacing_m),
+      crossAxisSpacing: Dimens.spacing_s,
+      mainAxisSpacing: Dimens.spacing_s,
       crossAxisCount: 6,
       children: _icons.map(_buildIconSquare).toList(),
     );

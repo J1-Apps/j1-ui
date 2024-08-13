@@ -56,9 +56,9 @@ void main() {
   });
 
   test("Header dimens is compared correctly", () {
-    const dimens0 = HeaderDimens();
-    const dimens1 = HeaderDimens();
-    const dimens2 = HeaderDimens(titleSpacing: 16);
+    const dimens0 = HeaderDimens.medium;
+    const dimens1 = HeaderDimens.medium;
+    final dimens2 = HeaderDimens.medium.copyWith(titleSpacing: Dimens.size_16);
 
     expect(dimens0 == dimens1, true);
     expect(dimens0 == dimens2, false);
