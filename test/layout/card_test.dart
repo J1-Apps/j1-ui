@@ -7,8 +7,8 @@ import "../helpers/mock_callbacks.dart";
 import "../helpers/test_wrapper.dart";
 
 void main() {
-  group("Noted Card", () {
-    testWidgets("card renders as expected", (tester) async {
+  group("Card", () {
+    testWidgets("renders as expected", (tester) async {
       final onPressed = MockVoidCallback();
       const smallKey = Key("small");
       const mediumKey = Key("medium");

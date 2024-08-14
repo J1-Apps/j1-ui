@@ -21,6 +21,21 @@ class LoadingPage extends StatelessWidget {
           ],
         ),
       ),
+      CatalogListItem(
+        type: CatalogListItemType.column,
+        label: "loading placeholders",
+        child: LoadingProvider(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LoadingText(style: context.textTheme().bodyMedium, width: 80),
+              const SizedBox(width: 12),
+              const LoadingBox(height: 40, width: 80),
+            ],
+          ),
+        ),
+      ),
     ];
 
     return CatalogListWidget(children);
