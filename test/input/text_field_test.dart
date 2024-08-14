@@ -6,7 +6,7 @@ import "../helpers/mock_callbacks.dart";
 import "../helpers/test_wrapper.dart";
 
 void main() {
-  group("Noted Text Field", () {
+  group("Text Field", () {
     testWidgets("outlined text field produces a string", (tester) async {
       final onChanged = MockCallback();
 
@@ -127,7 +127,7 @@ void main() {
       expect(test, findsNothing);
     });
 
-    test("overrides is compared correctly", () {
+    test("overrides are compared correctly", () {
       const overrides0 = TextFieldOverrides(iconSize: Dimens.size_16);
       const overrides1 = TextFieldOverrides(iconSize: Dimens.size_16);
       const overrides2 = TextFieldOverrides(iconSize: Dimens.size_12);
