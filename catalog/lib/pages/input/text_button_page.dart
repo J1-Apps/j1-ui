@@ -17,19 +17,19 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: TextButtonDimens.large,
-              type: TextButtonType.filled,
+              size: WidgetSize.large,
+              type: ButtonType.filled,
               color: WidgetColor.primary,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: TextButtonDimens.medium,
-              type: TextButtonType.filled,
+              size: WidgetSize.medium,
+              type: ButtonType.filled,
               color: WidgetColor.secondary,
             ),
             _buildItem(
-              size: TextButtonDimens.small,
-              type: TextButtonType.filled,
+              size: WidgetSize.small,
+              type: ButtonType.filled,
               color: WidgetColor.tertiary,
               icon: JamIcons.pencil,
             ),
@@ -43,21 +43,21 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: TextButtonDimens.large,
-              type: TextButtonType.filled,
+              size: WidgetSize.large,
+              type: ButtonType.filled,
               color: WidgetColor.primary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: TextButtonDimens.medium,
-              type: TextButtonType.filled,
+              size: WidgetSize.medium,
+              type: ButtonType.filled,
               color: WidgetColor.secondary,
               outlineColor: colors.onSurface,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: TextButtonDimens.small,
-              type: TextButtonType.filled,
+              size: WidgetSize.small,
+              type: ButtonType.filled,
               color: WidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
@@ -71,20 +71,20 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: TextButtonDimens.large,
-              type: TextButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: WidgetSize.large,
+              type: ButtonType.flat,
+              color: WidgetColor.onSurface,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: TextButtonDimens.medium,
-              type: TextButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: WidgetSize.medium,
+              type: ButtonType.flat,
+              color: WidgetColor.onSurface,
             ),
             _buildItem(
-              size: TextButtonDimens.small,
-              type: TextButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: WidgetSize.small,
+              type: ButtonType.flat,
+              color: WidgetColor.onSurface,
               icon: JamIcons.pencil,
             ),
           ],
@@ -97,23 +97,20 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: TextButtonDimens.large,
-              type: TextButtonType.flat,
-              color: WidgetColor.tertiary,
-              outlineColor: colors.onSurface,
+              size: WidgetSize.large,
+              type: ButtonType.flat,
+              color: WidgetColor.onSurface,
             ),
             _buildItem(
-              size: TextButtonDimens.medium,
-              type: TextButtonType.flat,
-              color: WidgetColor.tertiary,
-              outlineColor: colors.onSurface,
+              size: WidgetSize.medium,
+              type: ButtonType.flat,
+              color: WidgetColor.onSurface,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: TextButtonDimens.small,
-              type: TextButtonType.flat,
-              color: WidgetColor.tertiary,
-              outlineColor: colors.onSurface,
+              size: WidgetSize.small,
+              type: ButtonType.flat,
+              color: WidgetColor.onSurface,
             ),
           ],
         ),
@@ -124,8 +121,8 @@ class TextButtonPage extends StatelessWidget {
   }
 
   TextButton _buildItem({
-    required TextButtonType type,
-    required TextButtonDimens size,
+    required ButtonType type,
+    required WidgetSize size,
     required WidgetColor color,
     IconData? icon,
     Color? outlineColor,
@@ -137,7 +134,7 @@ class TextButtonPage extends StatelessWidget {
       size: size,
       color: color,
       onPressed: () => {},
-      outlineColor: outlineColor,
+      overrides: TextButtonOverrides(outlineColor: outlineColor),
     );
   }
 }

@@ -4,6 +4,7 @@ import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
 
 import "../helpers/mock_callbacks.dart";
+import "../helpers/test_wrapper.dart";
 
 void main() {
   group("List Item", () {
@@ -12,13 +13,11 @@ void main() {
       const key = Key("test");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: ListItem(
-              key: key,
-              onPressed: onPressed.call,
-              children: const [],
-            ),
+        TestWrapper(
+          child: ListItem(
+            key: key,
+            onPressed: onPressed.call,
+            children: const [],
           ),
         ),
       );
@@ -36,15 +35,13 @@ void main() {
       const key = Key("test");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: ListItem(
-              key: key,
-              onPressed: onPressed.call,
-              children: const [
-                Text("0"),
-              ],
-            ),
+        TestWrapper(
+          child: ListItem(
+            key: key,
+            onPressed: onPressed.call,
+            children: const [
+              Text("0"),
+            ],
           ),
         ),
       );
@@ -62,16 +59,14 @@ void main() {
       const key = Key("test");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: ListItem(
-              key: key,
-              onPressed: onPressed.call,
-              children: const [
-                Text("0"),
-                Text("1"),
-              ],
-            ),
+        TestWrapper(
+          child: ListItem(
+            key: key,
+            onPressed: onPressed.call,
+            children: const [
+              Text("0"),
+              Text("1"),
+            ],
           ),
         ),
       );

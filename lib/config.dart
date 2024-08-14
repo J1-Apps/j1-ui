@@ -6,6 +6,13 @@ enum WidgetColor {
   tertiary,
   error,
   surface,
+  onSurface,
+}
+
+enum WidgetSize {
+  small,
+  medium,
+  large,
 }
 
 abstract final class J1Config {

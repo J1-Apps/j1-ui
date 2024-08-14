@@ -14,13 +14,13 @@ class CatalogRenderer extends StatelessWidget {
         ? null
         : IconButton(
             icon: JamIcons.chevronleft,
-            color: WidgetColor.primary,
             onPressed: () => Navigator.of(context).maybePop(),
           );
 
     return Scaffold(
       appBar: Header(
         title: node.title,
+        titleStyle: context.textTheme().headlineLarge,
         leadingAction: backButton,
       ),
       body: switch (node) {
@@ -44,7 +44,7 @@ class CatalogRenderer extends StatelessWidget {
       child: ListItem(
         padding: const EdgeInsets.symmetric(horizontal: Dimens.spacing_m, vertical: Dimens.spacing_s),
         children: [
-          Text(node.title, style: Theme.of(context).textTheme.bodyLarge),
+          Text(node.title, style: Theme.of(context).textTheme.headlineSmall),
           if (node is CatalogBranch) const Icon(JamIcons.chevronright),
         ],
         onPressed: () => _navigateToNode(context, node),

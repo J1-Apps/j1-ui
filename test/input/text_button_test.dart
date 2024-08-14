@@ -1,12 +1,13 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart" hide TextButton;
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
 
 import "../helpers/mock_callbacks.dart";
+import "../helpers/test_wrapper.dart";
 
 void main() {
-  group("Icon Button", () {
+  group("Text Button", () {
     testWidgets("flat button functions as expected", (tester) async {
       final onPressed = MockVoidCallback();
       const smallKey = Key("small");
@@ -14,44 +15,54 @@ void main() {
       const largeKey = Key("large");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Column(
+        TestWrapper(
+          child: Column(
             children: [
-              IconButton(
+              TextButton(
                 key: smallKey,
+                text: "test",
                 icon: JamIcons.h1,
-                type: IconButtonType.flat,
-                size: IconButtonDimens.small,
-                color: WidgetColor.primary,
+                type: ButtonType.flat,
+                size: WidgetSize.small,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              TextButton(
                 key: mediumKey,
+                text: "test",
                 icon: JamIcons.h2,
-                type: IconButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
-                outlineColor: Colors.red,
-                outlineWidth: 1,
+                overrides: const TextButtonOverrides(
+                  outlineColor: Colors.red,
+                  outlineWidth: 1,
+                ),
               ),
-              IconButton(
+              TextButton(
                 key: largeKey,
+                text: "test",
                 icon: JamIcons.h3,
-                type: IconButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.tertiary,
-                size: IconButtonDimens.large,
+                size: WidgetSize.large,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
-                type: IconButtonType.flat,
+              TextButton(
+                text: "test",
+                type: ButtonType.flat,
                 color: WidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
-                type: IconButtonType.flat,
+              TextButton(
+                text: "test",
+                type: ButtonType.flat,
                 color: WidgetColor.surface,
+                onPressed: onPressed.call,
+              ),
+              TextButton(
+                text: "test",
+                type: ButtonType.flat,
+                color: WidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -85,39 +96,48 @@ void main() {
       const largeKey = Key("large");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Column(
+        TestWrapper(
+          child: Column(
             children: [
-              IconButton(
+              TextButton(
                 key: smallKey,
+                text: "test",
                 icon: JamIcons.h1,
-                color: WidgetColor.primary,
-                size: IconButtonDimens.small,
+                size: WidgetSize.small,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              TextButton(
                 key: mediumKey,
+                text: "test",
                 icon: JamIcons.h2,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
-                outlineColor: Colors.red,
-                outlineWidth: 1,
+                overrides: const TextButtonOverrides(
+                  outlineColor: Colors.red,
+                  outlineWidth: 1,
+                ),
               ),
-              IconButton(
+              TextButton(
                 key: largeKey,
+                text: "test",
                 icon: JamIcons.h3,
                 color: WidgetColor.tertiary,
-                size: IconButtonDimens.large,
+                size: WidgetSize.large,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
+              TextButton(
+                text: "test",
                 color: WidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              IconButton(
-                icon: JamIcons.text,
+              TextButton(
+                text: "test",
                 color: WidgetColor.surface,
+                onPressed: onPressed.call,
+              ),
+              TextButton(
+                text: "test",
+                color: WidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -144,13 +164,13 @@ void main() {
       verify(onPressed.call).called(3);
     });
 
-    test("dimens is compared correctly", () {
-      const dimens0 = IconButtonDimens.medium;
-      final dimens1 = IconButtonDimens.medium.copyWith();
-      final dimens2 = IconButtonDimens.medium.copyWith(iconSize: Dimens.size_16);
+    test("overrides is compared correctly", () {
+      const overrides0 = TextButtonOverrides(iconSize: Dimens.size_16);
+      const overrides1 = TextButtonOverrides(iconSize: Dimens.size_16);
+      const overrides2 = TextButtonOverrides(iconSize: Dimens.size_12);
 
-      expect(dimens0 == dimens1, true);
-      expect(dimens0 == dimens2, false);
+      expect(overrides0 == overrides1, true);
+      expect(overrides0 == overrides2, false);
     });
   });
 }

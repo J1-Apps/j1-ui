@@ -2,12 +2,14 @@ import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 
+import "../helpers/test_wrapper.dart";
+
 void main() {
   group("Header", () {
     testWidgets("renders with all elements", (tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
+        TestWrapper(
+          child: Scaffold(
             appBar: Header(
               leadingAction: const Text("leading"),
               title: "test",
@@ -24,8 +26,8 @@ void main() {
 
     testWidgets("renders with no leading", (tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
+        TestWrapper(
+          child: Scaffold(
             appBar: Header(
               title: "test",
               trailingActions: const [Text("action"), Text("action"), Text("action")],
@@ -41,8 +43,8 @@ void main() {
 
     testWidgets("renders with no actions", (tester) async {
       await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
+        TestWrapper(
+          child: Scaffold(
             appBar: Header(
               leadingAction: const Text("leading"),
               title: "test",
