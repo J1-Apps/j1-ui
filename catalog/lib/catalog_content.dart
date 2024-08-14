@@ -1,4 +1,5 @@
 import "package:catalog/pages/input/icon_button_page.dart";
+import "package:catalog/pages/input/misc_input_page.dart";
 import "package:catalog/pages/input/text_button_page.dart";
 import "package:catalog/pages/icons_page.dart";
 import "package:catalog/pages/images_page.dart";
@@ -32,6 +33,7 @@ class CatalogContent {
       CatalogBranch(title: "input", children: [
         CatalogLeaf(title: "text buttons", page: const TextButtonPage()),
         CatalogLeaf(title: "icon buttons", page: const IconButtonPage()),
+        CatalogLeaf(title: "switch buttons", page: const MiscInputPage()),
         CatalogLeaf(title: "text fields", page: const TextFieldPage()),
       ]),
       CatalogBranch(title: "layout", children: [
