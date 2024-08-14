@@ -40,7 +40,7 @@ class Card extends StatelessWidget {
   final Widget? child;
 
   const Card({
-    required this.size,
+    this.size = WidgetSize.medium,
     this.onPressed,
     this.onLongPressed,
     this.overrides,

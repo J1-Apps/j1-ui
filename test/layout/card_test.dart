@@ -28,10 +28,7 @@ void main() {
               ),
               const SizedBox(
                 height: 80,
-                child: Card(
-                  key: mediumKey,
-                  size: WidgetSize.medium,
-                ),
+                child: Card(key: mediumKey),
               ),
               SizedBox(
                 height: 80,
