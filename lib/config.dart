@@ -6,6 +6,7 @@ enum WidgetColor {
   tertiary,
   error,
   surface,
+  onSurface,
 }
 
 enum WidgetSize {
