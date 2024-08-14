@@ -127,7 +127,7 @@ void main() {
       expect(test, findsNothing);
     });
 
-    test("overrides is compared correctly", () {
+    test("overrides are compared correctly", () {
       const overrides0 = TextFieldOverrides(iconSize: Dimens.size_16);
       const overrides1 = TextFieldOverrides(iconSize: Dimens.size_16);
       const overrides2 = TextFieldOverrides(iconSize: Dimens.size_12);

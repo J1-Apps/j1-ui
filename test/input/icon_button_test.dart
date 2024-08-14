@@ -158,7 +158,7 @@ void main() {
       verify(onPressed.call).called(3);
     });
 
-    test("overrides is compared correctly", () {
+    test("overrides are compared correctly", () {
       const overrides0 = IconButtonOverrides(iconSize: Dimens.size_16);
       const overrides1 = IconButtonOverrides(iconSize: Dimens.size_16);
       const overrides2 = IconButtonOverrides(iconSize: Dimens.size_12);
