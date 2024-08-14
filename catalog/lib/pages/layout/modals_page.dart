@@ -22,6 +22,18 @@ class ModalsPage extends StatelessWidget {
           ),
         ),
       ),
+      CatalogListItem(
+        type: CatalogListItemType.column,
+        label: "toast",
+        child: IconButton(
+          icon: JamIcons.pencil,
+          type: ButtonType.flat,
+          onPressed: () => context.showToastWithText(
+            text: "test toast content",
+            hasClose: true,
+          ),
+        ),
+      ),
     ];
 
     return CatalogListWidget(children);
