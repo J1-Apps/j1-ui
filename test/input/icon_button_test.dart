@@ -4,6 +4,7 @@ import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
 
 import "../helpers/mock_callbacks.dart";
+import "../helpers/test_wrapper.dart";
 
 void main() {
   group("Icon Button", () {
@@ -14,8 +15,8 @@ void main() {
       const largeKey = Key("large");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Column(
+        TestWrapper(
+          child: Column(
             children: [
               IconButton(
                 key: smallKey,
@@ -53,6 +54,12 @@ void main() {
                 icon: JamIcons.text,
                 type: ButtonType.flat,
                 color: WidgetColor.surface,
+                onPressed: onPressed.call,
+              ),
+              IconButton(
+                icon: JamIcons.text,
+                type: ButtonType.flat,
+                color: WidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -86,8 +93,8 @@ void main() {
       const largeKey = Key("large");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Column(
+        TestWrapper(
+          child: Column(
             children: [
               IconButton(
                 key: smallKey,
@@ -120,6 +127,11 @@ void main() {
               IconButton(
                 icon: JamIcons.text,
                 color: WidgetColor.surface,
+                onPressed: onPressed.call,
+              ),
+              IconButton(
+                icon: JamIcons.text,
+                color: WidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],

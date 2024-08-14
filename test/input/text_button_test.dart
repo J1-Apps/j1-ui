@@ -4,6 +4,7 @@ import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
 
 import "../helpers/mock_callbacks.dart";
+import "../helpers/test_wrapper.dart";
 
 void main() {
   group("Text Button", () {
@@ -14,8 +15,8 @@ void main() {
       const largeKey = Key("large");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Column(
+        TestWrapper(
+          child: Column(
             children: [
               TextButton(
                 key: smallKey,
@@ -56,6 +57,12 @@ void main() {
                 text: "test",
                 type: ButtonType.flat,
                 color: WidgetColor.surface,
+                onPressed: onPressed.call,
+              ),
+              TextButton(
+                text: "test",
+                type: ButtonType.flat,
+                color: WidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -89,8 +96,8 @@ void main() {
       const largeKey = Key("large");
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: Column(
+        TestWrapper(
+          child: Column(
             children: [
               TextButton(
                 key: smallKey,
@@ -126,6 +133,11 @@ void main() {
               TextButton(
                 text: "test",
                 color: WidgetColor.surface,
+                onPressed: onPressed.call,
+              ),
+              TextButton(
+                text: "test",
+                color: WidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
