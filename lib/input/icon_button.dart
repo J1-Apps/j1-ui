@@ -2,6 +2,38 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
+class IconButtonOverrides extends Equatable {
+  final double? buttonSize;
+  final double? iconSize;
+  final double? elevation;
+
+  final Color? iconColor;
+  final Color? backgroundColor;
+  final Color? outlineColor;
+  final double? outlineWidth;
+
+  const IconButtonOverrides({
+    this.buttonSize,
+    this.iconSize,
+    this.elevation,
+    this.iconColor,
+    this.backgroundColor,
+    this.outlineColor,
+    this.outlineWidth,
+  });
+
+  @override
+  List<Object?> get props => [
+        buttonSize,
+        iconSize,
+        elevation,
+        iconColor,
+        backgroundColor,
+        outlineColor,
+        outlineWidth,
+      ];
+}
+
 class IconButton extends StatelessWidget {
   final IconData? icon;
   final Widget? iconWidget;
@@ -37,28 +69,6 @@ class IconButton extends StatelessWidget {
   }
 }
 
-class IconButtonOverrides extends Equatable {
-  final double? buttonSize;
-  final double? iconSize;
-
-  final Color? iconColor;
-  final Color? backgroundColor;
-  final Color? outlineColor;
-  final double? outlineWidth;
-
-  const IconButtonOverrides({
-    this.buttonSize,
-    this.iconSize,
-    this.iconColor,
-    this.backgroundColor,
-    this.outlineColor,
-    this.outlineWidth,
-  });
-
-  @override
-  List<Object?> get props => [buttonSize, iconSize];
-}
-
 ButtonStyle _createStyle(
   ButtonType type,
   WidgetColor color,
@@ -92,7 +102,7 @@ ButtonStyle _createFilledStyle(
     iconColor: (overrides?.iconColor ?? buttonColors.$1).widgetState(),
     backgroundColor: (overrides?.backgroundColor ?? buttonColors.$2).widgetState(),
     overlayColor: (overrides?.iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
-    elevation: Dimens.elevation_s.widgetState(),
+    elevation: (overrides?.elevation ?? Dimens.elevation_s).widgetState(),
     padding: EdgeInsets.zero.widgetState(),
     minimumSize: Size.zero.widgetState(),
     fixedSize: Size.square(overrides?.buttonSize ?? buttonSize.$1).widgetState(),
@@ -121,7 +131,7 @@ ButtonStyle _createFlatStyle(
     iconColor: (overrides?.iconColor ?? buttonColors.$1).widgetState(),
     backgroundColor: (overrides?.backgroundColor ?? buttonColors.$2).widgetState(),
     overlayColor: (overrides?.iconColor ?? buttonColors.$1).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
-    elevation: Dimens.elevation_none.widgetState(),
+    elevation: (overrides?.elevation ?? Dimens.elevation_none).widgetState(),
     padding: EdgeInsets.zero.widgetState(),
     minimumSize: Size.zero.widgetState(),
     fixedSize: Size.square(overrides?.buttonSize ?? buttonSize.$1).widgetState(),

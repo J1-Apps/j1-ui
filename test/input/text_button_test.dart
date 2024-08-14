@@ -21,40 +21,40 @@ void main() {
                 key: smallKey,
                 text: "test",
                 icon: JamIcons.h1,
-                type: TextButtonType.flat,
-                size: TextButtonDimens.small,
-                color: WidgetColor.primary,
+                type: ButtonType.flat,
+                size: WidgetSize.small,
                 onPressed: onPressed.call,
               ),
               TextButton(
                 key: mediumKey,
                 text: "test",
                 icon: JamIcons.h2,
-                type: TextButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
-                outlineColor: Colors.red,
-                outlineWidth: 1,
+                overrides: const TextButtonOverrides(
+                  outlineColor: Colors.red,
+                  outlineWidth: 1,
+                ),
               ),
               TextButton(
                 key: largeKey,
                 text: "test",
                 icon: JamIcons.h3,
-                type: TextButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.tertiary,
-                size: TextButtonDimens.large,
+                size: WidgetSize.large,
                 onPressed: onPressed.call,
               ),
               TextButton(
                 text: "test",
-                type: TextButtonType.flat,
+                type: ButtonType.flat,
                 color: WidgetColor.error,
                 onPressed: onPressed.call,
               ),
               TextButton(
                 text: "test",
-                type: TextButtonType.flat,
-                size: TextButtonDimens.medium.copyWith(cornerRadius: Dimens.radius_l),
+                type: ButtonType.flat,
                 color: WidgetColor.surface,
                 onPressed: onPressed.call,
               ),
@@ -96,8 +96,7 @@ void main() {
                 key: smallKey,
                 text: "test",
                 icon: JamIcons.h1,
-                color: WidgetColor.primary,
-                size: TextButtonDimens.small,
+                size: WidgetSize.small,
                 onPressed: onPressed.call,
               ),
               TextButton(
@@ -106,15 +105,17 @@ void main() {
                 icon: JamIcons.h2,
                 color: WidgetColor.secondary,
                 onPressed: onPressed.call,
-                outlineColor: Colors.red,
-                outlineWidth: 1,
+                overrides: const TextButtonOverrides(
+                  outlineColor: Colors.red,
+                  outlineWidth: 1,
+                ),
               ),
               TextButton(
                 key: largeKey,
                 text: "test",
                 icon: JamIcons.h3,
                 color: WidgetColor.tertiary,
-                size: TextButtonDimens.large,
+                size: WidgetSize.large,
                 onPressed: onPressed.call,
               ),
               TextButton(
@@ -125,7 +126,6 @@ void main() {
               TextButton(
                 text: "test",
                 color: WidgetColor.surface,
-                size: TextButtonDimens.medium.copyWith(cornerRadius: Dimens.radius_l),
                 onPressed: onPressed.call,
               ),
             ],
@@ -152,13 +152,13 @@ void main() {
       verify(onPressed.call).called(3);
     });
 
-    test("dimens is compared correctly", () {
-      const dimens0 = TextButtonDimens.medium;
-      final dimens1 = TextButtonDimens.medium.copyWith();
-      final dimens2 = TextButtonDimens.medium.copyWith(iconSize: Dimens.size_16);
+    test("overrides is compared correctly", () {
+      const overrides0 = TextButtonOverrides(iconSize: Dimens.size_16);
+      const overrides1 = TextButtonOverrides(iconSize: Dimens.size_16);
+      const overrides2 = TextButtonOverrides(iconSize: Dimens.size_12);
 
-      expect(dimens0 == dimens1, true);
-      expect(dimens0 == dimens2, false);
+      expect(overrides0 == overrides1, true);
+      expect(overrides0 == overrides2, false);
     });
   });
 }
