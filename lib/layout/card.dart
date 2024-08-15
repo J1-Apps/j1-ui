@@ -62,7 +62,10 @@ class Card extends StatelessWidget {
     );
 
     final shape = RoundedRectangleBorder(
-      side: BorderSide(color: overrides?.foregroundColor ?? colors.onSurface, width: overrides?.strokeWidth ?? 2.0),
+      side: BorderSide(
+        color: overrides?.foregroundColor ?? colors.onSurface,
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
+      ),
       borderRadius: borderRadius,
     );
 

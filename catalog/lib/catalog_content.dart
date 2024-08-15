@@ -34,8 +34,8 @@ class CatalogContent {
       CatalogBranch(title: "input", children: [
         CatalogLeaf(title: "text buttons", page: const TextButtonPage()),
         CatalogLeaf(title: "icon buttons", page: const IconButtonPage()),
-        CatalogLeaf(title: "switch buttons", page: const MiscInputPage()),
         CatalogLeaf(title: "text fields", page: const TextFieldPage()),
+        CatalogLeaf(title: "misc input", page: const MiscInputPage()),
       ]),
       CatalogBranch(title: "layout", children: [
         CatalogLeaf(title: "cards", page: const CardPage()),

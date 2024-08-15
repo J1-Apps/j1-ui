@@ -7,6 +7,8 @@ class MiscInputPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fonts = context.textTheme();
+
     final children = [
       CatalogListItem(
         type: CatalogListItemType.column,
@@ -22,6 +24,23 @@ class MiscInputPage extends StatelessWidget {
         child: SwitchButton(
           value: true,
           onChanged: (_) {},
+        ),
+      ),
+      CatalogListItem(
+        type: CatalogListItemType.column,
+        label: "font card",
+        child: FontCard(
+          fontName: "test font",
+          styles: [fonts.headlineMedium, fonts.titleMedium, fonts.bodyMedium],
+        ),
+      ),
+      CatalogListItem(
+        type: CatalogListItemType.column,
+        label: "theme card",
+        child: ThemeCard(
+          themeName: "test theme",
+          colors: context.colorScheme(),
+          fonts: context.textTheme(),
         ),
       ),
     ];
