@@ -1,6 +1,5 @@
 import "package:flutter/material.dart" hide Card;
 import "package:catalog/catalog_list_widget.dart";
-import "package:j1_ui/input/font_card.dart";
 import "package:j1_ui/j1_ui.dart";
 
 class MiscInputPage extends StatelessWidget {
@@ -33,6 +32,15 @@ class MiscInputPage extends StatelessWidget {
         child: FontCard(
           fontName: "test font",
           styles: [fonts.headlineMedium, fonts.titleMedium, fonts.bodyMedium],
+        ),
+      ),
+      CatalogListItem(
+        type: CatalogListItemType.column,
+        label: "theme card",
+        child: ThemeCard(
+          themeName: "test theme",
+          colors: context.colorScheme(),
+          fonts: context.textTheme(),
         ),
       ),
     ];

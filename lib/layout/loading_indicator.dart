@@ -30,7 +30,7 @@ class LoadingIndicator extends StatelessWidget {
       height: indicatorSize,
       child: CircularProgressIndicator(
         color: color ?? theme.colorScheme.tertiary,
-        strokeWidth: strokeWidth ?? 2.0,
+        strokeWidth: strokeWidth ?? J1Config.strokeWidth,
         semanticsLabel: label,
       ),
     );

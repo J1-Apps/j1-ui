@@ -52,7 +52,7 @@ class ModalDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color: overrides?.outlineColor ?? theme.colorScheme.onSurface,
-          width: overrides?.outlineWidth ?? 2.0,
+          width: overrides?.outlineWidth ?? J1Config.strokeWidth,
         ),
         borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_m),
       ),

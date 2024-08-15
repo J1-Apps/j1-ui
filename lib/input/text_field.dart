@@ -171,7 +171,7 @@ extension _CreateStyle on TextField {
     final defaultBorder = OutlineInputBorder(
       borderSide: BorderSide(
         color: foregroundColor,
-        width: overrides?.strokeWidth ?? 2.0,
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
       borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_s),
     );
@@ -179,15 +179,15 @@ extension _CreateStyle on TextField {
     final errorBorder = OutlineInputBorder(
       borderSide: BorderSide(
         color: overrides?.errorColor ?? colors.error,
-        width: overrides?.strokeWidth ?? 2.0,
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
       borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_s),
     );
 
     final disabledBorder = UnderlineInputBorder(
       borderSide: BorderSide(
-        color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? 0.5),
-        width: overrides?.strokeWidth ?? 2.0,
+        color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? J1Config.disabledOpacity),
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
       borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_s),
     );
@@ -225,21 +225,21 @@ extension _CreateStyle on TextField {
     final defaultBorder = UnderlineInputBorder(
       borderSide: BorderSide(
         color: foregroundColor,
-        width: overrides?.strokeWidth ?? 2.0,
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
     );
 
     final errorBorder = UnderlineInputBorder(
       borderSide: BorderSide(
         color: overrides?.errorColor ?? colors.error,
-        width: overrides?.strokeWidth ?? 2.0,
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
     );
 
     final disabledBorder = UnderlineInputBorder(
       borderSide: BorderSide(
-        color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? 0.5),
-        width: overrides?.strokeWidth ?? 2.0,
+        color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? J1Config.disabledOpacity),
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
     );
 
@@ -355,7 +355,7 @@ extension _CreateStyle on TextField {
 
     return (
       style?.copyWith(color: foregroundColor),
-      style?.copyWith(color: foregroundColor.withOpacity(overrides?.hintOpacity ?? 0.4)),
+      style?.copyWith(color: foregroundColor.withOpacity(overrides?.hintOpacity ?? J1Config.hintOpacity)),
       showErrorText
           ? overrides?.errorStyle ?? fonts.labelSmall?.copyWith(color: colors.error)
           : const TextStyle(height: 0),

@@ -16,7 +16,11 @@ enum WidgetSize {
 }
 
 abstract final class J1Config {
-  static const double buttonOverlayOpacity = 0.1;
+  static const buttonOverlayOpacity = 0.1;
+  static const strokeWidth = 2.0;
+  static const selectedStrokeWidth = 3.0;
+  static const disabledOpacity = 0.5;
+  static const hintOpacity = 0.4;
 
   static const PageTransitionsTheme transitions = PageTransitionsTheme(
     builders: {
