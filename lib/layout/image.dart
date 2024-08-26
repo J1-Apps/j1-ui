@@ -1,4 +1,5 @@
-import "package:cached_network_image/cached_network_image.dart";
+// TODO: Uncomment once version solving is resolved.
+// import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:j1_ui/j1_ui.dart";
@@ -20,36 +21,36 @@ abstract class _Image<SourceType> extends StatelessWidget {
   });
 }
 
-class NetworkImage extends _Image<String> {
-  final int? imageWidth;
-  final int? imageHeight;
+// class NetworkImage extends _Image<String> {
+//   final int? imageWidth;
+//   final int? imageHeight;
 
-  const NetworkImage({
-    super.key,
-    required super.source,
-    required super.fit,
-    super.alignment,
-    super.opacity = 1,
-    super.color,
-    this.imageHeight,
-    this.imageWidth,
-  });
+//   const NetworkImage({
+//     super.key,
+//     required super.source,
+//     required super.fit,
+//     super.alignment,
+//     super.opacity = 1,
+//     super.color,
+//     this.imageHeight,
+//     this.imageWidth,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: source,
-      fit: fit,
-      memCacheWidth: imageWidth,
-      maxWidthDiskCache: imageWidth,
-      memCacheHeight: imageHeight,
-      maxHeightDiskCache: imageHeight,
-      alignment: alignment ?? Alignment.center,
-      color: opacity == 1 ? null : Color.fromRGBO(255, 255, 255, opacity),
-      colorBlendMode: opacity == 1 ? null : BlendMode.modulate,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return CachedNetworkImage(
+//       imageUrl: source,
+//       fit: fit,
+//       memCacheWidth: imageWidth,
+//       maxWidthDiskCache: imageWidth,
+//       memCacheHeight: imageHeight,
+//       maxHeightDiskCache: imageHeight,
+//       alignment: alignment ?? Alignment.center,
+//       color: opacity == 1 ? null : Color.fromRGBO(255, 255, 255, opacity),
+//       colorBlendMode: opacity == 1 ? null : BlendMode.modulate,
+//     );
+//   }
+// }
 
 class SvgImage extends _Image<String> {
   const SvgImage({
