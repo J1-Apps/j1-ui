@@ -8,21 +8,22 @@ class ImagesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final children = [
-      const CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "network image",
-        child: SizedBox(
-          width: 200,
-          height: 200,
-          child: NetworkImage(
-            source:
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Los_Angeles_Dodgers_Logo.svg/1976px-Los_Angeles_Dodgers_Logo.svg.png",
-            fit: BoxFit.contain,
-            imageWidth: 400,
-            imageHeight: 400,
-          ),
-        ),
-      ),
+      // TODO: Uncomment once version solving is resolved.
+      // const CatalogListItem(
+      //   type: CatalogListItemType.column,
+      //   label: "network image",
+      //   child: SizedBox(
+      //     width: 200,
+      //     height: 200,
+      //     child: NetworkImage(
+      //       source:
+      //           "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Los_Angeles_Dodgers_Logo.svg/1976px-Los_Angeles_Dodgers_Logo.svg.png",
+      //       fit: BoxFit.contain,
+      //       imageWidth: 400,
+      //       imageHeight: 400,
+      //     ),
+      //   ),
+      // ),
       const CatalogListItem(
         type: CatalogListItemType.column,
         label: "svg image",
