@@ -10,11 +10,11 @@ class ModalsPage extends StatelessWidget {
     final children = [
       CatalogListItem(
         type: CatalogListItemType.column,
-        label: "modal dialog",
+        label: "dialog",
         child: IconButton(
           icon: JamIcons.pencil,
           type: ButtonType.flat,
-          onPressed: () => context.showModalDialog(
+          onPressed: () => context.showDialog(
             child: const Padding(
               padding: EdgeInsets.all(Dimens.spacing_xl),
               child: Text("test dialog content"),
@@ -31,6 +31,20 @@ class ModalsPage extends StatelessWidget {
           onPressed: () => context.showToastWithText(
             text: "test toast content",
             hasClose: true,
+          ),
+        ),
+      ),
+      CatalogListItem(
+        type: CatalogListItemType.column,
+        label: "bottom sheet",
+        child: IconButton(
+          icon: JamIcons.pencil,
+          type: ButtonType.flat,
+          onPressed: () => context.showBottomSheet(
+            child: const Padding(
+              padding: EdgeInsets.all(Dimens.spacing_xl),
+              child: Text("test bottom sheet content"),
+            ),
           ),
         ),
       ),

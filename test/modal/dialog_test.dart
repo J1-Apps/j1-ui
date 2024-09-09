@@ -5,7 +5,7 @@ import "package:j1_ui/j1_ui.dart";
 import "../helpers/test_wrapper.dart";
 
 void main() {
-  group("Modal Dialog", () {
+  group("Dialog", () {
     testWidgets("renders child", (tester) async {
       tester.view.physicalSize = const Size(600, 1200);
       tester.view.devicePixelRatio = 1.0;
@@ -19,7 +19,7 @@ void main() {
             builder: (context) => IconButton(
               icon: JamIcons.pencil,
               type: ButtonType.flat,
-              onPressed: () => context.showModalDialog(
+              onPressed: () => context.showDialog(
                 child: const Text("test dialog content"),
               ),
             ),
@@ -36,9 +36,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = ModalDialogOverrides(cornerRadius: Dimens.radius_l);
-      const overrides1 = ModalDialogOverrides(cornerRadius: Dimens.radius_l);
-      const overrides2 = ModalDialogOverrides(cornerRadius: Dimens.radius_xl);
+      const overrides0 = DialogOverrides(cornerRadius: Dimens.radius_l);
+      const overrides1 = DialogOverrides(cornerRadius: Dimens.radius_l);
+      const overrides2 = DialogOverrides(cornerRadius: Dimens.radius_xl);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);
