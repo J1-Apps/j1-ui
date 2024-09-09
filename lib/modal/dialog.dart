@@ -1,8 +1,9 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart";
+import "package:flutter/material.dart" hide Dialog, showDialog;
+import "package:flutter/material.dart" as material;
 import "package:j1_ui/j1_ui.dart";
 
-class ModalDialogOverrides extends Equatable {
+class DialogOverrides extends Equatable {
   final EdgeInsets? insetPadding;
   final double? cornerRadius;
   final double? elevation;
@@ -11,7 +12,7 @@ class ModalDialogOverrides extends Equatable {
   final Color? outlineColor;
   final double? outlineWidth;
 
-  const ModalDialogOverrides({
+  const DialogOverrides({
     this.insetPadding,
     this.cornerRadius,
     this.elevation,
@@ -31,17 +32,17 @@ class ModalDialogOverrides extends Equatable {
       ];
 }
 
-class ModalDialog extends StatelessWidget {
-  final ModalDialogOverrides? overrides;
+class Dialog extends StatelessWidget {
+  final DialogOverrides? overrides;
   final Widget? child;
 
-  const ModalDialog({super.key, this.overrides, required this.child});
+  const Dialog({super.key, this.overrides, required this.child});
 
   @override
   Widget build(BuildContext context) {
     final theme = context.theme();
 
-    return Dialog(
+    return material.Dialog(
       backgroundColor: overrides?.backgroundColor ?? theme.colorScheme.surfaceContainer,
       elevation: overrides?.elevation ?? Dimens.elevation_m,
       insetPadding: overrides?.insetPadding ??
@@ -61,11 +62,11 @@ class ModalDialog extends StatelessWidget {
   }
 }
 
-extension ModalDialogExtension on BuildContext {
-  Future<bool?> showModalDialog({ModalDialogOverrides? overrides, required Widget? child}) {
-    return showDialog<bool>(
+extension DialogExtension on BuildContext {
+  Future<bool?> showDialog({DialogOverrides? overrides, required Widget? child}) {
+    return material.showDialog<bool>(
       context: this,
-      builder: (context) => ModalDialog(overrides: overrides, child: child),
+      builder: (context) => Dialog(overrides: overrides, child: child),
     );
   }
 }
