@@ -1,5 +1,6 @@
 import "package:equatable/equatable.dart";
 import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/services.dart";
 import "package:j1_ui/j1_ui.dart";
 
 enum TextFieldType {
@@ -77,6 +78,8 @@ class TextField extends StatelessWidget {
   final TextDirection? textDirection;
   final TextAlign? textAlign;
   final TextAlignVertical? textAlignVertical;
+  final ScrollPhysics? scrollPhysics;
+  final List<TextInputFormatter>? inputFormatters;
   final bool obscureText;
   final bool autocorrect;
   final ValueChanged<String>? onChanged;
@@ -103,6 +106,8 @@ class TextField extends StatelessWidget {
     this.textDirection,
     this.textAlign,
     this.textAlignVertical,
+    this.scrollPhysics,
+    this.inputFormatters,
     this.obscureText = false,
     this.autocorrect = true,
     this.onChanged,
@@ -145,6 +150,8 @@ class TextField extends StatelessWidget {
       textDirection: textDirection,
       textAlign: textAlign ?? TextAlign.start,
       textAlignVertical: textAlignVertical,
+      scrollPhysics: scrollPhysics ?? const ClampingScrollPhysics(),
+      inputFormatters: inputFormatters,
       obscureText: obscureText,
       autocorrect: autocorrect,
       onChanged: onChanged,
