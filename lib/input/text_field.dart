@@ -73,6 +73,10 @@ class TextField extends StatelessWidget {
   final bool showErrorText;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final TextCapitalization? textCapitalization;
+  final TextDirection? textDirection;
+  final TextAlign? textAlign;
+  final TextAlignVertical? textAlignVertical;
   final bool obscureText;
   final bool autocorrect;
   final ValueChanged<String>? onChanged;
@@ -95,6 +99,10 @@ class TextField extends StatelessWidget {
     this.showErrorText = false,
     this.controller,
     this.keyboardType,
+    this.textCapitalization,
+    this.textDirection,
+    this.textAlign,
+    this.textAlignVertical,
     this.obscureText = false,
     this.autocorrect = true,
     this.onChanged,
@@ -133,6 +141,10 @@ class TextField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       keyboardAppearance: theme.brightness,
+      textCapitalization: textCapitalization ?? TextCapitalization.none,
+      textDirection: textDirection,
+      textAlign: textAlign ?? TextAlign.start,
+      textAlignVertical: textAlignVertical,
       obscureText: obscureText,
       autocorrect: autocorrect,
       onChanged: onChanged,
