@@ -1,13 +1,13 @@
 import "package:catalog/catalog_list_widget.dart";
-import "package:flutter/material.dart" hide SegmentedButton, ButtonSegment;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-const _segments = <ButtonSegment>[
-  ButtonSegment(id: "test-0", label: Text("0")),
-  ButtonSegment(id: "test-1", label: Text("1")),
-  ButtonSegment(id: "test-2", label: Text("2")),
-  ButtonSegment(id: "test-3", label: Text("3")),
-  ButtonSegment(id: "test-4", label: Text("4")),
+const _segments = <JButtonSegment>[
+  JButtonSegment(id: "test-0", label: Text("0")),
+  JButtonSegment(id: "test-1", label: Text("1")),
+  JButtonSegment(id: "test-2", label: Text("2")),
+  JButtonSegment(id: "test-3", label: Text("3")),
+  JButtonSegment(id: "test-4", label: Text("4")),
 ];
 
 class SegmentedButtonPage extends StatefulWidget {
@@ -27,18 +27,18 @@ class SegmentedButtonPageState extends State<SegmentedButtonPage> {
         CatalogListItem(
           label: "small",
           type: CatalogListItemType.column,
-          child: SegmentedButton(
+          child: JSegmentedButton(
             segments: _segments,
             selected: selected,
             onSelected: _updateSelected,
-            size: WidgetSize.small,
+            size: JWidgetSize.small,
             showSelectedIcon: true,
           ),
         ),
         CatalogListItem(
           label: "medium",
           type: CatalogListItemType.column,
-          child: SegmentedButton(
+          child: JSegmentedButton(
             segments: _segments,
             selected: selected,
             onSelected: _updateSelected,
@@ -47,11 +47,11 @@ class SegmentedButtonPageState extends State<SegmentedButtonPage> {
         CatalogListItem(
           label: "large",
           type: CatalogListItemType.column,
-          child: SegmentedButton(
+          child: JSegmentedButton(
             segments: _segments,
             selected: selected,
             onSelected: _updateSelected,
-            size: WidgetSize.large,
+            size: JWidgetSize.large,
           ),
         ),
       ],

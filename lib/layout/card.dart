@@ -1,9 +1,8 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide Card;
-import "package:flutter/material.dart" as material show Card;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class CardOverrides extends Equatable {
+class JCardOverrides extends Equatable {
   final EdgeInsetsGeometry? margin;
   final double? cornerRadius;
   final double? strokeWidth;
@@ -12,7 +11,7 @@ class CardOverrides extends Equatable {
   final Color? foregroundColor;
   final Color? backgroundColor;
 
-  const CardOverrides({
+  const JCardOverrides({
     this.margin,
     this.cornerRadius,
     this.strokeWidth,
@@ -32,15 +31,15 @@ class CardOverrides extends Equatable {
       ];
 }
 
-class Card extends StatelessWidget {
-  final WidgetSize size;
+class JCard extends StatelessWidget {
+  final JWidgetSize size;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPressed;
-  final CardOverrides? overrides;
+  final JCardOverrides? overrides;
   final Widget? child;
 
-  const Card({
-    this.size = WidgetSize.medium,
+  const JCard({
+    this.size = JWidgetSize.medium,
     this.onPressed,
     this.onLongPressed,
     this.overrides,
@@ -55,9 +54,9 @@ class Card extends StatelessWidget {
     final borderRadius = BorderRadius.circular(
       overrides?.cornerRadius ??
           switch (size) {
-            WidgetSize.large => Dimens.radius_l,
-            WidgetSize.medium => Dimens.radius_m,
-            WidgetSize.small => Dimens.radius_s,
+            JWidgetSize.large => JDimens.radius_l,
+            JWidgetSize.medium => JDimens.radius_m,
+            JWidgetSize.small => JDimens.radius_s,
           },
     );
 
@@ -69,9 +68,9 @@ class Card extends StatelessWidget {
       borderRadius: borderRadius,
     );
 
-    return material.Card(
+    return Card(
       color: overrides?.backgroundColor ?? colors.surface,
-      elevation: overrides?.elevation ?? Dimens.elevation_s,
+      elevation: overrides?.elevation ?? JDimens.elevation_s,
       shape: shape,
       margin: overrides?.margin ?? EdgeInsets.zero,
       child: ClipRRect(

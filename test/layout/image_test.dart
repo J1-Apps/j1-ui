@@ -1,6 +1,6 @@
 // TODO: Uncomment once version solving is resolved.
 // import "package:cached_network_image/cached_network_image.dart";
-import "package:flutter/material.dart" hide NetworkImage;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 
@@ -11,7 +11,7 @@ void main() {
     // testWidgets("renders from network as expected", (tester) async {
     //   await tester.pumpWidget(
     //     const TestWrapper(
-    //       child: NetworkImage(
+    //       child: JNetworkImage(
     //         source: "test.com",
     //         fit: BoxFit.cover,
     //       ),
@@ -25,14 +25,14 @@ void main() {
     testWidgets("renders from svg as expected", (tester) async {
       await tester.pumpWidget(
         const TestWrapper(
-          child: SvgImage(
+          child: JSvgImage(
             source: "assets/j1_logo.svg",
             fit: BoxFit.cover,
           ),
         ),
       );
 
-      final networkFinder = find.byType(SvgImage);
+      final networkFinder = find.byType(JSvgImage);
       expect(networkFinder, findsOneWidget);
     });
   });

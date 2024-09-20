@@ -2,7 +2,7 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class BottomSheetOverrides extends Equatable {
+class JBottomSheetOverrides extends Equatable {
   final double? cornerRadius;
   final double? elevation;
 
@@ -11,7 +11,7 @@ class BottomSheetOverrides extends Equatable {
   final Color? outlineColor;
   final double? outlineWidth;
 
-  const BottomSheetOverrides({
+  const JBottomSheetOverrides({
     this.cornerRadius,
     this.elevation,
     this.barrierColor,
@@ -31,15 +31,15 @@ class BottomSheetOverrides extends Equatable {
       ];
 }
 
-extension BottomSheetExtension on BuildContext {
-  Future<bool?> showBottomSheet({BottomSheetOverrides? overrides, required Widget? child}) {
+extension JBottomSheetExtension on BuildContext {
+  Future<bool?> showJBottomSheet({JBottomSheetOverrides? overrides, required Widget? child}) {
     if (child == null) {
       return Future.value();
     }
 
     final colors = colorScheme();
 
-    final cornerRadius = Radius.circular(overrides?.cornerRadius ?? Dimens.radius_m);
+    final cornerRadius = Radius.circular(overrides?.cornerRadius ?? JDimens.radius_m);
     final shape = RoundedRectangleBorder(
       side: BorderSide(
         color: overrides?.outlineColor ?? colors.onSurface,
@@ -53,7 +53,7 @@ extension BottomSheetExtension on BuildContext {
       builder: (context) => child,
       constraints: const BoxConstraints(minWidth: double.infinity),
       backgroundColor: overrides?.backgroundColor ?? colors.surfaceContainer,
-      elevation: overrides?.elevation ?? Dimens.elevation_m,
+      elevation: overrides?.elevation ?? JDimens.elevation_m,
       shape: shape,
       barrierColor: overrides?.barrierColor,
     );

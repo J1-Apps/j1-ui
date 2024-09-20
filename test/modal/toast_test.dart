@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
@@ -13,12 +13,12 @@ void main() {
         TestWrapper(
           child: Scaffold(
             body: Builder(
-              builder: (context) => IconButton(
+              builder: (context) => JIconButton(
                 icon: JamIcons.pencil,
-                type: ButtonType.flat,
-                onPressed: () => context.showToast(
+                type: JButtonType.flat,
+                onPressed: () => context.showJToast(
                   child: const Text("test snackbar content"),
-                  overrides: const ToastOverrides(elevation: 4),
+                  overrides: const JToastOverrides(elevation: 4),
                 ),
               ),
             ),
@@ -39,13 +39,13 @@ void main() {
         TestWrapper(
           child: Scaffold(
             body: Builder(
-              builder: (context) => IconButton(
+              builder: (context) => JIconButton(
                 icon: JamIcons.pencil,
-                type: ButtonType.flat,
-                onPressed: () => context.showToastWithClose(
+                type: JButtonType.flat,
+                onPressed: () => context.showJToastWithClose(
                   child: const Text("test snackbar content"),
                   onClose: close.call,
-                  overrides: const ToastOverrides(elevation: 4),
+                  overrides: const JToastOverrides(elevation: 4),
                 ),
               ),
             ),
@@ -72,12 +72,12 @@ void main() {
         TestWrapper(
           child: Scaffold(
             body: Builder(
-              builder: (context) => IconButton(
+              builder: (context) => JIconButton(
                 icon: JamIcons.pencil,
-                type: ButtonType.flat,
-                onPressed: () => context.showToastWithText(
+                type: JButtonType.flat,
+                onPressed: () => context.showJToastWithText(
                   text: "test snackbar content",
-                  overrides: const ToastOverrides(elevation: 4),
+                  overrides: const JToastOverrides(elevation: 4),
                 ),
               ),
             ),
@@ -98,14 +98,14 @@ void main() {
         TestWrapper(
           child: Scaffold(
             body: Builder(
-              builder: (context) => IconButton(
+              builder: (context) => JIconButton(
                 icon: JamIcons.pencil,
-                type: ButtonType.flat,
-                onPressed: () => context.showToastWithText(
+                type: JButtonType.flat,
+                onPressed: () => context.showJToastWithText(
                   text: "test snackbar content",
                   hasClose: true,
                   onClose: close.call,
-                  overrides: const ToastOverrides(elevation: 4),
+                  overrides: const JToastOverrides(elevation: 4),
                 ),
               ),
             ),
@@ -132,12 +132,12 @@ void main() {
         TestWrapper(
           child: Scaffold(
             body: Builder(
-              builder: (context) => IconButton(
+              builder: (context) => JIconButton(
                 icon: JamIcons.pencil,
-                type: ButtonType.flat,
-                onPressed: () => context.showToastWithClose(
+                type: JButtonType.flat,
+                onPressed: () => context.showJToastWithClose(
                   child: const Text("test snackbar content"),
-                  overrides: const ToastOverrides(elevation: 4),
+                  overrides: const JToastOverrides(elevation: 4),
                 ),
               ),
             ),
@@ -161,9 +161,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = ToastOverrides(cornerRadius: Dimens.radius_l);
-      const overrides1 = ToastOverrides(cornerRadius: Dimens.radius_l);
-      const overrides2 = ToastOverrides(cornerRadius: Dimens.radius_xl);
+      const overrides0 = JToastOverrides(cornerRadius: JDimens.radius_l);
+      const overrides1 = JToastOverrides(cornerRadius: JDimens.radius_l);
+      const overrides2 = JToastOverrides(cornerRadius: JDimens.radius_xl);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

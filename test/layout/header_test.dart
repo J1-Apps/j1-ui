@@ -10,7 +10,7 @@ void main() {
       await tester.pumpWidget(
         TestWrapper(
           child: Scaffold(
-            appBar: Header(
+            appBar: JAppBar(
               leadingAction: const Text("leading"),
               title: "test",
               trailingActions: const [Text("action"), Text("action"), Text("action")],
@@ -28,7 +28,7 @@ void main() {
       await tester.pumpWidget(
         TestWrapper(
           child: Scaffold(
-            appBar: Header(
+            appBar: JAppBar(
               title: "test",
               trailingActions: const [Text("action"), Text("action"), Text("action")],
             ),
@@ -45,7 +45,7 @@ void main() {
       await tester.pumpWidget(
         TestWrapper(
           child: Scaffold(
-            appBar: Header(
+            appBar: JAppBar(
               leadingAction: const Text("leading"),
               title: "test",
             ),
@@ -59,9 +59,9 @@ void main() {
     });
 
     test("dimens is compared correctly", () {
-      const dimens0 = HeaderDimens.medium;
-      final dimens1 = HeaderDimens.medium.copyWith();
-      final dimens2 = HeaderDimens.medium.copyWith(titleSpacing: Dimens.size_16);
+      const dimens0 = JAppBarDimens.medium;
+      final dimens1 = JAppBarDimens.medium.copyWith();
+      final dimens2 = JAppBarDimens.medium.copyWith(titleSpacing: JDimens.size_16);
 
       expect(dimens0 == dimens1, true);
       expect(dimens0 == dimens2, false);

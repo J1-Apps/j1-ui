@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 
@@ -16,10 +16,10 @@ void main() {
       await tester.pumpWidget(
         TestWrapper(
           child: Builder(
-            builder: (context) => IconButton(
+            builder: (context) => JIconButton(
               icon: JamIcons.pencil,
-              type: ButtonType.flat,
-              onPressed: () => context.showDialog(
+              type: JButtonType.flat,
+              onPressed: () => context.showJDialog(
                 child: const Text("test dialog content"),
               ),
             ),
@@ -36,9 +36,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = DialogOverrides(cornerRadius: Dimens.radius_l);
-      const overrides1 = DialogOverrides(cornerRadius: Dimens.radius_l);
-      const overrides2 = DialogOverrides(cornerRadius: Dimens.radius_xl);
+      const overrides0 = JDialogOverrides(cornerRadius: JDimens.radius_l);
+      const overrides1 = JDialogOverrides(cornerRadius: JDimens.radius_l);
+      const overrides2 = JDialogOverrides(cornerRadius: JDimens.radius_xl);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

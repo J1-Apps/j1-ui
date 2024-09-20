@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:catalog/catalog_list_widget.dart";
 
@@ -11,12 +11,12 @@ class ModalsPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "dialog",
-        child: IconButton(
+        child: JIconButton(
           icon: JamIcons.pencil,
-          type: ButtonType.flat,
-          onPressed: () => context.showDialog(
+          type: JButtonType.flat,
+          onPressed: () => context.showJDialog(
             child: const Padding(
-              padding: EdgeInsets.all(Dimens.spacing_xl),
+              padding: EdgeInsets.all(JDimens.spacing_xl),
               child: Text("test dialog content"),
             ),
           ),
@@ -25,10 +25,10 @@ class ModalsPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "toast",
-        child: IconButton(
+        child: JIconButton(
           icon: JamIcons.pencil,
-          type: ButtonType.flat,
-          onPressed: () => context.showToastWithText(
+          type: JButtonType.flat,
+          onPressed: () => context.showJToastWithText(
             text: "test toast content",
             hasClose: true,
           ),
@@ -37,12 +37,12 @@ class ModalsPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "bottom sheet",
-        child: IconButton(
+        child: JIconButton(
           icon: JamIcons.pencil,
-          type: ButtonType.flat,
-          onPressed: () => context.showBottomSheet(
+          type: JButtonType.flat,
+          onPressed: () => context.showJBottomSheet(
             child: const Padding(
-              padding: EdgeInsets.all(Dimens.spacing_xl),
+              padding: EdgeInsets.all(JDimens.spacing_xl),
               child: Text("test bottom sheet content"),
             ),
           ),

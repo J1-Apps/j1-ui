@@ -1,5 +1,5 @@
 import "package:catalog/catalog_list_widget.dart";
-import "package:flutter/material.dart" hide TextField;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
 class TextFieldPage extends StatelessWidget {
@@ -11,9 +11,9 @@ class TextFieldPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "outlined large",
-        child: TextField(
+        child: JTextField(
           hint: "test",
-          size: WidgetSize.large,
+          size: JWidgetSize.large,
           icon: JamIcons.pencil,
           onIconPressed: () {},
         ),
@@ -21,16 +21,16 @@ class TextFieldPage extends StatelessWidget {
       const CatalogListItem(
         type: CatalogListItemType.column,
         label: "outlined medium",
-        child: TextField(
+        child: JTextField(
           hint: "test",
         ),
       ),
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "outlined small",
-        child: TextField(
+        child: JTextField(
           hint: "test",
-          size: WidgetSize.small,
+          size: JWidgetSize.small,
           icon: JamIcons.pencil,
           onIconPressed: () {},
         ),
@@ -38,17 +38,17 @@ class TextFieldPage extends StatelessWidget {
       const CatalogListItem(
         type: CatalogListItemType.column,
         label: "underlined large",
-        child: TextField(
-          type: TextFieldType.underlined,
+        child: JTextField(
+          type: JTextFieldType.underlined,
           hint: "test",
-          size: WidgetSize.large,
+          size: JWidgetSize.large,
         ),
       ),
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "underlined medium",
-        child: TextField(
-          type: TextFieldType.underlined,
+        child: JTextField(
+          type: JTextFieldType.underlined,
           hint: "test",
           icon: JamIcons.pencil,
           onIconPressed: () {},
@@ -57,19 +57,19 @@ class TextFieldPage extends StatelessWidget {
       const CatalogListItem(
         type: CatalogListItemType.column,
         label: "underlined small",
-        child: TextField(
-          type: TextFieldType.underlined,
+        child: JTextField(
+          type: JTextFieldType.underlined,
           hint: "test",
-          size: WidgetSize.small,
+          size: JWidgetSize.small,
         ),
       ),
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "flat large",
-        child: TextField(
-          type: TextFieldType.flat,
+        child: JTextField(
+          type: JTextFieldType.flat,
           hint: "test",
-          size: WidgetSize.large,
+          size: JWidgetSize.large,
           icon: JamIcons.pencil,
           onIconPressed: () {},
         ),
@@ -77,18 +77,18 @@ class TextFieldPage extends StatelessWidget {
       const CatalogListItem(
         type: CatalogListItemType.column,
         label: "flat medium",
-        child: TextField(
-          type: TextFieldType.flat,
+        child: JTextField(
+          type: JTextFieldType.flat,
           hint: "test",
         ),
       ),
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "flat small",
-        child: TextField(
-          type: TextFieldType.flat,
+        child: JTextField(
+          type: JTextFieldType.flat,
           hint: "test",
-          size: WidgetSize.small,
+          size: JWidgetSize.small,
           icon: JamIcons.pencil,
           onIconPressed: () {},
         ),

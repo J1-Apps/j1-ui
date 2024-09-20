@@ -14,7 +14,7 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: ListItem(
+          child: JListItem(
             key: key,
             onPressed: onPressed.call,
             children: const [],
@@ -36,7 +36,7 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: ListItem(
+          child: JListItem(
             key: key,
             onPressed: onPressed.call,
             children: const [
@@ -60,7 +60,7 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: ListItem(
+          child: JListItem(
             key: key,
             onPressed: onPressed.call,
             children: const [

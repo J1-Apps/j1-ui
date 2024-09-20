@@ -17,7 +17,7 @@ void main() {
             builder: (context) {
               final fonts = context.textTheme();
 
-              return FontCard(
+              return JFontCard(
                 fontName: "test font",
                 styles: [
                   fonts.headlineMedium,
@@ -31,7 +31,7 @@ void main() {
         ),
       );
 
-      final cardFinder = find.byType(FontCard);
+      final cardFinder = find.byType(JFontCard);
 
       expect(cardFinder, findsOneWidget);
       expect(find.text("test font"), findsNWidgets(3));
@@ -42,9 +42,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = FontCardOverrides(foregroundColor: Colors.black);
-      const overrides1 = FontCardOverrides(foregroundColor: Colors.black);
-      const overrides2 = FontCardOverrides(foregroundColor: Colors.blue);
+      const overrides0 = JFontCardOverrides(foregroundColor: Colors.black);
+      const overrides1 = JFontCardOverrides(foregroundColor: Colors.black);
+      const overrides2 = JFontCardOverrides(foregroundColor: Colors.blue);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

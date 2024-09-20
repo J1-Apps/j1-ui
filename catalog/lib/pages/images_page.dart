@@ -1,5 +1,5 @@
 import "package:catalog/catalog_list_widget.dart";
-import "package:flutter/material.dart" hide NetworkImage;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
 class ImagesPage extends StatelessWidget {
@@ -15,7 +15,7 @@ class ImagesPage extends StatelessWidget {
       //   child: SizedBox(
       //     width: 200,
       //     height: 200,
-      //     child: NetworkImage(
+      //     child: JNetworkImage(
       //       source:
       //           "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Los_Angeles_Dodgers_Logo.svg/1976px-Los_Angeles_Dodgers_Logo.svg.png",
       //       fit: BoxFit.contain,
@@ -30,7 +30,7 @@ class ImagesPage extends StatelessWidget {
         child: SizedBox(
           width: 200,
           height: 200,
-          child: SvgImage(
+          child: JSvgImage(
             source: "assets/image/dodgers.svg",
             fit: BoxFit.contain,
           ),

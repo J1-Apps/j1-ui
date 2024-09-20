@@ -1,5 +1,5 @@
 import "package:catalog/catalog_list_widget.dart";
-import "package:flutter/material.dart" hide TextButton;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
 class TextButtonPage extends StatelessWidget {
@@ -17,20 +17,20 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.filled,
-              color: WidgetColor.primary,
+              size: JWidgetSize.large,
+              type: JButtonType.filled,
+              color: JWidgetColor.primary,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.filled,
-              color: WidgetColor.secondary,
+              size: JWidgetSize.medium,
+              type: JButtonType.filled,
+              color: JWidgetColor.secondary,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.filled,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.small,
+              type: JButtonType.filled,
+              color: JWidgetColor.tertiary,
               icon: JamIcons.pencil,
             ),
           ],
@@ -43,22 +43,22 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.filled,
-              color: WidgetColor.primary,
+              size: JWidgetSize.large,
+              type: JButtonType.filled,
+              color: JWidgetColor.primary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.filled,
-              color: WidgetColor.secondary,
+              size: JWidgetSize.medium,
+              type: JButtonType.filled,
+              color: JWidgetColor.secondary,
               outlineColor: colors.onSurface,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.filled,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.small,
+              type: JButtonType.filled,
+              color: JWidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
           ],
@@ -71,20 +71,20 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.flat,
-              color: WidgetColor.onSurface,
+              size: JWidgetSize.large,
+              type: JButtonType.flat,
+              color: JWidgetColor.onSurface,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.flat,
-              color: WidgetColor.onSurface,
+              size: JWidgetSize.medium,
+              type: JButtonType.flat,
+              color: JWidgetColor.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.flat,
-              color: WidgetColor.onSurface,
+              size: JWidgetSize.small,
+              type: JButtonType.flat,
+              color: JWidgetColor.onSurface,
               icon: JamIcons.pencil,
             ),
           ],
@@ -97,20 +97,20 @@ class TextButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.flat,
-              color: WidgetColor.onSurface,
+              size: JWidgetSize.large,
+              type: JButtonType.flat,
+              color: JWidgetColor.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.flat,
-              color: WidgetColor.onSurface,
+              size: JWidgetSize.medium,
+              type: JButtonType.flat,
+              color: JWidgetColor.onSurface,
               icon: JamIcons.pencil,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.flat,
-              color: WidgetColor.onSurface,
+              size: JWidgetSize.small,
+              type: JButtonType.flat,
+              color: JWidgetColor.onSurface,
             ),
           ],
         ),
@@ -120,21 +120,21 @@ class TextButtonPage extends StatelessWidget {
     return CatalogListWidget(children);
   }
 
-  TextButton _buildItem({
-    required ButtonType type,
-    required WidgetSize size,
-    required WidgetColor color,
+  JTextButton _buildItem({
+    required JButtonType type,
+    required JWidgetSize size,
+    required JWidgetColor color,
     IconData? icon,
     Color? outlineColor,
   }) {
-    return TextButton(
+    return JTextButton(
       text: "test",
       icon: icon,
       type: type,
       size: size,
       color: color,
       onPressed: () => {},
-      overrides: TextButtonOverrides(outlineColor: outlineColor),
+      overrides: JTextButtonOverrides(outlineColor: outlineColor),
     );
   }
 }

@@ -2,7 +2,7 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class TextButtonOverrides extends Equatable {
+class JTextButtonOverrides extends Equatable {
   final EdgeInsets? padding;
   final double? cornerRadius;
   final double? iconSize;
@@ -15,7 +15,7 @@ class TextButtonOverrides extends Equatable {
 
   final TextStyle? textStyle;
 
-  const TextButtonOverrides({
+  const JTextButtonOverrides({
     this.padding,
     this.cornerRadius,
     this.iconSize,
@@ -41,26 +41,26 @@ class TextButtonOverrides extends Equatable {
       ];
 }
 
-class TextButton extends StatelessWidget {
+class JTextButton extends StatelessWidget {
   final String? text;
   final bool forceCaps;
   final IconData? icon;
   final Widget? iconWidget;
-  final ButtonType type;
-  final WidgetSize size;
-  final WidgetColor color;
+  final JButtonType type;
+  final JWidgetSize size;
+  final JWidgetColor color;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
-  final TextButtonOverrides? overrides;
+  final JTextButtonOverrides? overrides;
 
-  const TextButton({
+  const JTextButton({
     required this.text,
     this.forceCaps = true,
     this.icon,
     this.iconWidget,
-    this.type = ButtonType.filled,
-    this.size = WidgetSize.medium,
-    this.color = WidgetColor.primary,
+    this.type = JButtonType.filled,
+    this.size = JWidgetSize.medium,
+    this.color = JWidgetColor.primary,
     required this.onPressed,
     this.onLongPress,
     this.overrides,
@@ -82,14 +82,14 @@ class TextButton extends StatelessWidget {
   }
 }
 
-extension _CreateStyle on TextButton {
+extension _CreateStyle on JTextButton {
   ButtonStyle _createStyle(
     ColorScheme colors,
     TextTheme fonts,
   ) {
     return switch (type) {
-      ButtonType.filled => _createFilledStyle(colors, fonts),
-      ButtonType.flat => _createFlatStyle(colors, fonts),
+      JButtonType.filled => _createFilledStyle(colors, fonts),
+      JButtonType.flat => _createFlatStyle(colors, fonts),
     };
   }
 
@@ -100,12 +100,12 @@ extension _CreateStyle on TextButton {
     final (padding, iconSize, textStyle) = _createButtonParams(fonts);
 
     final (foregroundColor, backgroundColor) = switch (color) {
-      WidgetColor.primary => (colors.onPrimary, colors.primary),
-      WidgetColor.secondary => (colors.onSecondary, colors.secondary),
-      WidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
-      WidgetColor.error => (colors.onError, colors.error),
-      WidgetColor.surface => (colors.onSurface, colors.surface),
-      WidgetColor.onSurface => (colors.surface, colors.onSurface),
+      JWidgetColor.primary => (colors.onPrimary, colors.primary),
+      JWidgetColor.secondary => (colors.onSecondary, colors.secondary),
+      JWidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
+      JWidgetColor.error => (colors.onError, colors.error),
+      JWidgetColor.surface => (colors.onSurface, colors.surface),
+      JWidgetColor.onSurface => (colors.surface, colors.onSurface),
     };
 
     final overlayColor = (overrides?.foregroundColor ?? foregroundColor).withOpacity(J1Config.buttonOverlayOpacity);
@@ -118,7 +118,7 @@ extension _CreateStyle on TextButton {
       overlayColor: overlayColor.widgetState(),
       padding: (overrides?.padding ?? padding).widgetState(),
       iconSize: (overrides?.iconSize ?? iconSize).widgetState(),
-      elevation: (overrides?.elevation ?? Dimens.elevation_s).widgetState(),
+      elevation: (overrides?.elevation ?? JDimens.elevation_s).widgetState(),
       minimumSize: Size.zero.widgetState(),
       shape: _createBorder().widgetState(),
     );
@@ -131,12 +131,12 @@ extension _CreateStyle on TextButton {
     final (padding, iconSize, textStyle) = _createButtonParams(fonts);
 
     final (foregroundColor, backgroundColor) = switch (color) {
-      WidgetColor.primary => (colors.primary, Colors.transparent),
-      WidgetColor.secondary => (colors.secondary, Colors.transparent),
-      WidgetColor.tertiary => (colors.tertiary, Colors.transparent),
-      WidgetColor.error => (colors.error, Colors.transparent),
-      WidgetColor.surface => (colors.surface, Colors.transparent),
-      WidgetColor.onSurface => (colors.onSurface, Colors.transparent),
+      JWidgetColor.primary => (colors.primary, Colors.transparent),
+      JWidgetColor.secondary => (colors.secondary, Colors.transparent),
+      JWidgetColor.tertiary => (colors.tertiary, Colors.transparent),
+      JWidgetColor.error => (colors.error, Colors.transparent),
+      JWidgetColor.surface => (colors.surface, Colors.transparent),
+      JWidgetColor.onSurface => (colors.onSurface, Colors.transparent),
     };
 
     final overlayColor = (overrides?.foregroundColor ?? foregroundColor).withOpacity(J1Config.buttonOverlayOpacity);
@@ -149,14 +149,14 @@ extension _CreateStyle on TextButton {
       overlayColor: overlayColor.widgetState(),
       padding: (overrides?.padding ?? padding).widgetState(),
       iconSize: (overrides?.iconSize ?? iconSize).widgetState(),
-      elevation: (overrides?.elevation ?? Dimens.elevation_none).widgetState(),
+      elevation: (overrides?.elevation ?? JDimens.elevation_none).widgetState(),
       minimumSize: Size.zero.widgetState(),
       shape: _createBorder().widgetState(),
     );
   }
 
   RoundedRectangleBorder _createBorder() {
-    final cornerRadius = overrides?.cornerRadius ?? Dimens.radius_s;
+    final cornerRadius = overrides?.cornerRadius ?? JDimens.radius_s;
     final outlineColor = overrides?.outlineColor;
     final outlineWidth = overrides?.outlineWidth ?? 2;
     return RoundedRectangleBorder(
@@ -167,18 +167,18 @@ extension _CreateStyle on TextButton {
 
   (EdgeInsets, double, TextStyle?) _createButtonParams(TextTheme fonts) {
     return switch (size) {
-      WidgetSize.large => (
-          const EdgeInsets.symmetric(horizontal: Dimens.spacing_s + 2, vertical: Dimens.spacing_s),
+      JWidgetSize.large => (
+          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s + 2, vertical: JDimens.spacing_s),
           28,
           fonts.titleLarge
         ),
-      WidgetSize.medium => (
-          const EdgeInsets.symmetric(horizontal: Dimens.spacing_s + 2, vertical: Dimens.spacing_s),
+      JWidgetSize.medium => (
+          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s + 2, vertical: JDimens.spacing_s),
           24,
           fonts.titleMedium
         ),
-      WidgetSize.small => (
-          const EdgeInsets.symmetric(horizontal: Dimens.spacing_s + 2, vertical: Dimens.spacing_s),
+      JWidgetSize.small => (
+          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s + 2, vertical: JDimens.spacing_s),
           20,
           fonts.titleSmall
         ),

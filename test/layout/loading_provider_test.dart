@@ -10,11 +10,11 @@ void main() {
     testWidgets("renders as expected", (tester) async {
       await tester.pumpWidget(
         const TestWrapper(
-          child: LoadingProvider(
+          child: JLoadingProvider(
             child: Column(
               children: [
-                LoadingText(width: 100, style: TextStyle()),
-                LoadingBox(width: 100, height: 50),
+                JLoadingText(width: 100, style: TextStyle()),
+                JLoadingBox(width: 100, height: 50),
               ],
             ),
           ),

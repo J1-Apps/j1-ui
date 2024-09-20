@@ -1,8 +1,8 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide Card;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class ThemeCardOverrides extends Equatable {
+class JThemeCardOverrides extends Equatable {
   final EdgeInsets? padding;
   final double? cornerRadius;
   final double? elevation;
@@ -16,7 +16,7 @@ class ThemeCardOverrides extends Equatable {
   final double? colorIconSize;
   final IconData? colorIcon;
 
-  const ThemeCardOverrides({
+  const JThemeCardOverrides({
     this.padding,
     this.cornerRadius,
     this.elevation,
@@ -48,15 +48,15 @@ class ThemeCardOverrides extends Equatable {
       ];
 }
 
-class ThemeCard extends StatelessWidget {
+class JThemeCard extends StatelessWidget {
   final String themeName;
   final ColorScheme colors;
   final TextTheme fonts;
   final bool isSelected;
   final VoidCallback? onPressed;
-  final ThemeCardOverrides? overrides;
+  final JThemeCardOverrides? overrides;
 
-  const ThemeCard({
+  const JThemeCard({
     required this.themeName,
     required this.colors,
     required this.fonts,
@@ -72,15 +72,15 @@ class ThemeCard extends StatelessWidget {
 
     return Theme(
       data: context.theme().copyWith(colorScheme: colors, textTheme: fonts),
-      child: Card(
+      child: JCard(
         onPressed: onPressed,
-        overrides: CardOverrides(
+        overrides: JCardOverrides(
           cornerRadius: overrides?.cornerRadius,
           strokeWidth: isSelected ? selectedWidth : overrides?.outlineWidth,
           elevation: overrides?.elevation,
         ),
         child: Padding(
-          padding: overrides?.padding ?? const EdgeInsets.all(Dimens.spacing_s),
+          padding: overrides?.padding ?? const EdgeInsets.all(JDimens.spacing_s),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -91,15 +91,15 @@ class ThemeCard extends StatelessWidget {
                 iconSize: overrides?.colorIconSize,
                 outlineWidth: overrides?.colorOutlineWidth,
               ),
-              SizedBox(width: overrides?.cardSpacing ?? Dimens.spacing_xs),
-              FontColumn(
+              SizedBox(width: overrides?.cardSpacing ?? JDimens.spacing_xs),
+              JFontColumn(
                 text: themeName,
                 styles: [
                   fonts.headlineMedium,
                   fonts.titleMedium,
                   fonts.bodyMedium,
                 ],
-                spacing: Dimens.spacing_xxxs,
+                spacing: JDimens.spacing_xxxs,
                 color: colors.onSurface,
               ),
             ],
@@ -140,7 +140,7 @@ class _ColorGrid extends StatelessWidget {
           outlineWidth: outlineWidth,
           colors: [(colors.onPrimary, colors.primary), (colors.onSecondary, colors.secondary)],
         ),
-        SizedBox(width: colorSpacing ?? Dimens.spacing_xxs),
+        SizedBox(width: colorSpacing ?? JDimens.spacing_xxs),
         _ColorColumn(
           colorSpacing: colorSpacing,
           icon: icon,
@@ -190,7 +190,7 @@ class _ColorColumn extends StatelessWidget {
       );
 
       if (i + 1 < colors.length) {
-        children.add(SizedBox(height: colorSpacing ?? Dimens.spacing_xxs));
+        children.add(SizedBox(height: colorSpacing ?? JDimens.spacing_xxs));
       }
     }
 

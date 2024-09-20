@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class LoadingIndicator extends StatelessWidget {
+class JLoadingIndicator extends StatelessWidget {
   final String? label;
   final double? size;
   final double? spacing;
@@ -9,7 +9,7 @@ class LoadingIndicator extends StatelessWidget {
   final Color? color;
   final TextStyle? textStyle;
 
-  const LoadingIndicator({
+  const JLoadingIndicator({
     this.label,
     this.size,
     this.spacing,
@@ -43,7 +43,7 @@ class LoadingIndicator extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(label!, style: textStyle ?? theme.textTheme.bodyMedium),
-        SizedBox(height: spacing ?? Dimens.spacing_m),
+        SizedBox(height: spacing ?? JDimens.spacing_m),
         progress,
       ],
     );

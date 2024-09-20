@@ -1,8 +1,8 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class ToastOverrides extends Equatable {
+class JToastOverrides extends Equatable {
   final EdgeInsets? insetPadding;
   final EdgeInsets? contentPadding;
   final EdgeInsets? iconPadding;
@@ -18,7 +18,7 @@ class ToastOverrides extends Equatable {
 
   final IconData? closeIcon;
 
-  const ToastOverrides({
+  const JToastOverrides({
     this.insetPadding,
     this.contentPadding,
     this.iconPadding,
@@ -49,11 +49,11 @@ class ToastOverrides extends Equatable {
       ];
 }
 
-class Toast {
+class JToast {
   static SnackBar create({
     required BuildContext context,
     required Widget child,
-    ToastOverrides? overrides,
+    JToastOverrides? overrides,
   }) {
     final colors = context.colorScheme();
 
@@ -61,19 +61,19 @@ class Toast {
       content: child,
       behavior: SnackBarBehavior.floating,
       backgroundColor: overrides?.backgroundColor ?? colors.surfaceContainer,
-      elevation: overrides?.elevation ?? Dimens.elevation_m,
+      elevation: overrides?.elevation ?? JDimens.elevation_m,
       padding: EdgeInsets.zero,
       margin: overrides?.insetPadding ??
           const EdgeInsets.symmetric(
-            vertical: Dimens.spacing_xl,
-            horizontal: Dimens.spacing_l,
+            vertical: JDimens.spacing_xl,
+            horizontal: JDimens.spacing_l,
           ),
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color: overrides?.outlineColor ?? colors.onSurface,
           width: overrides?.outlineWidth ?? J1Config.strokeWidth,
         ),
-        borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_m),
+        borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_m),
       ),
     );
   }
@@ -82,14 +82,14 @@ class Toast {
     required BuildContext context,
     required Widget child,
     VoidCallback? onClose,
-    ToastOverrides? overrides,
+    JToastOverrides? overrides,
   }) {
-    final closeButton = IconButton(
+    final closeButton = JIconButton(
       icon: JamIcons.close,
-      type: ButtonType.flat,
-      size: WidgetSize.small,
+      type: JButtonType.flat,
+      size: JWidgetSize.small,
       onPressed: onClose ?? () => ScaffoldMessenger.maybeOf(context)?.hideCurrentSnackBar(),
-      overrides: IconButtonOverrides(
+      overrides: JIconButtonOverrides(
         iconColor: overrides?.iconColor ?? overrides?.foregroundColor ?? context.colorScheme().onSurface,
       ),
     );
@@ -101,8 +101,8 @@ class Toast {
         Padding(
           padding: overrides?.iconPadding ??
               const EdgeInsets.symmetric(
-                horizontal: Dimens.spacing_xs,
-                vertical: Dimens.spacing_xs - 2,
+                horizontal: JDimens.spacing_xs,
+                vertical: JDimens.spacing_xs - 2,
               ),
           child: closeButton,
         ),
@@ -117,15 +117,15 @@ class Toast {
     required String text,
     bool hasClose = false,
     VoidCallback? onClose,
-    ToastOverrides? overrides,
+    JToastOverrides? overrides,
   }) {
     final theme = context.theme();
 
     final content = Padding(
       padding: overrides?.contentPadding ??
           const EdgeInsets.symmetric(
-            horizontal: Dimens.spacing_m,
-            vertical: Dimens.spacing_m - 2,
+            horizontal: JDimens.spacing_m,
+            vertical: JDimens.spacing_m - 2,
           ),
       child: Text(
         text,
@@ -148,14 +148,14 @@ class Toast {
   }
 }
 
-extension ToastExtension on BuildContext {
-  void showToast({
+extension JToastExtension on BuildContext {
+  void showJToast({
     required Widget child,
-    ToastOverrides? overrides,
+    JToastOverrides? overrides,
   }) {
     final state = ScaffoldMessenger.maybeOf(this);
     state?.showSnackBar(
-      Toast.create(
+      JToast.create(
         context: this,
         child: child,
         overrides: overrides,
@@ -163,14 +163,14 @@ extension ToastExtension on BuildContext {
     );
   }
 
-  void showToastWithClose({
+  void showJToastWithClose({
     required Widget child,
     VoidCallback? onClose,
-    ToastOverrides? overrides,
+    JToastOverrides? overrides,
   }) {
     final state = ScaffoldMessenger.maybeOf(this);
     state?.showSnackBar(
-      Toast.createWithClose(
+      JToast.createWithClose(
         context: this,
         onClose: onClose,
         child: child,
@@ -179,15 +179,15 @@ extension ToastExtension on BuildContext {
     );
   }
 
-  void showToastWithText({
+  void showJToastWithText({
     required String text,
     bool hasClose = false,
     VoidCallback? onClose,
-    ToastOverrides? overrides,
+    JToastOverrides? overrides,
   }) {
     final state = ScaffoldMessenger.maybeOf(this);
     state?.showSnackBar(
-      Toast.createWithText(
+      JToast.createWithText(
         context: this,
         text: text,
         hasClose: hasClose,

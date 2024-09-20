@@ -2,7 +2,7 @@ import "dart:ui";
 
 import "package:flutter/material.dart";
 
-extension ColorExtensions on Color {
+extension JColorExtensions on Color {
   WidgetStateProperty<Color> widgetState() {
     return WidgetStatePropertyAll(this);
   }
@@ -64,43 +64,43 @@ extension ColorExtensions on Color {
   }
 }
 
-extension ThemeExtensions on ThemeData {
+extension JThemeExtensions on ThemeData {
   Color shimmerBase() => colorScheme.surface.addValue(brightness == Brightness.dark ? 0.06 : -0.06);
   Color shimmerHighlight() => colorScheme.surface.addValue(brightness == Brightness.dark ? 0.04 : -0.04);
 }
 
-extension DoubleExtensions on double {
+extension JDoubleExtensions on double {
   WidgetStateProperty<double> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension EdgeInsetsExtensions on EdgeInsets {
+extension JEdgeInsetsExtensions on EdgeInsets {
   WidgetStateProperty<EdgeInsets> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension SizeExtensions on Size {
+extension JSizeExtensions on Size {
   WidgetStateProperty<Size> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension OutlinedBorderExtensions on OutlinedBorder {
+extension JOutlinedBorderExtensions on OutlinedBorder {
   WidgetStateProperty<OutlinedBorder> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
-extension TextStyleExtensions on TextStyle {
+extension JTextStyleExtensions on TextStyle {
   WidgetStateProperty<TextStyle> widgetState() {
     return WidgetStatePropertyAll(this);
   }
 }
 
 // coverage:ignore-start
-extension BuildContextExtensions on BuildContext {
+extension JBuildContextExtensions on BuildContext {
   ThemeData theme() {
     return Theme.of(this);
   }

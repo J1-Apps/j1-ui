@@ -2,7 +2,7 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class IconButtonOverrides extends Equatable {
+class JIconButtonOverrides extends Equatable {
   final double? buttonSize;
   final double? iconSize;
   final double? elevation;
@@ -12,7 +12,7 @@ class IconButtonOverrides extends Equatable {
   final Color? outlineColor;
   final double? outlineWidth;
 
-  const IconButtonOverrides({
+  const JIconButtonOverrides({
     this.buttonSize,
     this.iconSize,
     this.elevation,
@@ -34,22 +34,22 @@ class IconButtonOverrides extends Equatable {
       ];
 }
 
-class IconButton extends StatelessWidget {
+class JIconButton extends StatelessWidget {
   final IconData? icon;
   final Widget? iconWidget;
-  final ButtonType type;
-  final WidgetSize size;
-  final WidgetColor color;
+  final JButtonType type;
+  final JWidgetSize size;
+  final JWidgetColor color;
   final VoidCallback? onPressed;
   final VoidCallback? onLongPress;
-  final IconButtonOverrides? overrides;
+  final JIconButtonOverrides? overrides;
 
-  const IconButton({
+  const JIconButton({
     required this.icon,
     this.iconWidget,
-    this.type = ButtonType.filled,
-    this.size = WidgetSize.medium,
-    this.color = WidgetColor.primary,
+    this.type = JButtonType.filled,
+    this.size = JWidgetSize.medium,
+    this.color = JWidgetColor.primary,
     required this.onPressed,
     this.onLongPress,
     this.overrides,
@@ -69,11 +69,11 @@ class IconButton extends StatelessWidget {
   }
 }
 
-extension _CreateStyle on IconButton {
+extension _CreateStyle on JIconButton {
   ButtonStyle _createStyle(ColorScheme colors) {
     return switch (type) {
-      ButtonType.filled => _createFilledStyle(colors),
-      ButtonType.flat => _createFlatStyle(colors),
+      JButtonType.filled => _createFilledStyle(colors),
+      JButtonType.flat => _createFlatStyle(colors),
     };
   }
 
@@ -81,19 +81,19 @@ extension _CreateStyle on IconButton {
     final (buttonSize, iconSize) = _createButtonSize();
 
     final (iconColor, backgroundColor) = switch (color) {
-      WidgetColor.primary => (colors.onPrimary, colors.primary),
-      WidgetColor.secondary => (colors.onSecondary, colors.secondary),
-      WidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
-      WidgetColor.error => (colors.onError, colors.error),
-      WidgetColor.surface => (colors.onSurface, colors.surface),
-      WidgetColor.onSurface => (colors.surface, colors.onSurface),
+      JWidgetColor.primary => (colors.onPrimary, colors.primary),
+      JWidgetColor.secondary => (colors.onSecondary, colors.secondary),
+      JWidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
+      JWidgetColor.error => (colors.onError, colors.error),
+      JWidgetColor.surface => (colors.onSurface, colors.surface),
+      JWidgetColor.onSurface => (colors.surface, colors.onSurface),
     };
 
     return ButtonStyle(
       iconColor: (overrides?.iconColor ?? iconColor).widgetState(),
       backgroundColor: (overrides?.backgroundColor ?? backgroundColor).widgetState(),
       overlayColor: (overrides?.iconColor ?? iconColor).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
-      elevation: (overrides?.elevation ?? Dimens.elevation_s).widgetState(),
+      elevation: (overrides?.elevation ?? JDimens.elevation_s).widgetState(),
       padding: EdgeInsets.zero.widgetState(),
       minimumSize: Size.zero.widgetState(),
       fixedSize: Size.square(overrides?.buttonSize ?? buttonSize).widgetState(),
@@ -107,19 +107,19 @@ extension _CreateStyle on IconButton {
     final (buttonSize, iconSize) = _createButtonSize();
 
     final (iconColor, backgroundColor) = switch (color) {
-      WidgetColor.primary => (colors.primary, Colors.transparent),
-      WidgetColor.secondary => (colors.secondary, Colors.transparent),
-      WidgetColor.tertiary => (colors.tertiary, Colors.transparent),
-      WidgetColor.error => (colors.error, Colors.transparent),
-      WidgetColor.surface => (colors.surface, Colors.transparent),
-      WidgetColor.onSurface => (colors.onSurface, Colors.transparent),
+      JWidgetColor.primary => (colors.primary, Colors.transparent),
+      JWidgetColor.secondary => (colors.secondary, Colors.transparent),
+      JWidgetColor.tertiary => (colors.tertiary, Colors.transparent),
+      JWidgetColor.error => (colors.error, Colors.transparent),
+      JWidgetColor.surface => (colors.surface, Colors.transparent),
+      JWidgetColor.onSurface => (colors.onSurface, Colors.transparent),
     };
 
     return ButtonStyle(
       iconColor: (overrides?.iconColor ?? iconColor).widgetState(),
       backgroundColor: (overrides?.backgroundColor ?? backgroundColor).widgetState(),
       overlayColor: (overrides?.iconColor ?? iconColor).withOpacity(J1Config.buttonOverlayOpacity).widgetState(),
-      elevation: (overrides?.elevation ?? Dimens.elevation_none).widgetState(),
+      elevation: (overrides?.elevation ?? JDimens.elevation_none).widgetState(),
       padding: EdgeInsets.zero.widgetState(),
       minimumSize: Size.zero.widgetState(),
       fixedSize: Size.square(overrides?.buttonSize ?? buttonSize).widgetState(),
@@ -140,9 +140,9 @@ extension _CreateStyle on IconButton {
 
   (double, double) _createButtonSize() {
     return switch (size) {
-      WidgetSize.large => (48, 28),
-      WidgetSize.medium => (36, 22),
-      WidgetSize.small => (32, 18),
+      JWidgetSize.large => (48, 28),
+      JWidgetSize.medium => (36, 22),
+      JWidgetSize.small => (32, 18),
     };
   }
 }

@@ -1,15 +1,15 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:j1_ui/j1_ui.dart";
 
-enum TextFieldType {
+enum JTextFieldType {
   outlined,
   underlined,
   flat,
 }
 
-class TextFieldOverrides extends Equatable {
+class JTextFieldOverrides extends Equatable {
   final EdgeInsets? padding;
   final double? cornerRadius;
   final double? iconSize;
@@ -27,7 +27,7 @@ class TextFieldOverrides extends Equatable {
   final TextStyle? textStyle;
   final TextStyle? errorStyle;
 
-  const TextFieldOverrides({
+  const JTextFieldOverrides({
     this.padding,
     this.cornerRadius,
     this.iconSize,
@@ -63,10 +63,10 @@ class TextFieldOverrides extends Equatable {
       ];
 }
 
-class TextField extends StatelessWidget {
-  final TextFieldType type;
-  final WidgetSize size;
-  final WidgetColor color;
+class JTextField extends StatelessWidget {
+  final JTextFieldType type;
+  final JWidgetSize size;
+  final JWidgetColor color;
   final FocusNode? focusNode;
   final String? name;
   final String? hint;
@@ -89,12 +89,12 @@ class TextField extends StatelessWidget {
   final bool enabled;
   final IconData? icon;
   final VoidCallback? onIconPressed;
-  final TextFieldOverrides? overrides;
+  final JTextFieldOverrides? overrides;
 
-  const TextField({
-    this.type = TextFieldType.outlined,
-    this.size = WidgetSize.medium,
-    this.color = WidgetColor.onSurface,
+  const JTextField({
+    this.type = JTextFieldType.outlined,
+    this.size = JWidgetSize.medium,
+    this.color = JWidgetColor.onSurface,
     this.focusNode,
     this.name,
     this.hint,
@@ -163,15 +163,15 @@ class TextField extends StatelessWidget {
   }
 }
 
-extension _CreateStyle on TextField {
+extension _CreateStyle on JTextField {
   (TextStyle?, InputDecoration) _createStyle(
     ColorScheme colors,
     TextTheme fonts,
   ) {
     return switch (type) {
-      TextFieldType.outlined => _createOutlinedStyle(colors, fonts),
-      TextFieldType.underlined => _createUnderlinedStyle(colors, fonts),
-      TextFieldType.flat => _createFlatStyle(colors, fonts),
+      JTextFieldType.outlined => _createOutlinedStyle(colors, fonts),
+      JTextFieldType.underlined => _createUnderlinedStyle(colors, fonts),
+      JTextFieldType.flat => _createFlatStyle(colors, fonts),
     };
   }
 
@@ -192,7 +192,7 @@ extension _CreateStyle on TextField {
         color: foregroundColor,
         width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
-      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_s),
+      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_s),
     );
 
     final errorBorder = OutlineInputBorder(
@@ -200,7 +200,7 @@ extension _CreateStyle on TextField {
         color: overrides?.errorColor ?? colors.error,
         width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
-      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_s),
+      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_s),
     );
 
     final disabledBorder = UnderlineInputBorder(
@@ -208,7 +208,7 @@ extension _CreateStyle on TextField {
         color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? J1Config.disabledOpacity),
         width: overrides?.strokeWidth ?? J1Config.strokeWidth,
       ),
-      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_s),
+      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_s),
     );
 
     return (
@@ -310,12 +310,12 @@ extension _CreateStyle on TextField {
 
   (Color, Color, Color) _createFieldColors(ColorScheme colors) {
     final (foreground, background, icon) = switch (color) {
-      WidgetColor.primary => (colors.primary, Colors.transparent, colors.primary),
-      WidgetColor.secondary => (colors.secondary, Colors.transparent, colors.secondary),
-      WidgetColor.tertiary => (colors.tertiary, Colors.transparent, colors.tertiary),
-      WidgetColor.error => (colors.error, Colors.transparent, colors.error),
-      WidgetColor.surface => (colors.surface, Colors.transparent, colors.surface),
-      WidgetColor.onSurface => (colors.onSurface, Colors.transparent, colors.onSurface),
+      JWidgetColor.primary => (colors.primary, Colors.transparent, colors.primary),
+      JWidgetColor.secondary => (colors.secondary, Colors.transparent, colors.secondary),
+      JWidgetColor.tertiary => (colors.tertiary, Colors.transparent, colors.tertiary),
+      JWidgetColor.error => (colors.error, Colors.transparent, colors.error),
+      JWidgetColor.surface => (colors.surface, Colors.transparent, colors.surface),
+      JWidgetColor.onSurface => (colors.onSurface, Colors.transparent, colors.onSurface),
     };
 
     return (
@@ -327,31 +327,31 @@ extension _CreateStyle on TextField {
 
   (EdgeInsets, EdgeInsets, double, double) _createTextFieldDimens() {
     return switch (size) {
-      WidgetSize.large => (
+      JWidgetSize.large => (
           overrides?.padding ??
               const EdgeInsets.symmetric(
-                horizontal: Dimens.spacing_m,
-                vertical: Dimens.spacing_m - 2,
+                horizontal: JDimens.spacing_m,
+                vertical: JDimens.spacing_m - 2,
               ),
           overrides?.iconButtonPadding ?? const EdgeInsets.only(left: 8, right: 12),
           overrides?.iconButtonSize ?? 36,
           overrides?.iconSize ?? 28,
         ),
-      WidgetSize.medium => (
+      JWidgetSize.medium => (
           overrides?.padding ??
               const EdgeInsets.symmetric(
-                horizontal: Dimens.spacing_s,
-                vertical: Dimens.spacing_s - 2,
+                horizontal: JDimens.spacing_s,
+                vertical: JDimens.spacing_s - 2,
               ),
           overrides?.iconButtonPadding ?? const EdgeInsets.only(left: 8, right: 8),
           overrides?.iconButtonSize ?? 32,
           overrides?.iconSize ?? 24,
         ),
-      WidgetSize.small => (
+      JWidgetSize.small => (
           overrides?.padding ??
               const EdgeInsets.symmetric(
-                horizontal: Dimens.spacing_s,
-                vertical: Dimens.spacing_s - 2,
+                horizontal: JDimens.spacing_s,
+                vertical: JDimens.spacing_s - 2,
               ),
           overrides?.iconButtonPadding ?? const EdgeInsets.only(left: 8, right: 6),
           overrides?.iconButtonSize ?? 28,
@@ -367,9 +367,9 @@ extension _CreateStyle on TextField {
   ) {
     final style = overrides?.textStyle ??
         switch (size) {
-          WidgetSize.large => fonts.titleLarge,
-          WidgetSize.medium => fonts.titleMedium,
-          WidgetSize.small => fonts.titleSmall,
+          JWidgetSize.large => fonts.titleLarge,
+          JWidgetSize.medium => fonts.titleMedium,
+          JWidgetSize.small => fonts.titleSmall,
         };
 
     return (
@@ -392,12 +392,12 @@ extension _CreateStyle on TextField {
         ? null
         : Padding(
             padding: iconButtonPadding,
-            child: IconButton(
-              type: ButtonType.flat,
-              size: WidgetSize.small,
+            child: JIconButton(
+              type: JButtonType.flat,
+              size: JWidgetSize.small,
               icon: icon,
               onPressed: onIconPressed,
-              overrides: IconButtonOverrides(
+              overrides: JIconButtonOverrides(
                 buttonSize: buttonSize,
                 iconSize: iconSize,
                 iconColor: iconColor,

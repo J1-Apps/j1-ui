@@ -4,14 +4,14 @@ import "package:flutter/material.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:j1_ui/j1_ui.dart";
 
-abstract class _Image<SourceType> extends StatelessWidget {
+abstract class JImage<SourceType> extends StatelessWidget {
   final SourceType source;
   final BoxFit fit;
   final Alignment? alignment;
   final double opacity;
   final Color? color;
 
-  const _Image({
+  const JImage({
     required super.key,
     required this.source,
     required this.fit,
@@ -21,11 +21,11 @@ abstract class _Image<SourceType> extends StatelessWidget {
   });
 }
 
-// class NetworkImage extends _Image<String> {
+// class JNetworkImage extends _Image<String> {
 //   final int? imageWidth;
 //   final int? imageHeight;
 
-//   const NetworkImage({
+//   const JNetworkImage({
 //     super.key,
 //     required super.source,
 //     required super.fit,
@@ -52,8 +52,8 @@ abstract class _Image<SourceType> extends StatelessWidget {
 //   }
 // }
 
-class SvgImage extends _Image<String> {
-  const SvgImage({
+class JSvgImage extends JImage<String> {
+  const JSvgImage({
     super.key,
     required super.source,
     required super.fit,

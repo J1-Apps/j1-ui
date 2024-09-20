@@ -15,23 +15,23 @@ class LoadingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LoadingIndicator(),
+            JLoadingIndicator(),
             SizedBox(width: 12),
-            LoadingIndicator(label: "loading text"),
+            JLoadingIndicator(label: "loading text"),
           ],
         ),
       ),
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "loading placeholders",
-        child: LoadingProvider(
+        child: JLoadingProvider(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              LoadingText(style: context.textTheme().bodyMedium, width: 80),
+              JLoadingText(style: context.textTheme().bodyMedium, width: 80),
               const SizedBox(width: 12),
-              const LoadingBox(height: 40, width: 80),
+              const JLoadingBox(height: 40, width: 80),
             ],
           ),
         ),

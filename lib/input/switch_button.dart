@@ -2,7 +2,7 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class SwitchButtonOverrides extends Equatable {
+class JSwitchButtonOverrides extends Equatable {
   final Color? thumbColor;
   final Color? activeColor;
   final Color? inactiveColor;
@@ -10,7 +10,7 @@ class SwitchButtonOverrides extends Equatable {
   final IconData? activeIcon;
   final IconData? inactiveIcon;
 
-  const SwitchButtonOverrides({
+  const JSwitchButtonOverrides({
     this.thumbColor,
     this.activeColor,
     this.inactiveColor,
@@ -28,12 +28,12 @@ class SwitchButtonOverrides extends Equatable {
       ];
 }
 
-class SwitchButton extends StatelessWidget {
+class JSwitchButton extends StatelessWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
-  final SwitchButtonOverrides? overrides;
+  final JSwitchButtonOverrides? overrides;
 
-  const SwitchButton({
+  const JSwitchButton({
     required this.value,
     required this.onChanged,
     this.overrides,

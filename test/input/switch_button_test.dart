@@ -19,12 +19,12 @@ void main() {
         TestWrapper(
           child: Column(
             children: [
-              SwitchButton(
+              JSwitchButton(
                 key: trueKey,
                 value: true,
                 onChanged: trueCallback.call,
               ),
-              SwitchButton(
+              JSwitchButton(
                 key: falseKey,
                 value: false,
                 onChanged: falseCallback.call,
@@ -48,9 +48,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = SwitchButtonOverrides(activeColor: Colors.black);
-      const overrides1 = SwitchButtonOverrides(activeColor: Colors.black);
-      const overrides2 = SwitchButtonOverrides(activeColor: Colors.blue);
+      const overrides0 = JSwitchButtonOverrides(activeColor: Colors.black);
+      const overrides1 = JSwitchButtonOverrides(activeColor: Colors.black);
+      const overrides2 = JSwitchButtonOverrides(activeColor: Colors.blue);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

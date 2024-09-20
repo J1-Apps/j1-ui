@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide TextButton;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
@@ -18,51 +18,51 @@ void main() {
         TestWrapper(
           child: Column(
             children: [
-              TextButton(
+              JTextButton(
                 key: smallKey,
                 text: "test",
                 icon: JamIcons.h1,
-                type: ButtonType.flat,
-                size: WidgetSize.small,
+                type: JButtonType.flat,
+                size: JWidgetSize.small,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 key: mediumKey,
                 text: "test",
                 icon: JamIcons.h2,
-                type: ButtonType.flat,
-                color: WidgetColor.secondary,
+                type: JButtonType.flat,
+                color: JWidgetColor.secondary,
                 onPressed: onPressed.call,
-                overrides: const TextButtonOverrides(
+                overrides: const JTextButtonOverrides(
                   outlineColor: Colors.red,
                   outlineWidth: 1,
                 ),
               ),
-              TextButton(
+              JTextButton(
                 key: largeKey,
                 text: "test",
                 icon: JamIcons.h3,
-                type: ButtonType.flat,
-                color: WidgetColor.tertiary,
-                size: WidgetSize.large,
+                type: JButtonType.flat,
+                color: JWidgetColor.tertiary,
+                size: JWidgetSize.large,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 text: "test",
-                type: ButtonType.flat,
-                color: WidgetColor.error,
+                type: JButtonType.flat,
+                color: JWidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 text: "test",
-                type: ButtonType.flat,
-                color: WidgetColor.surface,
+                type: JButtonType.flat,
+                color: JWidgetColor.surface,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 text: "test",
-                type: ButtonType.flat,
-                color: WidgetColor.onSurface,
+                type: JButtonType.flat,
+                color: JWidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -99,45 +99,45 @@ void main() {
         TestWrapper(
           child: Column(
             children: [
-              TextButton(
+              JTextButton(
                 key: smallKey,
                 text: "test",
                 icon: JamIcons.h1,
-                size: WidgetSize.small,
+                size: JWidgetSize.small,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 key: mediumKey,
                 text: "test",
                 icon: JamIcons.h2,
-                color: WidgetColor.secondary,
+                color: JWidgetColor.secondary,
                 onPressed: onPressed.call,
-                overrides: const TextButtonOverrides(
+                overrides: const JTextButtonOverrides(
                   outlineColor: Colors.red,
                   outlineWidth: 1,
                 ),
               ),
-              TextButton(
+              JTextButton(
                 key: largeKey,
                 text: "test",
                 icon: JamIcons.h3,
-                color: WidgetColor.tertiary,
-                size: WidgetSize.large,
+                color: JWidgetColor.tertiary,
+                size: JWidgetSize.large,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 text: "test",
-                color: WidgetColor.error,
+                color: JWidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 text: "test",
-                color: WidgetColor.surface,
+                color: JWidgetColor.surface,
                 onPressed: onPressed.call,
               ),
-              TextButton(
+              JTextButton(
                 text: "test",
-                color: WidgetColor.onSurface,
+                color: JWidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -165,9 +165,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = TextButtonOverrides(iconSize: Dimens.size_16);
-      const overrides1 = TextButtonOverrides(iconSize: Dimens.size_16);
-      const overrides2 = TextButtonOverrides(iconSize: Dimens.size_12);
+      const overrides0 = JTextButtonOverrides(iconSize: JDimens.size_16);
+      const overrides1 = JTextButtonOverrides(iconSize: JDimens.size_16);
+      const overrides2 = JTextButtonOverrides(iconSize: JDimens.size_12);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

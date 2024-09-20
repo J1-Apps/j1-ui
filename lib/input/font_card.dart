@@ -1,8 +1,8 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide Card;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class FontCardOverrides extends Equatable {
+class JFontCardOverrides extends Equatable {
   final EdgeInsets? padding;
   final double? cornerRadius;
   final double? elevation;
@@ -15,7 +15,7 @@ class FontCardOverrides extends Equatable {
   final double? outlineWidth;
   final double? selectedOutlineWidth;
 
-  const FontCardOverrides({
+  const JFontCardOverrides({
     this.padding,
     this.cornerRadius,
     this.elevation,
@@ -43,14 +43,14 @@ class FontCardOverrides extends Equatable {
       ];
 }
 
-class FontCard extends StatelessWidget {
+class JFontCard extends StatelessWidget {
   final String fontName;
   final List<TextStyle?> styles;
   final bool isSelected;
   final VoidCallback? onPressed;
-  final FontCardOverrides? overrides;
+  final JFontCardOverrides? overrides;
 
-  const FontCard({
+  const JFontCard({
     required this.fontName,
     required this.styles,
     this.isSelected = false,
@@ -63,9 +63,9 @@ class FontCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final selectedWidth = overrides?.selectedOutlineWidth ?? J1Config.selectedStrokeWidth;
 
-    return Card(
+    return JCard(
       onPressed: onPressed,
-      overrides: CardOverrides(
+      overrides: JCardOverrides(
         cornerRadius: overrides?.cornerRadius,
         strokeWidth: isSelected ? selectedWidth : overrides?.outlineWidth,
         elevation: overrides?.elevation,
@@ -73,11 +73,11 @@ class FontCard extends StatelessWidget {
         backgroundColor: overrides?.backgroundColor,
       ),
       child: Padding(
-        padding: overrides?.padding ?? const EdgeInsets.all(Dimens.spacing_s),
-        child: FontColumn(
+        padding: overrides?.padding ?? const EdgeInsets.all(JDimens.spacing_s),
+        child: JFontColumn(
           text: fontName,
           styles: styles,
-          spacing: overrides?.spacing ?? Dimens.spacing_xxxs,
+          spacing: overrides?.spacing ?? JDimens.spacing_xxxs,
           color: overrides?.foregroundColor,
         ),
       ),
@@ -85,13 +85,13 @@ class FontCard extends StatelessWidget {
   }
 }
 
-class FontColumn extends StatelessWidget {
+class JFontColumn extends StatelessWidget {
   final String text;
   final List<TextStyle?> styles;
   final double spacing;
   final Color? color;
 
-  const FontColumn({
+  const JFontColumn({
     required this.text,
     required this.styles,
     required this.spacing,
