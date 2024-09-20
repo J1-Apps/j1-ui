@@ -19,9 +19,9 @@ void main() {
     });
 
     test("color can be built from a hex string", () {
-      expect(ColorExtensions.fromHex("#FF000000"), Colors.black);
-      expect(ColorExtensions.fromHex("#FFFFFFFF"), Colors.white);
-      expect(ColorExtensions.fromHex("F5F5F5"), Colors.grey.shade100);
+      expect(JColorExtensions.fromHex("#FF000000"), Colors.black);
+      expect(JColorExtensions.fromHex("#FFFFFFFF"), Colors.white);
+      expect(JColorExtensions.fromHex("F5F5F5"), Colors.grey.shade100);
     });
 
     test("color can converted to a hex string", () {

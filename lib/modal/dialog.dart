@@ -1,9 +1,8 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide Dialog, showDialog;
-import "package:flutter/material.dart" as material;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class DialogOverrides extends Equatable {
+class JDialogOverrides extends Equatable {
   final EdgeInsets? insetPadding;
   final double? cornerRadius;
   final double? elevation;
@@ -12,7 +11,7 @@ class DialogOverrides extends Equatable {
   final Color? outlineColor;
   final double? outlineWidth;
 
-  const DialogOverrides({
+  const JDialogOverrides({
     this.insetPadding,
     this.cornerRadius,
     this.elevation,
@@ -32,41 +31,41 @@ class DialogOverrides extends Equatable {
       ];
 }
 
-class Dialog extends StatelessWidget {
-  final DialogOverrides? overrides;
+class JDialog extends StatelessWidget {
+  final JDialogOverrides? overrides;
   final Widget? child;
 
-  const Dialog({super.key, this.overrides, required this.child});
+  const JDialog({super.key, this.overrides, required this.child});
 
   @override
   Widget build(BuildContext context) {
     final theme = context.theme();
 
-    return material.Dialog(
+    return Dialog(
       backgroundColor: overrides?.backgroundColor ?? theme.colorScheme.surfaceContainer,
-      elevation: overrides?.elevation ?? Dimens.elevation_m,
+      elevation: overrides?.elevation ?? JDimens.elevation_m,
       insetPadding: overrides?.insetPadding ??
           const EdgeInsets.symmetric(
-            horizontal: Dimens.spacing_m,
-            vertical: Dimens.spacing_xxxl,
+            horizontal: JDimens.spacing_m,
+            vertical: JDimens.spacing_xxxl,
           ),
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color: overrides?.outlineColor ?? theme.colorScheme.onSurface,
           width: overrides?.outlineWidth ?? J1Config.strokeWidth,
         ),
-        borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? Dimens.radius_m),
+        borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_m),
       ),
       child: child,
     );
   }
 }
 
-extension DialogExtension on BuildContext {
-  Future<bool?> showDialog({DialogOverrides? overrides, required Widget? child}) {
-    return material.showDialog<bool>(
+extension JDialogExtension on BuildContext {
+  Future<bool?> showJDialog({JDialogOverrides? overrides, required Widget? child}) {
+    return showDialog<bool>(
       context: this,
-      builder: (context) => Dialog(overrides: overrides, child: child),
+      builder: (context) => JDialog(overrides: overrides, child: child),
     );
   }
 }

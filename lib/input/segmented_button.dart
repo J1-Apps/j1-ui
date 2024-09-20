@@ -1,9 +1,8 @@
 import "package:equatable/equatable.dart";
-import "package:flutter/material.dart" hide SegmentedButton;
-import "package:flutter/material.dart" as material show SegmentedButton, ButtonSegment;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class SegmentedButtonOverrides extends Equatable {
+class JSegmentedButtonOverrides extends Equatable {
   final EdgeInsets? expandedPadding;
 
   final EdgeInsets? buttonPadding;
@@ -18,7 +17,7 @@ class SegmentedButtonOverrides extends Equatable {
 
   final TextStyle? textStyle;
 
-  const SegmentedButtonOverrides({
+  const JSegmentedButtonOverrides({
     this.expandedPadding,
     this.buttonPadding,
     this.cornerRadius,
@@ -46,19 +45,19 @@ class SegmentedButtonOverrides extends Equatable {
       ];
 }
 
-class SegmentedButton extends StatelessWidget {
-  final List<ButtonSegment> segments;
+class JSegmentedButton extends StatelessWidget {
+  final List<JButtonSegment> segments;
   final Set<String> selected;
   final void Function(Set<String>)? onSelected;
   final bool multiSelectEnabled;
   final bool emptySelectEnabled;
   final bool showSelectedIcon;
   final Widget? selectedIcon;
-  final WidgetSize size;
-  final WidgetColor color;
-  final SegmentedButtonOverrides? overrides;
+  final JWidgetSize size;
+  final JWidgetColor color;
+  final JSegmentedButtonOverrides? overrides;
 
-  const SegmentedButton({
+  const JSegmentedButton({
     required this.segments,
     required this.selected,
     required this.onSelected,
@@ -66,15 +65,15 @@ class SegmentedButton extends StatelessWidget {
     this.emptySelectEnabled = false,
     this.showSelectedIcon = false,
     this.selectedIcon,
-    this.size = WidgetSize.medium,
-    this.color = WidgetColor.surface,
+    this.size = JWidgetSize.medium,
+    this.color = JWidgetColor.surface,
     this.overrides,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return material.SegmentedButton(
+    return SegmentedButton(
       segments: segments.map((segment) => segment._toButtonSegment()).toList(),
       selected: selected,
       onSelectionChanged: onSelected,
@@ -88,7 +87,7 @@ class SegmentedButton extends StatelessWidget {
   }
 }
 
-extension _CreateStyle on SegmentedButton {
+extension _CreateStyle on JSegmentedButton {
   ButtonStyle _createStyle(ThemeData theme) {
     final colors = theme.colorScheme;
     final fonts = theme.textTheme;
@@ -96,29 +95,29 @@ extension _CreateStyle on SegmentedButton {
     final (padding, iconSize, textStyle) = _createButtonParams(fonts);
 
     final (foregroundColor, backgroundColor) = switch (color) {
-      WidgetColor.primary => (colors.onPrimary, colors.primary),
-      WidgetColor.secondary => (colors.onSecondary, colors.secondary),
-      WidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
-      WidgetColor.error => (colors.onError, colors.error),
-      WidgetColor.surface => (colors.onSurface, colors.surface),
-      WidgetColor.onSurface => (colors.surface, colors.onSurface),
+      JWidgetColor.primary => (colors.onPrimary, colors.primary),
+      JWidgetColor.secondary => (colors.onSecondary, colors.secondary),
+      JWidgetColor.tertiary => (colors.onTertiary, colors.tertiary),
+      JWidgetColor.error => (colors.onError, colors.error),
+      JWidgetColor.surface => (colors.onSurface, colors.surface),
+      JWidgetColor.onSurface => (colors.surface, colors.onSurface),
     };
 
     final overlayColor = (overrides?.overlayColor ?? overrides?.foregroundColor ?? foregroundColor)
         .withOpacity(J1Config.buttonOverlayOpacity);
 
-    return material.SegmentedButton.styleFrom(
+    return SegmentedButton.styleFrom(
       textStyle: overrides?.textStyle ?? textStyle,
       foregroundColor: overrides?.foregroundColor ?? foregroundColor,
       backgroundColor: overrides?.backgroundColor ?? backgroundColor,
       selectedForegroundColor: overrides?.foregroundColor ?? foregroundColor,
       selectedBackgroundColor: overlayColor,
       padding: overrides?.buttonPadding ?? padding,
-      elevation: Dimens.elevation_none,
+      elevation: JDimens.elevation_none,
       minimumSize: Size.zero,
       side: BorderSide(
         color: overrides?.outlineColor ?? foregroundColor,
-        width: overrides?.outlineWidth ?? Dimens.size_1,
+        width: overrides?.outlineWidth ?? JDimens.size_1,
       ),
       shape: _createBorder(),
     );
@@ -126,18 +125,18 @@ extension _CreateStyle on SegmentedButton {
 
   (EdgeInsets, double, TextStyle?) _createButtonParams(TextTheme fonts) {
     return switch (size) {
-      WidgetSize.large => (
-          const EdgeInsets.symmetric(horizontal: Dimens.spacing_s, vertical: Dimens.spacing_s),
+      JWidgetSize.large => (
+          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s),
           28,
           fonts.titleLarge
         ),
-      WidgetSize.medium => (
-          const EdgeInsets.symmetric(horizontal: Dimens.spacing_s, vertical: Dimens.spacing_s),
+      JWidgetSize.medium => (
+          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s),
           24,
           fonts.titleMedium
         ),
-      WidgetSize.small => (
-          const EdgeInsets.symmetric(horizontal: Dimens.spacing_s, vertical: Dimens.spacing_s),
+      JWidgetSize.small => (
+          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s),
           20,
           fonts.titleSmall
         ),
@@ -145,20 +144,20 @@ extension _CreateStyle on SegmentedButton {
   }
 
   RoundedRectangleBorder _createBorder() {
-    final cornerRadius = overrides?.cornerRadius ?? Dimens.radius_s;
+    final cornerRadius = overrides?.cornerRadius ?? JDimens.radius_s;
 
     return RoundedRectangleBorder(borderRadius: BorderRadius.circular(cornerRadius));
   }
 }
 
-class ButtonSegment {
+class JButtonSegment {
   final String id;
   final Widget? icon;
   final Widget? label;
   final String? tooltip;
   final bool enabled;
 
-  const ButtonSegment({
+  const JButtonSegment({
     required this.id,
     this.icon,
     this.label,
@@ -166,8 +165,8 @@ class ButtonSegment {
     this.enabled = true,
   });
 
-  material.ButtonSegment<String> _toButtonSegment() {
-    return material.ButtonSegment(
+  ButtonSegment<String> _toButtonSegment() {
+    return ButtonSegment(
       value: id,
       icon: icon,
       label: label,

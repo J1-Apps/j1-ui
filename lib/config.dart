@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-enum WidgetColor {
+enum JWidgetColor {
   primary,
   secondary,
   tertiary,
@@ -9,7 +9,7 @@ enum WidgetColor {
   onSurface,
 }
 
-enum WidgetSize {
+enum JWidgetSize {
   small,
   medium,
   large,

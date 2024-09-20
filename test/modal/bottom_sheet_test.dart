@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 
@@ -16,11 +16,11 @@ void main() {
       await tester.pumpWidget(
         TestWrapper(
           child: Builder(
-            builder: (context) => IconButton(
+            builder: (context) => JIconButton(
               icon: JamIcons.pencil,
-              type: ButtonType.flat,
-              onPressed: () => context.showBottomSheet(
-                overrides: const BottomSheetOverrides(),
+              type: JButtonType.flat,
+              onPressed: () => context.showJBottomSheet(
+                overrides: const JBottomSheetOverrides(),
                 child: const Text("test bottom sheet content"),
               ),
             ),
@@ -48,10 +48,10 @@ void main() {
       await tester.pumpWidget(
         TestWrapper(
           child: Builder(
-            builder: (context) => IconButton(
+            builder: (context) => JIconButton(
               icon: JamIcons.pencil,
-              type: ButtonType.flat,
-              onPressed: () => context.showBottomSheet(child: null),
+              type: JButtonType.flat,
+              onPressed: () => context.showJBottomSheet(child: null),
             ),
           ),
         ),
@@ -66,9 +66,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = BottomSheetOverrides(cornerRadius: Dimens.radius_l);
-      const overrides1 = BottomSheetOverrides(cornerRadius: Dimens.radius_l);
-      const overrides2 = BottomSheetOverrides(cornerRadius: Dimens.radius_xl);
+      const overrides0 = JBottomSheetOverrides(cornerRadius: JDimens.radius_l);
+      const overrides1 = JBottomSheetOverrides(cornerRadius: JDimens.radius_l);
+      const overrides2 = JBottomSheetOverrides(cornerRadius: JDimens.radius_xl);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

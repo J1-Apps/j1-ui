@@ -4,12 +4,12 @@ import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:shimmer/shimmer.dart";
 
-class LoadingProvider extends StatelessWidget {
+class JLoadingProvider extends StatelessWidget {
   final Color? baseColor;
   final Color? highlightColor;
   final Widget child;
 
-  const LoadingProvider({
+  const JLoadingProvider({
     super.key,
     this.baseColor,
     this.highlightColor,
@@ -28,12 +28,12 @@ class LoadingProvider extends StatelessWidget {
   }
 }
 
-class LoadingBox extends StatelessWidget {
+class JLoadingBox extends StatelessWidget {
   final double? cornerRadius;
   final double? width;
   final double? height;
 
-  const LoadingBox({
+  const JLoadingBox({
     super.key,
     this.cornerRadius,
     this.width,
@@ -47,18 +47,18 @@ class LoadingBox extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(cornerRadius ?? Dimens.radius_s),
+        borderRadius: BorderRadius.circular(cornerRadius ?? JDimens.radius_s),
       ),
     );
   }
 }
 
-class LoadingText extends StatelessWidget {
+class JLoadingText extends StatelessWidget {
   final double? cornerRadius;
   final double? width;
   final TextStyle? style;
 
-  const LoadingText({
+  const JLoadingText({
     super.key,
     this.cornerRadius,
     this.width,
@@ -73,8 +73,8 @@ class LoadingText extends StatelessWidget {
 
     return Padding(
       padding: heightPadding,
-      child: LoadingBox(
-        cornerRadius: cornerRadius ?? Dimens.radius_xs,
+      child: JLoadingBox(
+        cornerRadius: cornerRadius ?? JDimens.radius_xs,
         width: width,
         height: style?.fontSize,
       ),

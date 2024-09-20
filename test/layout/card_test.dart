@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide Card;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
@@ -20,21 +20,21 @@ void main() {
             children: [
               SizedBox(
                 height: 80,
-                child: Card(
+                child: JCard(
                   key: smallKey,
-                  size: WidgetSize.small,
+                  size: JWidgetSize.small,
                   onPressed: onPressed.call,
                 ),
               ),
               const SizedBox(
                 height: 80,
-                child: Card(key: mediumKey),
+                child: JCard(key: mediumKey),
               ),
               SizedBox(
                 height: 80,
-                child: Card(
+                child: JCard(
                   key: largeKey,
-                  size: WidgetSize.large,
+                  size: JWidgetSize.large,
                   onPressed: onPressed.call,
                 ),
               ),
@@ -58,9 +58,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = CardOverrides(cornerRadius: Dimens.radius_l);
-      const overrides1 = CardOverrides(cornerRadius: Dimens.radius_l);
-      const overrides2 = CardOverrides(cornerRadius: Dimens.radius_xl);
+      const overrides0 = JCardOverrides(cornerRadius: JDimens.radius_l);
+      const overrides1 = JCardOverrides(cornerRadius: JDimens.radius_l);
+      const overrides2 = JCardOverrides(cornerRadius: JDimens.radius_xl);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

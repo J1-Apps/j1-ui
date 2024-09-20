@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide Card;
+import "package:flutter/material.dart";
 import "package:catalog/catalog_list_widget.dart";
 import "package:j1_ui/j1_ui.dart";
 
@@ -13,7 +13,7 @@ class MiscInputPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "switch button",
-        child: SwitchButton(
+        child: JSwitchButton(
           value: false,
           onChanged: (_) {},
         ),
@@ -21,7 +21,7 @@ class MiscInputPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "switch button",
-        child: SwitchButton(
+        child: JSwitchButton(
           value: true,
           onChanged: (_) {},
         ),
@@ -29,7 +29,7 @@ class MiscInputPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "font card",
-        child: FontCard(
+        child: JFontCard(
           fontName: "test font",
           styles: [fonts.headlineMedium, fonts.titleMedium, fonts.bodyMedium],
         ),
@@ -37,7 +37,7 @@ class MiscInputPage extends StatelessWidget {
       CatalogListItem(
         type: CatalogListItemType.column,
         label: "theme card",
-        child: ThemeCard(
+        child: JThemeCard(
           themeName: "test theme",
           colors: context.colorScheme(),
           fonts: context.textTheme(),

@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide SegmentedButton, ButtonSegment;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
@@ -6,12 +6,12 @@ import "package:mocktail/mocktail.dart";
 import "../helpers/mock_callbacks.dart";
 import "../helpers/test_wrapper.dart";
 
-const _segments = <ButtonSegment>[
-  ButtonSegment(id: "test-0", label: Text("0")),
-  ButtonSegment(id: "test-1", label: Text("1")),
-  ButtonSegment(id: "test-2", label: Text("2")),
-  ButtonSegment(id: "test-3", label: Text("3")),
-  ButtonSegment(id: "test-4", label: Text("4")),
+const _segments = <JButtonSegment>[
+  JButtonSegment(id: "test-0", label: Text("0")),
+  JButtonSegment(id: "test-1", label: Text("1")),
+  JButtonSegment(id: "test-2", label: Text("2")),
+  JButtonSegment(id: "test-3", label: Text("3")),
+  JButtonSegment(id: "test-4", label: Text("4")),
 ];
 
 void main() {
@@ -23,23 +23,23 @@ void main() {
         TestWrapper(
           child: Column(
             children: [
-              SegmentedButton(
+              JSegmentedButton(
                 segments: _segments,
                 selected: const {"test-0"},
                 onSelected: onSelected.call,
-                size: WidgetSize.small,
+                size: JWidgetSize.small,
               ),
-              SegmentedButton(
+              JSegmentedButton(
                 segments: _segments,
                 selected: const {"test-0"},
                 onSelected: onSelected.call,
               ),
-              SegmentedButton(
+              JSegmentedButton(
                 segments: _segments,
                 selected: const {"test-0"},
                 onSelected: onSelected.call,
-                size: WidgetSize.large,
-                color: WidgetColor.onSurface,
+                size: JWidgetSize.large,
+                color: JWidgetColor.onSurface,
               ),
             ],
           ),
@@ -64,9 +64,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = SegmentedButtonOverrides(iconSize: Dimens.size_16);
-      const overrides1 = SegmentedButtonOverrides(iconSize: Dimens.size_16);
-      const overrides2 = SegmentedButtonOverrides(iconSize: Dimens.size_12);
+      const overrides0 = JSegmentedButtonOverrides(iconSize: JDimens.size_16);
+      const overrides1 = JSegmentedButtonOverrides(iconSize: JDimens.size_16);
+      const overrides2 = JSegmentedButtonOverrides(iconSize: JDimens.size_12);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

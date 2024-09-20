@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide Card;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:catalog/catalog_list_widget.dart";
 
@@ -13,8 +13,8 @@ class CardPage extends StatelessWidget {
         label: "card large",
         child: SizedBox(
           height: 80,
-          child: Card(
-            size: WidgetSize.large,
+          child: JCard(
+            size: JWidgetSize.large,
             child: Padding(
               padding: EdgeInsets.all(16),
               child: Text("large card"),
@@ -27,7 +27,7 @@ class CardPage extends StatelessWidget {
         label: "card medium",
         child: SizedBox(
           height: 80,
-          child: Card(
+          child: JCard(
             child: Padding(
               padding: EdgeInsets.all(16),
               child: Text("medium card"),
@@ -40,8 +40,8 @@ class CardPage extends StatelessWidget {
         label: "card small",
         child: SizedBox(
           height: 80,
-          child: Card(
-            size: WidgetSize.small,
+          child: JCard(
+            size: JWidgetSize.small,
             child: Padding(
               padding: EdgeInsets.all(16),
               child: Text("small card"),

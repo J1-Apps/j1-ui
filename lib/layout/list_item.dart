@@ -1,15 +1,15 @@
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class ListItem extends StatelessWidget {
+class JListItem extends StatelessWidget {
   final EdgeInsets padding;
   final double spacing;
   final VoidCallback? onPressed;
   final List<Widget> children;
 
-  const ListItem({
-    this.padding = const EdgeInsets.all(Dimens.spacing_s),
-    this.spacing = Dimens.spacing_xl,
+  const JListItem({
+    this.padding = const EdgeInsets.all(JDimens.spacing_s),
+    this.spacing = JDimens.spacing_xl,
     this.onPressed,
     required this.children,
     super.key,

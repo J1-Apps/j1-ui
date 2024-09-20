@@ -1,4 +1,4 @@
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
 import "package:j1_ui/j1_ui.dart";
 import "package:mocktail/mocktail.dart";
@@ -18,48 +18,48 @@ void main() {
         TestWrapper(
           child: Column(
             children: [
-              IconButton(
+              JIconButton(
                 key: smallKey,
                 icon: JamIcons.h1,
-                type: ButtonType.flat,
-                size: WidgetSize.small,
+                type: JButtonType.flat,
+                size: JWidgetSize.small,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 key: mediumKey,
                 icon: JamIcons.h2,
-                type: ButtonType.flat,
-                color: WidgetColor.secondary,
+                type: JButtonType.flat,
+                color: JWidgetColor.secondary,
                 onPressed: onPressed.call,
-                overrides: const IconButtonOverrides(
+                overrides: const JIconButtonOverrides(
                   outlineColor: Colors.red,
                   outlineWidth: 1,
                 ),
               ),
-              IconButton(
+              JIconButton(
                 key: largeKey,
                 icon: JamIcons.h3,
-                type: ButtonType.flat,
-                color: WidgetColor.tertiary,
-                size: WidgetSize.large,
+                type: JButtonType.flat,
+                color: JWidgetColor.tertiary,
+                size: JWidgetSize.large,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 icon: JamIcons.text,
-                type: ButtonType.flat,
-                color: WidgetColor.error,
+                type: JButtonType.flat,
+                color: JWidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 icon: JamIcons.text,
-                type: ButtonType.flat,
-                color: WidgetColor.surface,
+                type: JButtonType.flat,
+                color: JWidgetColor.surface,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 icon: JamIcons.text,
-                type: ButtonType.flat,
-                color: WidgetColor.onSurface,
+                type: JButtonType.flat,
+                color: JWidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -96,42 +96,42 @@ void main() {
         TestWrapper(
           child: Column(
             children: [
-              IconButton(
+              JIconButton(
                 key: smallKey,
                 icon: JamIcons.h1,
-                size: WidgetSize.small,
+                size: JWidgetSize.small,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 key: mediumKey,
                 icon: JamIcons.h2,
-                color: WidgetColor.secondary,
+                color: JWidgetColor.secondary,
                 onPressed: onPressed.call,
-                overrides: const IconButtonOverrides(
+                overrides: const JIconButtonOverrides(
                   outlineColor: Colors.red,
                   outlineWidth: 1,
                 ),
               ),
-              IconButton(
+              JIconButton(
                 key: largeKey,
                 icon: JamIcons.h3,
-                color: WidgetColor.tertiary,
-                size: WidgetSize.large,
+                color: JWidgetColor.tertiary,
+                size: JWidgetSize.large,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 icon: JamIcons.text,
-                color: WidgetColor.error,
+                color: JWidgetColor.error,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 icon: JamIcons.text,
-                color: WidgetColor.surface,
+                color: JWidgetColor.surface,
                 onPressed: onPressed.call,
               ),
-              IconButton(
+              JIconButton(
                 icon: JamIcons.text,
-                color: WidgetColor.onSurface,
+                color: JWidgetColor.onSurface,
                 onPressed: onPressed.call,
               ),
             ],
@@ -159,9 +159,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = IconButtonOverrides(iconSize: Dimens.size_16);
-      const overrides1 = IconButtonOverrides(iconSize: Dimens.size_16);
-      const overrides2 = IconButtonOverrides(iconSize: Dimens.size_12);
+      const overrides0 = JIconButtonOverrides(iconSize: JDimens.size_16);
+      const overrides1 = JIconButtonOverrides(iconSize: JDimens.size_16);
+      const overrides2 = JIconButtonOverrides(iconSize: JDimens.size_12);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

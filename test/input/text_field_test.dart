@@ -12,14 +12,14 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: TextField(
-            size: WidgetSize.large,
+          child: JTextField(
+            size: JWidgetSize.large,
             onChanged: onChanged.call,
           ),
         ),
       );
 
-      final input = find.byType(TextField);
+      final input = find.byType(JTextField);
 
       expect(input, findsOneWidget);
       await tester.enterText(input, "test");
@@ -32,14 +32,14 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: TextField(
-            type: TextFieldType.underlined,
+          child: JTextField(
+            type: JTextFieldType.underlined,
             onChanged: onChanged.call,
           ),
         ),
       );
 
-      final input = find.byType(TextField);
+      final input = find.byType(JTextField);
 
       expect(input, findsOneWidget);
       await tester.enterText(input, "test");
@@ -52,15 +52,15 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: TextField(
-            size: WidgetSize.small,
-            type: TextFieldType.flat,
+          child: JTextField(
+            size: JWidgetSize.small,
+            type: JTextFieldType.flat,
             onChanged: onChanged.call,
           ),
         ),
       );
 
-      final input = find.byType(TextField);
+      final input = find.byType(JTextField);
 
       expect(input, findsOneWidget);
       await tester.enterText(input, "test");
@@ -73,7 +73,7 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: TextField(
+          child: JTextField(
             onChanged: (_) {},
             icon: JamIcons.pencil,
             onIconPressed: onPressed.call,
@@ -94,7 +94,7 @@ void main() {
 
       await tester.pumpWidget(
         TestWrapper(
-          child: TextField(
+          child: JTextField(
             showErrorText: true,
             errorText: "validation",
             validator: validator,
@@ -102,7 +102,7 @@ void main() {
         ),
       );
 
-      final input = find.byType(TextField);
+      final input = find.byType(JTextField);
       final error = find.text("validation");
 
       await tester.enterText(input, "error");
@@ -113,13 +113,13 @@ void main() {
     testWidgets("text field can be disabled", (tester) async {
       await tester.pumpWidget(
         const TestWrapper(
-          child: TextField(
+          child: JTextField(
             enabled: false,
           ),
         ),
       );
 
-      final input = find.byType(TextField);
+      final input = find.byType(JTextField);
       final test = find.text("test");
 
       await tester.enterText(input, "test");
@@ -128,9 +128,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = TextFieldOverrides(iconSize: Dimens.size_16);
-      const overrides1 = TextFieldOverrides(iconSize: Dimens.size_16);
-      const overrides2 = TextFieldOverrides(iconSize: Dimens.size_12);
+      const overrides0 = JTextFieldOverrides(iconSize: JDimens.size_16);
+      const overrides1 = JTextFieldOverrides(iconSize: JDimens.size_16);
+      const overrides2 = JTextFieldOverrides(iconSize: JDimens.size_12);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

@@ -1,5 +1,5 @@
 import "package:catalog/catalog_content.dart";
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
 class CatalogRenderer extends StatelessWidget {
@@ -12,13 +12,13 @@ class CatalogRenderer extends StatelessWidget {
   Widget build(BuildContext context) {
     final backButton = isRoot
         ? null
-        : IconButton(
+        : JIconButton(
             icon: JamIcons.chevronleft,
             onPressed: () => Navigator.of(context).maybePop(),
           );
 
     return Scaffold(
-      appBar: Header(
+      appBar: JAppBar(
         title: node.title,
         titleStyle: context.textTheme().headlineLarge,
         leadingAction: backButton,
@@ -32,7 +32,7 @@ class CatalogRenderer extends StatelessWidget {
 
   Widget _buildBranch(CatalogBranch branch, BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: Dimens.spacing_m),
+      padding: const EdgeInsets.symmetric(vertical: JDimens.spacing_m),
       itemBuilder: (context, index) => _buildBranchRow(context, branch.children[index]),
       itemCount: branch.children.length,
     );
@@ -40,9 +40,9 @@ class CatalogRenderer extends StatelessWidget {
 
   Widget _buildBranchRow(BuildContext context, CatalogNode node) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: Dimens.spacing_xxxs),
-      child: ListItem(
-        padding: const EdgeInsets.symmetric(horizontal: Dimens.spacing_m, vertical: Dimens.spacing_s),
+      padding: const EdgeInsets.only(bottom: JDimens.spacing_xxxs),
+      child: JListItem(
+        padding: const EdgeInsets.symmetric(horizontal: JDimens.spacing_m, vertical: JDimens.spacing_s),
         children: [
           Text(node.title, style: Theme.of(context).textTheme.headlineSmall),
           if (node is CatalogBranch) const Icon(JamIcons.chevronright),

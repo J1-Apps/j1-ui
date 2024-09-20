@@ -1,5 +1,5 @@
 // ignore_for_file: constant_identifier_names
-class Dimens {
+class JDimens {
   static const double size_0 = 0;
   static const double size_1 = 1;
   static const double size_2 = 2;

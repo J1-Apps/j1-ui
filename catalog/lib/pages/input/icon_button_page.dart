@@ -1,5 +1,5 @@
 import "package:catalog/catalog_list_widget.dart";
-import "package:flutter/material.dart" hide IconButton;
+import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
 class IconButtonPage extends StatelessWidget {
@@ -17,19 +17,19 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.filled,
-              color: WidgetColor.primary,
+              size: JWidgetSize.large,
+              type: JButtonType.filled,
+              color: JWidgetColor.primary,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.filled,
-              color: WidgetColor.secondary,
+              size: JWidgetSize.medium,
+              type: JButtonType.filled,
+              color: JWidgetColor.secondary,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.filled,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.small,
+              type: JButtonType.filled,
+              color: JWidgetColor.tertiary,
             ),
           ],
         ),
@@ -41,21 +41,21 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.filled,
-              color: WidgetColor.primary,
+              size: JWidgetSize.large,
+              type: JButtonType.filled,
+              color: JWidgetColor.primary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.filled,
-              color: WidgetColor.secondary,
+              size: JWidgetSize.medium,
+              type: JButtonType.filled,
+              color: JWidgetColor.secondary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.filled,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.small,
+              type: JButtonType.filled,
+              color: JWidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
           ],
@@ -68,19 +68,19 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.large,
+              type: JButtonType.flat,
+              color: JWidgetColor.tertiary,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.medium,
+              type: JButtonType.flat,
+              color: JWidgetColor.tertiary,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.small,
+              type: JButtonType.flat,
+              color: JWidgetColor.tertiary,
             ),
           ],
         ),
@@ -92,21 +92,21 @@ class IconButtonPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildItem(
-              size: WidgetSize.large,
-              type: ButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.large,
+              type: JButtonType.flat,
+              color: JWidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.medium,
-              type: ButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.medium,
+              type: JButtonType.flat,
+              color: JWidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
             _buildItem(
-              size: WidgetSize.small,
-              type: ButtonType.flat,
-              color: WidgetColor.tertiary,
+              size: JWidgetSize.small,
+              type: JButtonType.flat,
+              color: JWidgetColor.tertiary,
               outlineColor: colors.onSurface,
             ),
           ],
@@ -117,19 +117,19 @@ class IconButtonPage extends StatelessWidget {
     return CatalogListWidget(children);
   }
 
-  IconButton _buildItem({
-    required ButtonType type,
-    required WidgetSize size,
-    required WidgetColor color,
+  JIconButton _buildItem({
+    required JButtonType type,
+    required JWidgetSize size,
+    required JWidgetColor color,
     Color? outlineColor,
   }) {
-    return IconButton(
+    return JIconButton(
       icon: JamIcons.pencil,
       type: type,
       size: size,
       color: color,
       onPressed: () => {},
-      overrides: IconButtonOverrides(outlineColor: outlineColor),
+      overrides: JIconButtonOverrides(outlineColor: outlineColor),
     );
   }
 }

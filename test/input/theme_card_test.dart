@@ -18,7 +18,7 @@ void main() {
               final colors = context.colorScheme();
               final fonts = context.textTheme();
 
-              return ThemeCard(
+              return JThemeCard(
                 themeName: "test theme",
                 colors: colors,
                 fonts: fonts,
@@ -29,7 +29,7 @@ void main() {
         ),
       );
 
-      final cardFinder = find.byType(ThemeCard);
+      final cardFinder = find.byType(JThemeCard);
 
       expect(cardFinder, findsOneWidget);
       expect(find.text("test theme"), findsNWidgets(3));
@@ -40,9 +40,9 @@ void main() {
     });
 
     test("overrides are compared correctly", () {
-      const overrides0 = ThemeCardOverrides(colorIconSize: 16.0);
-      const overrides1 = ThemeCardOverrides(colorIconSize: 16.0);
-      const overrides2 = ThemeCardOverrides(colorIconSize: 26.0);
+      const overrides0 = JThemeCardOverrides(colorIconSize: 16.0);
+      const overrides1 = JThemeCardOverrides(colorIconSize: 16.0);
+      const overrides2 = JThemeCardOverrides(colorIconSize: 26.0);
 
       expect(overrides0 == overrides1, true);
       expect(overrides0 == overrides2, false);

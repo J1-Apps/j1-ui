@@ -6,7 +6,7 @@ export "text_button.dart";
 export "text_field.dart";
 export "theme_card.dart";
 
-enum ButtonType {
+enum JButtonType {
   filled,
   flat,
 }

@@ -10,7 +10,7 @@ void main() {
       await tester.pumpWidget(
         const TestWrapper(
           child: Center(
-            child: LoadingIndicator(label: "test label"),
+            child: JLoadingIndicator(label: "test label"),
           ),
         ),
       );

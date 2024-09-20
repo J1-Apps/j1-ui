@@ -2,9 +2,9 @@ import "package:equatable/equatable.dart";
 import "package:flutter/material.dart";
 import "package:j1_ui/j1_ui.dart";
 
-class Header extends AppBar {
-  Header({
-    HeaderDimens dimens = HeaderDimens.medium,
+class JAppBar extends AppBar {
+  JAppBar({
+    JAppBarDimens dimens = JAppBarDimens.medium,
     Widget? leadingAction,
     String? title,
     TextStyle? titleStyle,
@@ -58,22 +58,22 @@ List<Widget> _getActions(List<Widget> trailingActions, double spacing, double pa
   return actions;
 }
 
-class HeaderDimens extends Equatable {
+class JAppBarDimens extends Equatable {
   final double height;
   final double leadingWidth;
   final double titleSpacing;
   final double actionSpacing;
   final EdgeInsets padding;
 
-  static const medium = HeaderDimens._(
+  static const medium = JAppBarDimens._(
     height: 72,
     leadingWidth: 36,
-    titleSpacing: Dimens.spacing_s,
-    actionSpacing: Dimens.spacing_s,
-    padding: EdgeInsets.only(left: Dimens.spacing_m, right: Dimens.spacing_m),
+    titleSpacing: JDimens.spacing_s,
+    actionSpacing: JDimens.spacing_s,
+    padding: EdgeInsets.only(left: JDimens.spacing_m, right: JDimens.spacing_m),
   );
 
-  const HeaderDimens._({
+  const JAppBarDimens._({
     required this.height,
     required this.leadingWidth,
     required this.titleSpacing,
@@ -81,14 +81,14 @@ class HeaderDimens extends Equatable {
     required this.padding,
   });
 
-  HeaderDimens copyWith({
+  JAppBarDimens copyWith({
     double? height,
     double? leadingWidth,
     double? titleSpacing,
     double? actionSpacing,
     EdgeInsets? padding,
   }) {
-    return HeaderDimens._(
+    return JAppBarDimens._(
       height: height ?? this.height,
       leadingWidth: leadingWidth ?? this.leadingWidth,
       titleSpacing: titleSpacing ?? this.titleSpacing,
