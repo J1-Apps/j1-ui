@@ -7,37 +7,37 @@ class LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final children = [
-      const CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "loading indicator",
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            JLoadingIndicator(),
-            SizedBox(width: 12),
-            JLoadingIndicator(label: "loading text"),
-          ],
-        ),
-      ),
-      CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "loading placeholders",
-        child: JLoadingProvider(
+    return CatalogListWidget(
+      [
+        const CatalogListItem(
+          type: CatalogListItemType.column,
+          label: "loading indicator",
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              JLoadingText(style: context.textTheme().bodyMedium, width: 80),
-              const SizedBox(width: 12),
-              const JLoadingBox(height: 40, width: 80),
+              JLoadingIndicator(),
+              SizedBox(width: 12),
+              JLoadingIndicator(label: "loading text"),
             ],
           ),
         ),
-      ),
-    ];
-
-    return CatalogListWidget(children);
+        CatalogListItem(
+          type: CatalogListItemType.column,
+          label: "loading placeholders",
+          child: JLoadingProvider(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                JLoadingText(style: context.textTheme().bodyMedium, width: 80),
+                const SizedBox(width: 12),
+                const JLoadingBox(height: 40, width: 80),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

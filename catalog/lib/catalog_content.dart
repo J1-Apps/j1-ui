@@ -6,6 +6,7 @@ import "package:catalog/pages/icons_page.dart";
 import "package:catalog/pages/images_page.dart";
 import "package:catalog/pages/input/text_field_page.dart";
 import "package:catalog/pages/layout/card_page.dart";
+import "package:catalog/pages/layout/error_message_page.dart";
 import "package:catalog/pages/layout/loading_page.dart";
 import "package:catalog/pages/layout/modals_page.dart";
 import "package:flutter/material.dart";
@@ -43,6 +44,7 @@ class CatalogContent {
         CatalogLeaf(title: "cards", page: const CardPage()),
         CatalogLeaf(title: "loading", page: const LoadingPage()),
         CatalogLeaf(title: "modals", page: const ModalsPage()),
+        CatalogLeaf(title: "error message", page: const ErrorMessagePage()),
       ]),
       CatalogLeaf(title: "icons", page: const IconsPage()),
       CatalogLeaf(title: "images", page: const ImagesPage()),
