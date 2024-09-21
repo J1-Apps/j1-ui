@@ -21,7 +21,8 @@ class JErrorMessage extends StatelessWidget {
     final hasTitle = title?.isNotEmpty ?? false;
     final hasCta = ctaAction != null;
 
-    return Padding(
+    return Container(
+      width: double.infinity,
       padding: const EdgeInsets.all(JDimens.spacing_m),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -30,7 +31,7 @@ class JErrorMessage extends StatelessWidget {
           if (hasTitle) const SizedBox(height: JDimens.spacing_s),
           Text(message, style: fonts.bodyMedium),
           if (hasCta) const SizedBox(height: JDimens.spacing_s),
-          if (hasCta) JTextButton(text: cta ?? "", onPressed: ctaAction),
+          if (hasCta) JTextButton(size: JWidgetSize.small, text: cta ?? "", onPressed: ctaAction),
         ],
       ),
     );
