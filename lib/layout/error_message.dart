@@ -31,7 +31,7 @@ class JErrorMessage extends StatelessWidget {
           if (hasTitle) const SizedBox(height: JDimens.spacing_s),
           Text(message, style: fonts.bodyMedium),
           if (hasCta) const SizedBox(height: JDimens.spacing_s),
-          if (hasCta) JTextButton(size: JWidgetSize.small, text: cta ?? "", onPressed: ctaAction),
+          if (hasCta) JTextButton(text: cta ?? "", onPressed: ctaAction),
         ],
       ),
     );

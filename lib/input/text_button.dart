@@ -170,17 +170,17 @@ extension _CreateStyle on JTextButton {
       JWidgetSize.large => (
           const EdgeInsets.symmetric(horizontal: JDimens.spacing_s + 2, vertical: JDimens.spacing_s),
           28,
-          fonts.titleLarge
+          fonts.titleLarge,
         ),
       JWidgetSize.medium => (
           const EdgeInsets.symmetric(horizontal: JDimens.spacing_s + 2, vertical: JDimens.spacing_s),
           24,
-          fonts.titleMedium
+          fonts.titleMedium,
         ),
       JWidgetSize.small => (
           const EdgeInsets.symmetric(horizontal: JDimens.spacing_s + 2, vertical: JDimens.spacing_s),
           20,
-          fonts.titleSmall
+          fonts.titleSmall,
         ),
     };
   }

@@ -9,42 +9,42 @@ class MiscInputPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final fonts = context.textTheme();
 
-    final children = [
-      CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "switch button",
-        child: JSwitchButton(
-          value: false,
-          onChanged: (_) {},
+    return CatalogListWidget(
+      [
+        CatalogListItem(
+          type: CatalogListItemType.column,
+          label: "switch button",
+          child: JSwitchButton(
+            value: false,
+            onChanged: (_) {},
+          ),
         ),
-      ),
-      CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "switch button",
-        child: JSwitchButton(
-          value: true,
-          onChanged: (_) {},
+        CatalogListItem(
+          type: CatalogListItemType.column,
+          label: "switch button",
+          child: JSwitchButton(
+            value: true,
+            onChanged: (_) {},
+          ),
         ),
-      ),
-      CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "font card",
-        child: JFontCard(
-          fontName: "test font",
-          styles: [fonts.headlineMedium, fonts.titleMedium, fonts.bodyMedium],
+        CatalogListItem(
+          type: CatalogListItemType.column,
+          label: "font card",
+          child: JFontCard(
+            fontName: "test font",
+            styles: [fonts.headlineMedium, fonts.titleMedium, fonts.bodyMedium],
+          ),
         ),
-      ),
-      CatalogListItem(
-        type: CatalogListItemType.column,
-        label: "theme card",
-        child: JThemeCard(
-          themeName: "test theme",
-          colors: context.colorScheme(),
-          fonts: context.textTheme(),
+        CatalogListItem(
+          type: CatalogListItemType.column,
+          label: "theme card",
+          child: JThemeCard(
+            themeName: "test theme",
+            colors: context.colorScheme(),
+            fonts: context.textTheme(),
+          ),
         ),
-      ),
-    ];
-
-    return CatalogListWidget(children);
+      ],
+    );
   }
 }
