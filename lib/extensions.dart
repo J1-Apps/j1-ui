@@ -93,6 +93,12 @@ extension JSizeExtensions on Size {
   }
 }
 
+extension JBorderSideExtensions on BorderSide {
+  WidgetStateProperty<BorderSide> widgetState() {
+    return WidgetStatePropertyAll(this);
+  }
+}
+
 extension JOutlinedBorderExtensions on OutlinedBorder {
   WidgetStateProperty<OutlinedBorder> widgetState() {
     return WidgetStatePropertyAll(this);
