@@ -82,7 +82,7 @@ class JDropdownMenuEntryOverrides extends Equatable {
   final Color? overlayColor;
   final Color? iconColor;
 
-  final EdgeInsetsGeometry? padding;
+  final EdgeInsets? padding;
   final double? iconSize;
 
   final TextStyle? textStyle;
@@ -282,22 +282,16 @@ extension _CreateStyle on JDropdownMenu {
     return switch (size) {
       JWidgetSize.large => (
           fonts.titleLarge,
-          // const EdgeInsets.symmetric(horizontal: JDimens.spacing_m, vertical: JDimens.spacing_m - 2),
-          // const EdgeInsets.only(left: JDimens.spacing_xs, right: JDimens.spacing_s),
           JDimens.size_32 + 4,
           JDimens.size_24 + 4,
         ),
       JWidgetSize.medium => (
           fonts.titleMedium,
-          // const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s - 2),
-          // const EdgeInsets.only(left: JDimens.spacing_xs, right: JDimens.spacing_xs),
           JDimens.size_32,
           JDimens.size_24,
         ),
       JWidgetSize.small => (
           fonts.titleSmall,
-          // const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s - 2),
-          // const EdgeInsets.only(left: JDimens.spacing_xs, right: JDimens.spacing_s - 2),
           JDimens.size_24 + 4,
           JDimens.size_20,
         ),

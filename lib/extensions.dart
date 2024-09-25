@@ -81,12 +81,6 @@ extension JEdgeInsetsExtensions on EdgeInsets {
   }
 }
 
-extension JEdgeInsetsGeometryExtensions on EdgeInsetsGeometry {
-  WidgetStateProperty<EdgeInsetsGeometry> widgetState() {
-    return WidgetStatePropertyAll(this);
-  }
-}
-
 extension JSizeExtensions on Size {
   WidgetStateProperty<Size> widgetState() {
     return WidgetStatePropertyAll(this);

@@ -77,6 +77,13 @@ void main() {
       expect(property.resolve({WidgetState.dragged, WidgetState.pressed}).top, 7);
     });
 
+    test("border side material state resolves in all cases", () {
+      final property = const BorderSide(width: 2).widgetState();
+      expect(property.resolve({WidgetState.disabled}).width, 2);
+      expect(property.resolve({WidgetState.hovered}).width, 2);
+      expect(property.resolve({WidgetState.dragged, WidgetState.pressed}).width, 2);
+    });
+
     test("size material state resolves in all cases", () {
       final property = const Size.square(7).widgetState();
       expect(property.resolve({WidgetState.disabled}).width, 7);
