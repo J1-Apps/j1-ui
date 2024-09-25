@@ -28,16 +28,17 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
             children: [
               JDropdownMenu<String>(
                 entries: const [
-                  JDropdownMenuEntry(value: "0", label: "Zero", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "1", label: "One", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "2", label: "Two", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "3", label: "Three", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "4", label: "Four", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "0", label: "Zero"),
+                  JDropdownMenuEntry(value: "1", label: "One"),
+                  JDropdownMenuEntry(value: "2", label: "Two"),
+                  JDropdownMenuEntry(value: "3", label: "Three"),
+                  JDropdownMenuEntry(value: "4", label: "Four"),
                 ],
                 size: JWidgetSize.small,
                 controller: controller0,
                 initialSelection: "0",
                 onSelected: (value) => setState(() => value0 = value),
+                overrides: const JDropdownMenuOverrides(menuStrokeWidth: 2),
               ),
               const SizedBox(width: JDimens.spacing_m),
               Text("value: ${value0 ?? "empty"}"),
@@ -51,11 +52,11 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
             children: [
               JDropdownMenu<String>(
                 entries: const [
-                  JDropdownMenuEntry(value: "0", label: "Zero", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "1", label: "One", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "2", label: "Two", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "3", label: "Three", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "4", label: "Four", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "0", label: "Zero"),
+                  JDropdownMenuEntry(value: "1", label: "One"),
+                  JDropdownMenuEntry(value: "2", label: "Two"),
+                  JDropdownMenuEntry(value: "3", label: "Three"),
+                  JDropdownMenuEntry(value: "4", label: "Four"),
                 ],
                 controller: controller0,
                 initialSelection: "0",
@@ -73,11 +74,11 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
             children: [
               JDropdownMenu<String>(
                 entries: const [
-                  JDropdownMenuEntry(value: "0", label: "Zero", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "1", label: "One", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "2", label: "Two", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "3", label: "Three", trailingIcon: Icon(JamIcons.basketball)),
-                  JDropdownMenuEntry(value: "4", label: "Four", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "0", label: "Zero"),
+                  JDropdownMenuEntry(value: "1", label: "One"),
+                  JDropdownMenuEntry(value: "2", label: "Two"),
+                  JDropdownMenuEntry(value: "3", label: "Three"),
+                  JDropdownMenuEntry(value: "4", label: "Four"),
                 ],
                 size: JWidgetSize.large,
                 controller: controller0,
@@ -107,6 +108,7 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
                 controller: controller1,
                 requestFocusOnTap: true,
                 initialSelection: "0",
+                hintText: "Value",
                 onSelected: (value) => setState(() => value1 = value),
               ),
               const SizedBox(width: JDimens.spacing_m),
@@ -131,7 +133,9 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
                 controller: controller1,
                 requestFocusOnTap: true,
                 initialSelection: "0",
+                hintText: "Value",
                 onSelected: (value) => setState(() => value1 = value),
+                overrides: const JDropdownMenuOverrides(menuStrokeWidth: 2),
               ),
               const SizedBox(width: JDimens.spacing_m),
               Text("value: ${value1 ?? "empty"}"),
@@ -156,6 +160,7 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
                 controller: controller1,
                 requestFocusOnTap: true,
                 initialSelection: "0",
+                hintText: "Value",
                 onSelected: (value) => setState(() => value1 = value),
               ),
               const SizedBox(width: JDimens.spacing_m),
@@ -170,11 +175,11 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
             children: [
               JDropdownMenu<String>(
                 entries: const [
-                  JDropdownMenuEntry(value: "0", label: "Zero"),
-                  JDropdownMenuEntry(value: "1", label: "One"),
-                  JDropdownMenuEntry(value: "2", label: "Two"),
-                  JDropdownMenuEntry(value: "3", label: "Three"),
-                  JDropdownMenuEntry(value: "4", label: "Four"),
+                  JDropdownMenuEntry(value: "0", label: "Zero", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "1", label: "One", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "2", label: "Two", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "3", label: "Three", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "4", label: "Four", trailingIcon: Icon(JamIcons.basketball)),
                 ],
                 type: JTextFieldType.flat,
                 size: JWidgetSize.small,
@@ -195,11 +200,11 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
             children: [
               JDropdownMenu<String>(
                 entries: const [
-                  JDropdownMenuEntry(value: "0", label: "Zero"),
-                  JDropdownMenuEntry(value: "1", label: "One"),
-                  JDropdownMenuEntry(value: "2", label: "Two"),
-                  JDropdownMenuEntry(value: "3", label: "Three"),
-                  JDropdownMenuEntry(value: "4", label: "Four"),
+                  JDropdownMenuEntry(value: "0", label: "Zero", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "1", label: "One", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "2", label: "Two", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "3", label: "Three", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "4", label: "Four", trailingIcon: Icon(JamIcons.basketball)),
                 ],
                 type: JTextFieldType.flat,
                 color: JWidgetColor.secondary,
@@ -219,11 +224,11 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
             children: [
               JDropdownMenu<String>(
                 entries: const [
-                  JDropdownMenuEntry(value: "0", label: "Zero"),
-                  JDropdownMenuEntry(value: "1", label: "One"),
-                  JDropdownMenuEntry(value: "2", label: "Two"),
-                  JDropdownMenuEntry(value: "3", label: "Three"),
-                  JDropdownMenuEntry(value: "4", label: "Four"),
+                  JDropdownMenuEntry(value: "0", label: "Zero", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "1", label: "One", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "2", label: "Two", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "3", label: "Three", trailingIcon: Icon(JamIcons.basketball)),
+                  JDropdownMenuEntry(value: "4", label: "Four", trailingIcon: Icon(JamIcons.basketball)),
                 ],
                 type: JTextFieldType.flat,
                 size: JWidgetSize.large,
@@ -231,6 +236,7 @@ class DropdownMenuPageState extends State<DropdownMenuPage> {
                 controller: controller2,
                 initialSelection: "0",
                 onSelected: (value) => setState(() => value2 = value),
+                overrides: const JDropdownMenuOverrides(menuStrokeWidth: 2),
               ),
               const SizedBox(width: JDimens.spacing_m),
               Text("value: ${value2 ?? "empty"}"),

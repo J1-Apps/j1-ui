@@ -10,66 +10,69 @@ class JDropdownMenuOverrides extends Equatable {
   final double? width;
   final double? menuHeight;
   final double? elevation;
+  final EdgeInsets? menuPadding;
 
   final AlignmentGeometry? alignment;
-  final EdgeInsets? padding;
   final double? cornerRadius;
   final double? iconSize;
   final double? iconButtonSize;
-  final EdgeInsets? iconButtonPadding;
   final double? strokeWidth;
   final double? menuStrokeWidth;
 
   final Color? foregroundColor;
   final Color? backgroundColor;
-  final Color? menuStrokColor;
+  final Color? menuStrokeColor;
+  final Color? errorColor;
   final Color? iconColor;
   final double? hintOpacity;
   final double? disabledOpacity;
 
   final TextStyle? textStyle;
+  final TextStyle? hintStyle;
 
   const JDropdownMenuOverrides({
     this.width,
     this.menuHeight,
+    this.menuPadding,
     this.elevation,
     this.alignment,
-    this.padding,
     this.cornerRadius,
     this.iconSize,
     this.iconButtonSize,
-    this.iconButtonPadding,
     this.strokeWidth,
     this.menuStrokeWidth,
     this.foregroundColor,
     this.backgroundColor,
-    this.menuStrokColor,
+    this.menuStrokeColor,
+    this.errorColor,
     this.iconColor,
     this.hintOpacity,
     this.disabledOpacity,
     this.textStyle,
+    this.hintStyle,
   });
 
   @override
   List<Object?> get props => [
         width,
         menuHeight,
+        menuPadding,
         elevation,
         alignment,
-        padding,
         cornerRadius,
         iconSize,
         iconButtonSize,
-        iconButtonPadding,
         strokeWidth,
         menuStrokeWidth,
+        errorColor,
         foregroundColor,
         backgroundColor,
-        menuStrokColor,
+        menuStrokeColor,
         iconColor,
         hintOpacity,
         disabledOpacity,
         textStyle,
+        hintStyle,
       ];
 }
 
@@ -166,14 +169,26 @@ class JDropdownMenu<T> extends StatelessWidget {
     final filter = filterCallback;
     final search = searchCallback;
 
+    final (textStyle, iconButtonSize, iconSize) = _createCommonSizes(theme.textTheme);
+    final (foregroundColor, menuColor, fieldColor) = _createCommonColors(theme.colorScheme);
+
     return DropdownMenu<T>(
-      dropdownMenuEntries: entries.map((entry) => _convertEntry(entry, theme)).toList(),
-      menuStyle: _createMenuStyle(theme.colorScheme),
-      inputDecorationTheme: _createInputStyle(theme.colorScheme),
+      dropdownMenuEntries: entries.map((entry) => _convertEntry(entry, textStyle, iconSize, foregroundColor)).toList(),
+      menuStyle: _createMenuStyle(
+        overrides?.foregroundColor ?? foregroundColor,
+        overrides?.backgroundColor ?? menuColor,
+      ),
+      inputDecorationTheme: _createInputStyle(
+        overrides?.foregroundColor ?? foregroundColor,
+        overrides?.backgroundColor ?? fieldColor,
+        overrides?.errorColor ?? theme.colorScheme.error,
+        overrides?.textStyle ?? textStyle,
+      ),
+      width: overrides?.width,
       menuHeight: overrides?.menuHeight,
       leadingIcon: leadingIcon,
-      trailingIcon: trailingIcon ?? const Icon(JamIcons.chevrondown),
-      selectedTrailingIcon: selectedTrailingIcon ?? const Icon(JamIcons.chevronup),
+      trailingIcon: trailingIcon ?? _createTrailingIcon(JamIcons.chevrondown, iconSize, foregroundColor),
+      selectedTrailingIcon: selectedTrailingIcon ?? _createTrailingIcon(JamIcons.chevronup, iconSize, foregroundColor),
       label: label,
       hintText: hintText,
       initialSelection: initialSelection,
@@ -182,6 +197,7 @@ class JDropdownMenu<T> extends StatelessWidget {
       focusNode: focusNode,
       requestFocusOnTap: requestFocusOnTap,
       enabled: enabled,
+      textStyle: overrides?.textStyle ?? textStyle?.copyWith(color: overrides?.foregroundColor ?? foregroundColor),
       textAlign: textAlign,
       expandedInsets: expandedInsets,
       inputFormatters: inputFormatters,
@@ -192,7 +208,7 @@ class JDropdownMenu<T> extends StatelessWidget {
           : (entries, query) => filter(
                 entries.map(_revertEntry<T>).toList(),
                 query,
-              ).map((entry) => _convertEntry(entry, theme)).toList(),
+              ).map((entry) => _convertEntry(entry, textStyle, iconSize, foregroundColor)).toList(),
       searchCallback: search == null
           ? null
           : (entries, index) => search(
@@ -222,7 +238,12 @@ class JDropdownMenuEntry<T> {
 }
 
 extension _CreateStyle on JDropdownMenu {
-  DropdownMenuEntry<T> _convertEntry<T>(JDropdownMenuEntry<T> entry, ThemeData theme) {
+  DropdownMenuEntry<T> _convertEntry<T>(
+    JDropdownMenuEntry<T> entry,
+    TextStyle? textStyle,
+    double iconSize,
+    Color foregroundColor,
+  ) {
     return DropdownMenuEntry<T>(
       value: entry.value,
       label: entry.label,
@@ -230,7 +251,11 @@ extension _CreateStyle on JDropdownMenu {
       leadingIcon: entry.leadingIcon,
       trailingIcon: entry.trailingIcon,
       enabled: entry.enabled,
-      style: _createEntryStyle(theme.colorScheme, theme.textTheme),
+      style: _createEntryStyle(
+        textStyle,
+        iconSize,
+        foregroundColor,
+      ),
     );
   }
 
@@ -238,60 +263,188 @@ extension _CreateStyle on JDropdownMenu {
     return JDropdownMenuEntry<T>(
       value: entry.value,
       label: entry.label,
+      labelWidget: entry.labelWidget,
+      leadingIcon: entry.leadingIcon,
+      trailingIcon: entry.trailingIcon,
       enabled: entry.enabled,
     );
   }
 
-  InputDecorationTheme _createInputStyle(ColorScheme colors) {
-    return const InputDecorationTheme();
+  Widget _createTrailingIcon(IconData icon, double iconSize, Color iconColor) {
+    return Icon(
+      icon,
+      size: overrides?.iconSize ?? iconSize,
+      color: overrides?.iconColor ?? iconColor,
+    );
   }
 
-  MenuStyle _createMenuStyle(ColorScheme colors) {
-    final (foregroundColor, backgroundColor) = switch (color) {
-      JWidgetColor.primary => (colors.primary, colors.surfaceContainer),
-      JWidgetColor.secondary => (colors.secondary, colors.surfaceContainer),
-      JWidgetColor.tertiary => (colors.tertiary, colors.surfaceContainer),
-      JWidgetColor.error => (colors.error, colors.surfaceContainer),
-      JWidgetColor.surface => (colors.surface, colors.onSurface),
-      JWidgetColor.onSurface => (colors.onSurface, colors.surfaceContainer),
+  (TextStyle?, double, double) _createCommonSizes(TextTheme fonts) {
+    return switch (size) {
+      JWidgetSize.large => (
+          fonts.titleLarge,
+          // const EdgeInsets.symmetric(horizontal: JDimens.spacing_m, vertical: JDimens.spacing_m - 2),
+          // const EdgeInsets.only(left: JDimens.spacing_xs, right: JDimens.spacing_s),
+          JDimens.size_32 + 4,
+          JDimens.size_24 + 4,
+        ),
+      JWidgetSize.medium => (
+          fonts.titleMedium,
+          // const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s - 2),
+          // const EdgeInsets.only(left: JDimens.spacing_xs, right: JDimens.spacing_xs),
+          JDimens.size_32,
+          JDimens.size_24,
+        ),
+      JWidgetSize.small => (
+          fonts.titleSmall,
+          // const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s - 2),
+          // const EdgeInsets.only(left: JDimens.spacing_xs, right: JDimens.spacing_s - 2),
+          JDimens.size_24 + 4,
+          JDimens.size_20,
+        ),
     };
+  }
 
+  (Color, Color, Color) _createCommonColors(ColorScheme colors) {
+    return switch (color) {
+      JWidgetColor.primary => (colors.primary, colors.surfaceContainer, Colors.transparent),
+      JWidgetColor.secondary => (colors.secondary, colors.surfaceContainer, Colors.transparent),
+      JWidgetColor.tertiary => (colors.tertiary, colors.surfaceContainer, Colors.transparent),
+      JWidgetColor.error => (colors.error, colors.surfaceContainer, Colors.transparent),
+      JWidgetColor.surface => (colors.surface, colors.surfaceContainer, Colors.transparent),
+      JWidgetColor.onSurface => (colors.onSurface, colors.surfaceContainer, Colors.transparent),
+    };
+  }
+
+  InputDecorationTheme _createInputStyle(
+    Color foregroundColor,
+    Color backgroundColor,
+    Color errorColor,
+    TextStyle? textStyle,
+  ) {
+    return switch (type) {
+      JTextFieldType.outlined => _createOutlinedStyle(foregroundColor, backgroundColor, errorColor, textStyle),
+      JTextFieldType.underlined => _createUnderlinedStyle(foregroundColor, backgroundColor, errorColor, textStyle),
+      JTextFieldType.flat => _createFlatStyle(foregroundColor, textStyle),
+    };
+  }
+
+  InputDecorationTheme _createOutlinedStyle(
+    Color foregroundColor,
+    Color backgroundColor,
+    Color errorColor,
+    TextStyle? textStyle,
+  ) {
+    final defaultBorder = OutlineInputBorder(
+      borderSide: BorderSide(color: foregroundColor, width: overrides?.strokeWidth ?? J1Config.strokeWidth),
+      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_s),
+    );
+
+    final errorBorder = OutlineInputBorder(
+      borderSide: BorderSide(color: errorColor, width: overrides?.strokeWidth ?? J1Config.strokeWidth),
+      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_s),
+    );
+
+    final disabledBorder = UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? J1Config.disabledOpacity),
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
+      ),
+      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? JDimens.radius_s),
+    );
+
+    final hintStyle = overrides?.hintStyle ??
+        textStyle?.copyWith(color: foregroundColor.withOpacity(overrides?.hintOpacity ?? J1Config.hintOpacity));
+
+    return InputDecorationTheme(
+      errorBorder: errorBorder,
+      focusedBorder: defaultBorder,
+      focusedErrorBorder: errorBorder,
+      disabledBorder: disabledBorder,
+      enabledBorder: defaultBorder,
+      hintStyle: hintStyle,
+    );
+  }
+
+  InputDecorationTheme _createUnderlinedStyle(
+    Color foregroundColor,
+    Color backgroundColor,
+    Color errorColor,
+    TextStyle? textStyle,
+  ) {
+    final defaultBorder = UnderlineInputBorder(
+      borderSide: BorderSide(color: foregroundColor, width: overrides?.strokeWidth ?? J1Config.strokeWidth),
+    );
+
+    final errorBorder = UnderlineInputBorder(
+      borderSide: BorderSide(color: errorColor, width: overrides?.strokeWidth ?? J1Config.strokeWidth),
+    );
+
+    final disabledBorder = UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: foregroundColor.withOpacity(overrides?.disabledOpacity ?? J1Config.disabledOpacity),
+        width: overrides?.strokeWidth ?? J1Config.strokeWidth,
+      ),
+    );
+
+    final hintStyle = overrides?.hintStyle ??
+        textStyle?.copyWith(color: foregroundColor.withOpacity(overrides?.hintOpacity ?? J1Config.hintOpacity));
+
+    return InputDecorationTheme(
+      errorBorder: errorBorder,
+      focusedBorder: defaultBorder,
+      focusedErrorBorder: errorBorder,
+      disabledBorder: disabledBorder,
+      enabledBorder: defaultBorder,
+      hintStyle: hintStyle,
+    );
+  }
+
+  InputDecorationTheme _createFlatStyle(
+    Color foregroundColor,
+    TextStyle? textStyle,
+  ) {
+    const border = OutlineInputBorder(borderSide: BorderSide.none);
+    final hintStyle = overrides?.hintStyle ??
+        textStyle?.copyWith(color: foregroundColor.withOpacity(overrides?.hintOpacity ?? J1Config.hintOpacity));
+
+    return InputDecorationTheme(
+      border: border,
+      hintStyle: hintStyle,
+    );
+  }
+
+  MenuStyle _createMenuStyle(Color foregroundColor, Color menuColor) {
     final (padding, cornerRadius) = switch (size) {
       JWidgetSize.small => (const EdgeInsets.symmetric(vertical: JDimens.spacing_xs), JDimens.radius_s),
       JWidgetSize.medium => (const EdgeInsets.symmetric(vertical: JDimens.spacing_s), JDimens.radius_m),
       JWidgetSize.large => (const EdgeInsets.symmetric(vertical: JDimens.spacing_m), JDimens.radius_l),
     };
 
-    final strokeWidth = overrides?.strokeWidth;
-
-    final side = strokeWidth == null
+    final side = overrides?.menuStrokeWidth == null
         ? null
-        : BorderSide(color: overrides?.menuStrokColor ?? foregroundColor, width: strokeWidth);
+        : BorderSide(color: overrides?.menuStrokeColor ?? foregroundColor, width: overrides?.menuStrokeWidth ?? 0);
 
-    final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? cornerRadius),
-    );
+    final shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(overrides?.cornerRadius ?? cornerRadius));
 
     return MenuStyle(
-      backgroundColor: (overrides?.backgroundColor ?? backgroundColor).widgetState(),
+      backgroundColor: menuColor.widgetState(),
       elevation: (overrides?.elevation ?? JDimens.elevation_s).widgetState(),
-      padding: (overrides?.padding ?? padding).widgetState(),
+      padding: (overrides?.menuPadding ?? padding).widgetState(),
       side: side?.widgetState(),
       shape: shape.widgetState(),
       alignment: overrides?.alignment,
     );
   }
 
-  ButtonStyle _createEntryStyle(ColorScheme colors, TextTheme fonts) {
-    final (padding, iconSize, textStyle) = _createEntryParams(fonts);
-
-    final (foregroundColor, backgroundColor) = switch (color) {
-      JWidgetColor.primary => (colors.primary, Colors.transparent),
-      JWidgetColor.secondary => (colors.secondary, Colors.transparent),
-      JWidgetColor.tertiary => (colors.tertiary, Colors.transparent),
-      JWidgetColor.error => (colors.error, Colors.transparent),
-      JWidgetColor.surface => (colors.surface, Colors.transparent),
-      JWidgetColor.onSurface => (colors.onSurface, Colors.transparent),
+  ButtonStyle _createEntryStyle(
+    TextStyle? textStyle,
+    double iconSize,
+    Color foregroundColor,
+  ) {
+    final padding = switch (size) {
+      JWidgetSize.large => const EdgeInsets.symmetric(horizontal: JDimens.spacing_m, vertical: JDimens.spacing_m),
+      JWidgetSize.medium => const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s),
+      JWidgetSize.small => const EdgeInsets.symmetric(horizontal: JDimens.spacing_xs, vertical: JDimens.spacing_xs),
     };
 
     final overlayColor = (entryOverrides?.foregroundColor ?? foregroundColor).withOpacity(
@@ -302,32 +455,12 @@ extension _CreateStyle on JDropdownMenu {
       textStyle: (entryOverrides?.textStyle ?? textStyle)?.widgetState(),
       iconColor: (entryOverrides?.foregroundColor ?? foregroundColor).widgetState(),
       foregroundColor: (entryOverrides?.foregroundColor ?? foregroundColor).widgetState(),
-      backgroundColor: (entryOverrides?.backgroundColor ?? backgroundColor).widgetState(),
+      backgroundColor: (entryOverrides?.backgroundColor ?? Colors.transparent).widgetState(),
       overlayColor: overlayColor.widgetState(),
       padding: (entryOverrides?.padding ?? padding).widgetState(),
       iconSize: (entryOverrides?.iconSize ?? iconSize).widgetState(),
       minimumSize: Size.zero.widgetState(),
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
     );
-  }
-
-  (EdgeInsets, double, TextStyle?) _createEntryParams(TextTheme fonts) {
-    return switch (size) {
-      JWidgetSize.large => (
-          const EdgeInsets.symmetric(horizontal: JDimens.spacing_m, vertical: JDimens.spacing_m),
-          28,
-          fonts.titleLarge,
-        ),
-      JWidgetSize.medium => (
-          const EdgeInsets.symmetric(horizontal: JDimens.spacing_s, vertical: JDimens.spacing_s),
-          24,
-          fonts.titleMedium,
-        ),
-      JWidgetSize.small => (
-          const EdgeInsets.symmetric(horizontal: JDimens.spacing_xs, vertical: JDimens.spacing_xs),
-          20,
-          fonts.titleSmall,
-        ),
-    };
   }
 }
