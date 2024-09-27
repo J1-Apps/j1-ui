@@ -27,9 +27,9 @@ class JErrorMessage extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (hasTitle) Text(title ?? "", style: fonts.headlineMedium),
+          if (hasTitle) Text(title ?? "", style: fonts.headlineMedium, textAlign: TextAlign.center),
           if (hasTitle) const SizedBox(height: JDimens.spacing_s),
-          Text(message, style: fonts.bodyMedium),
+          Text(message, style: fonts.bodyMedium, textAlign: TextAlign.center),
           if (hasCta) const SizedBox(height: JDimens.spacing_s),
           if (hasCta) JTextButton(text: cta ?? "", onPressed: ctaAction),
         ],
