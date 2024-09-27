@@ -32,7 +32,16 @@ class JBottomSheetOverrides extends Equatable {
 }
 
 extension JBottomSheetExtension on BuildContext {
-  Future<bool?> showJBottomSheet({JBottomSheetOverrides? overrides, required Widget? child}) {
+  Future<bool?> showJBottomSheet({
+    JBottomSheetOverrides? overrides,
+    required Widget? child,
+    bool isScrollControlled = false,
+    double scrollControlDisabledMaxHeightRatio = 9.0 / 16.0,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    bool? showDragHandle,
+    bool useSafeArea = false,
+  }) {
     if (child == null) {
       return Future.value();
     }
@@ -56,6 +65,12 @@ extension JBottomSheetExtension on BuildContext {
       elevation: overrides?.elevation ?? JDimens.elevation_m,
       shape: shape,
       barrierColor: overrides?.barrierColor,
+      isScrollControlled: isScrollControlled,
+      scrollControlDisabledMaxHeightRatio: scrollControlDisabledMaxHeightRatio,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      showDragHandle: showDragHandle,
+      useSafeArea: useSafeArea,
     );
   }
 }
