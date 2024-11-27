@@ -1,6 +1,6 @@
 name: j1_ui
 description: A set of common UI components for use throughout the J1 ecosystem.
-version: 1.0.0
+version: 1.0.8
 repository: https://github.com/J1-Apps/j1_ui
 
 environment:
@@ -22,7 +22,7 @@ dev_dependencies:
   j1_lints:
     git:
       url: https://github.com/J1-Apps/j1_lints.git
-      ref: v1.0.0
+      ref: v1.0.2
       
   mocktail: ^1.0.4
 
