@@ -1,4 +1,4 @@
-library j1_ui;
+library;
 
 export "icons/icons.dart";
 export "input/input.dart";
